@@ -1,7 +1,7 @@
 export const AuthNav = () => {
   return (
     <div>
-      <div className="buttons">
+      <div>
         <button>login</button>
         <button>Registration</button>
       </div>
