@@ -1,0 +1,31 @@
+/* .header {
+  width: 1248px;
+  height: 48px;
+  margin: 20px auto;
+    border-bottom: 1px solid #2a363b;
+    background-color: rgb(188, 188, 235);
+        display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .buttons {
+    justify-content: flex-end;
+  } */
+
+  /* Header.module.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1248px;
+  height: 48px;
+  margin: 20px auto;
+  background-color: rgb(188, 188, 235);
+}
+
+.logo {
+}
+
+.buttons {
+}
