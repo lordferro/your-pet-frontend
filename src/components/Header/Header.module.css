@@ -1,4 +1,3 @@
-/* Header.module.css */
 
 .header {
   display: flex;
@@ -7,15 +6,4 @@
   width: 1248px;
   height: 48px;
   margin: 20px auto;
-}
-
-/* Стили для элемента 1 (Logo) */
-.logo {
-  /* Убедитесь, что у компонента Logo задано свойство width, чтобы установить его размеры */
-}
-
-/* Стили для элемента 2 (Navigation) */
-.navigation {
-  /* Убедитесь, что у компонента Navigation задано свойство width, чтобы установить его размеры */
-  margin-left: 160px;
 }
