@@ -1,9 +1,10 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import MainPage from 'pages/MainPage';
 import NewsPage from 'pages/NewsPage';
 import NoticesPage from 'pages/NoticesPage';
 import OurFriendsPage from 'pages/OurFriendsPage';
+import PageNotFound from 'pages/PageNotFound';
 
 export const App = () => {
   return (
@@ -15,7 +16,7 @@ export const App = () => {
           <Route path="/notices" element={<NoticesPage />} />
           <Route path="/friends" element={<OurFriendsPage />} />
         </Route>
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </>
   );

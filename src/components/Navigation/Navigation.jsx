@@ -1,22 +1,20 @@
 import React from 'react';
 import css from './Navigation.module.css';
-// import NewsPage from 'pages/NewsPage';
-// import OurFriendsPage from 'pages/OurFriendsPage';
-// import NoticesPage from 'pages/NoticesPage';
-import { Link } from 'react-router-dom';
+import {NavLink } from 'react-router-dom';
 
 const Navigation = () => {
+
   return (
     <nav>
       <ul className={css.navigation}>
       <li>
-          <Link to="/news">News</Link>
+      <NavLink to="/news" >News</NavLink>
         </li>
         <li>
-          <Link to="/notices">Find pet</Link>
+          <NavLink to="/notices">Find pet</NavLink>
         </li>
         <li>
-          <Link to="/friends">Our Friends</Link>
+          <NavLink to="/friends">Our Friends</NavLink>
         </li>
       </ul>
     </nav>

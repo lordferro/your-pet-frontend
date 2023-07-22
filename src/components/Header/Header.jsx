@@ -7,9 +7,9 @@ import { AuthNav } from '../AuthNav/AuthNav';
 const Header = () => {
   return (
     <header className={css.header}>
-      <Logo className={css.logo} />
-      <Navigation />
-      <AuthNav className={css.buttons} />
+      <Logo className={css.logo}/>
+      <Navigation className={css.navigation}/>
+      <AuthNav className={css.buttons}/>
     </header>
   );
 };
