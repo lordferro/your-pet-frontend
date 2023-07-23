@@ -1,0 +1,52 @@
+@import '../../styles/colors.module.css';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(97, 97, 97, 0.6);
+  z-index: 3;
+}
+
+.modalWindow {
+  width: 280px;
+  margin: 100px 20px auto;
+  border-radius: 16px;
+  background-color: #ffffff;
+  padding: 12px;
+  box-shadow: 3px 8px 14px 0px #88c6fd30;
+}
+
+.icon {
+  margin-left: 244px;
+  font-size: 24px;
+  color: var(--blue-color);
+}
+
+/* Media query for screens with width up to 320px*/
+@media (max-width: 319px) {
+  .modalWindow {
+    width: 90%;
+  }
+  .icon {
+    margin-left: 85%;
+  }
+}
+
+/* Media query for screens with width more than 768px */
+@media (min-width: 768px) {
+  .modalWindow {
+    width: 608px;
+    margin: 200px 80px auto;
+    padding: 24px;
+  }
+
+  .icon {
+    margin-left: 560px;
+  }
+}
