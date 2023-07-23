@@ -1,11 +1,9 @@
-
 :root {
-    --yellow-color: #FFC107;
-    --backgorund-color: #FDF7F2;
-    --black-color: #111111;
-    --blue-color: #54ADFF;
-    --blue-light-color: #CCE4FB;
-    --green-color: #00C3AD;
-    --red-color: #F43F5E;
-  }
-  
+  --yellow-color: #ffc107;
+  --background-color: #fdf7f2;
+  --black-color: #111111;
+  --blue-color: #54adff;
+  --blue-light-color: #cce4fb;
+  --green-color: #00c3ad;
+  --red-color: #f43f5e;
+}
