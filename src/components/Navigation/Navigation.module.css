@@ -25,8 +25,12 @@ ul {
     color: var(--black-color);
   }
 
-  .navigation li a:hover,
+  /* .navigation li a:hover,
   .navigation li a:focus,
   .navigation li a:active {
     color: var(--yellow-color)
+  } */
+
+  .activeLink {
+    color: var(--yellow-color);
   }
