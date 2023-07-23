@@ -1,17 +1,17 @@
 @import '../../styles/colors.module.css';
 
-.AuthNavContainer {
+.UserNavContainer {
     display: flex;
 }
 
-.buttonLogin {
+.buttonLogout {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 165px;
+    width: 135px;
     height: 40px;
     color: var(--background-color);
-    background-color: var(--yellow-color);
+    background-color: var(--blue-color);
     border-radius: 40px;
     border-color: transparent;
     font-size: 16;
@@ -19,24 +19,31 @@
     cursor: pointer;
     margin-right: 20px;
 }
-.buttonLogin:hover {
+.buttonLogout:hover {
     transform: scale(1.03); 
   }
-  
-.buttonReg {
+
+.buttonProf {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 140px;
     height: 40px;
     color: var(--yellow-color);
-    background-color: var(--background-color);
+    background-color: var(--white-color);
     border-radius: 40px;
     border-color: transparent;
     font-size: 16;
     font-weight: 700;
     cursor: pointer;
 }
-.buttonReg:hover {
+.buttonProf:hover {
     transform: scale(1.03); 
   }
+
+.imageLogout {
+    margin-left: 11px;
+}
+.imageProf{
+    margin-right: 12px;
+}
