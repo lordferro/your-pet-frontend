@@ -1,0 +1,97 @@
+.btn-group{
+    display: block;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;   
+}
+
+.buttons, .sub-buttons{
+    display: block;
+    display: flex;
+    gap: 8px;
+}
+
+.btn{
+    padding: 8px 16px;
+    border: transparent;
+    border-radius: 40px;
+    background-color: var(--blue-light-color);
+    color: var(--blue-color);
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 14px;
+    height: 35px;
+}
+
+.btn:hover, .btn:focus{
+    background-color: var(--blue-color);
+    color:#FEF9F9;
+    transition: 0.5s;
+    outline: none;
+}
+
+.btn-add {
+    display: flex;
+    padding: 8px 20px;
+    height: 40px;
+    border: transparent;
+    border-radius: 40px;
+    background-color: var(--blue-color);
+    color:#FEF9F9;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-add:hover, 
+.btn-add:focus{
+    background-image: linear-gradient(
+    to right,
+    #9BD0FF 50%,
+    #419EF1
+    );
+    transition: 0.5s;
+}
+
+.btn-filter{
+    display: flex;
+    padding: 8px 20px;
+    height: 40px;
+    width: 152px;
+    border: solid var(--blue-color) 2px;
+    border-radius: 40px;
+    background-color:transparent;
+    color:var(--blue-color);
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 16px;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-filter:hover,
+.btn-filter:focus {
+    background-image: linear-gradient(to right,
+    #9BD0FF 50%,
+    #419EF1);
+    color: #FEF9F9;
+    border: solid #9BD0FF 2px;
+    transition: 0.5s;
+}
+
+.icon-plus{
+    margin-left: 5px;
+}
+
+.icon-filter{
+    margin-left: 5px;
+    stroke: currentColor;
+}
+
+.icon-filter:hover{
+    stroke: currentColor;    
+}
+
+
