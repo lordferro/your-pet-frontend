@@ -6,4 +6,8 @@
   --blue-light-color: #cce4fb;
   --green-color: #00c3ad;
   --red-color: #f43f5e;
+  --primary-white-color: #ffffff;
+  --input-text-color: #888888;
+
+  --input-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
 }

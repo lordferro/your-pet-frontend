@@ -1,10 +1,5 @@
-import Buttons from "components/Buttons/Buttons";
+
+import { Main } from '../components/Main/Main';
 
 export default function MainPage() {
-  return (
-    <div>
-      <h1>Main Page</h1>
-      <Buttons></Buttons>
-    </div>
-  );
-}
+  return <Main />;
