@@ -5,6 +5,8 @@ import NewsPage from 'pages/NewsPage';
 import NoticesPage from 'pages/NoticesPage';
 import OurFriendsPage from 'pages/OurFriendsPage';
 import PageNotFound from 'pages/PageNotFound';
+import LoginForm from './LoginForm/LoginForm';
+import RegistrationForm from './RegisterForm/RegisterForm';
 
 export const App = () => {
   return (
@@ -15,6 +17,8 @@ export const App = () => {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/notices" element={<NoticesPage />} />
           <Route path="/friends" element={<OurFriendsPage />} />
+          <Route path='/login' element={<LoginForm/>} />
+          <Route path='/register' element={<RegistrationForm/>} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
