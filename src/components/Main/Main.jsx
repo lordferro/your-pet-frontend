@@ -22,21 +22,21 @@ export const Main = () => {
       <div className={css.pictureWrapper}>
         <picture>
           <source
-            srcset={`${mainMob}, ${mainMobRet} 2x`}
+            srcSet={`${mainMob}, ${mainMobRet} 2x`}
             type="image/png"
             media="(max-width: 480px)"
             alt={'main page pets'}
           />
 
           <source
-            srcset={`${mainTab}, ${mainTabRet} 2x`}
+            srcSet={`${mainTab}, ${mainTabRet} 2x`}
             type="image/png"
             media="(max-width:768px)"
             alt={'main page pets'}
           />
 
           <source
-            srcset={`${mainDesc}, ${mainDescRet} 2x`}
+            srcSet={`${mainDesc}, ${mainDescRet} 2x`}
             type="image/png"
             media="(min-width: 1280px)"
             alt={'main page pets'}

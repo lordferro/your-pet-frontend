@@ -2,13 +2,31 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 1248px;
-  height: 48px;
   margin: 20px auto;
-  /* background-color: var(--background-color); */
 }
 
 .logoNav {
   display: flex;
   align-items: center;
+}
+
+@media (min-width: 1280px) {
+  .header {
+    width: 1248px;
+    height: 48px;
+  }
+}
+
+@media (min-width: 704px) and (max-width: 1279px) {
+  .header {
+    width: 704px;
+    height: 44px;
+  }
+}
+
+@media (min-width: 280px) and (max-width: 703px) {
+  .header {
+    width: 280px;
+    height: 28px;
+  }
 }
