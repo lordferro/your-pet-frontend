@@ -2,8 +2,8 @@ import React from 'react';
 import css from './Header.module.css';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
-// import { AuthNav } from '../AuthNav/AuthNav';
-import { UserNav } from 'components/UserNav/UserNav';
+import { AuthNav } from '../AuthNav/AuthNav';
+// import { UserNav } from 'components/UserNav/UserNav';
 
 const Header = () => {
   return (
@@ -12,8 +12,8 @@ const Header = () => {
         <Logo className={css.logo} />
         <Navigation />
       </div>
-      {/* <AuthNav /> */}
-      <UserNav/>
+      <AuthNav />
+      {/* <UserNav/> */}
     </header>
   );
 };

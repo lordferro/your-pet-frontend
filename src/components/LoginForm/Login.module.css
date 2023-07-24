@@ -1,0 +1,70 @@
+@import '../../styles/colors.module.css';
+
+.login_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login_title {
+    margin-top: 60px;
+    margin-bottom: 40px;
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.login_form {
+  width: 608px;
+  height: 417px;
+  border-radius: 40px;
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+.input {
+  width: 440px; 
+  height: 46px;
+  border: 1px solid var(--blue-color);
+  border-radius: 40px;
+  margin-bottom: 32px; 
+  padding-left: 16px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.button {
+    width: 456px; 
+    height: 46px;
+    border: 1px solid var(--blue-color);
+  background-color: var(--blue-color);
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.refTitleToReg {
+    font-size: 12px;
+font-weight: 200;
+    color: #888888;
+    margin-bottom: 40px;
+}
+
+.refLogin {
+font-size: 12px;
+font-weight: 200;
+margin-bottom: 40px;
+color:var(--blue-color);
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
