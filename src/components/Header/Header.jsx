@@ -3,17 +3,21 @@ import css from './Header.module.css';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 import { AuthNav } from '../AuthNav/AuthNav';
-// import { UserNav } from 'components/UserNav/UserNav';
+import {useAuth} from '../../hooks/useAuth'
+import { UserNav } from 'components/UserNav/UserNav';
 
 const Header = () => {
+  const { isLoggedIn } = useAuth();
+
   return (
     <header className={css.header}>
       <div className={css.logoNav}>
         <Logo className={css.logo} />
         <Navigation />
       </div>
-      <AuthNav />
-      {/* <UserNav/> */}
+      {isLoggedIn ? <AuthNav /> : <UserNav />}
+      {/* <AuthNav />
+      <UserNav/> */}
     </header>
   );
 };
