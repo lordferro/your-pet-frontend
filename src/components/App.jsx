@@ -22,7 +22,8 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    isRefreshing && (
+    // isRefreshing && 
+    (
       <>
         <Routes>
           <Route path="/" element={<Layout />}>
