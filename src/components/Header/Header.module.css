@@ -1,4 +1,3 @@
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -6,10 +5,10 @@
   width: 1248px;
   height: 48px;
   margin: 20px auto;
+  /* background-color: var(--background-color); */
 }
 
-.logoNav{
+.logoNav {
   display: flex;
   align-items: center;
 }
-
