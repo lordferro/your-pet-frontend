@@ -19,7 +19,10 @@ const RegistrationForm = () => {
           Registration
         </button>
         <p className={css.refTitleToLogin}>
-          Already have an account? <Link to="/login" className={css.refLogin}>Login</Link>
+          Already have an account?{' '}
+          <Link to="/login" className={css.refLogin}>
+            Login
+          </Link>
         </p>
       </form>
     </div>

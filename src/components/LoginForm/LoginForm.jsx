@@ -13,8 +13,8 @@ const LoginForm = () => {
           Login
         </button>
         <p className={css.refTitleToReg}>
-          Don't have an account?
-          <Link to="/registration" className={css.refLogin}>
+          Don't have an account?{' '}
+          <Link to="/register" className={css.refLogin}>
             Register
           </Link>
         </p>

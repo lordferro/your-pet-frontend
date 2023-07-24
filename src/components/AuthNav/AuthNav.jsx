@@ -21,7 +21,7 @@ export const AuthNav = () => {
             />
           </button>
         </Link>
-        <Link to="/registration" className={css.link}>
+        <Link to="/register" className={css.link}>
           <button className={css.buttonReg}>Registration</button>
         </Link>
       </div>
