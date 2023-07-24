@@ -12,11 +12,11 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operation';
-import { useAuth } from 'hooks';
+// import { useAuth } from 'hooks';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
+  // const { isRefreshing } = useAuth();
   useEffect(() => {
     dispatch(refreshUser);
   }, [dispatch]);
