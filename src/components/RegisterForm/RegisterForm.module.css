@@ -2,9 +2,10 @@
 
 .registration_container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  margin-top: 80px;
 }
 
 .registration_title {
