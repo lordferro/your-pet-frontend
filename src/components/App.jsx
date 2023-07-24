@@ -7,21 +7,48 @@ import OurFriendsPage from 'pages/OurFriendsPage';
 import PageNotFound from 'pages/PageNotFound';
 import LoginForm from './LoginForm/LoginForm';
 import RegistrationForm from './RegisterForm/RegisterForm';
+import { RestrictedRoute } from './RestrictedRoute';
+// import { PrivateRoute } from './PriveteRoute';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { refreshUser } from 'redux/auth/operation';
+import { useAuth } from 'hooks';
 
 export const App = () => {
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+  useEffect(() => {
+    dispatch(refreshUser);
+  }, [dispatch]);
+
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/news" element={<NewsPage />} />
-          <Route path="/notices" element={<NoticesPage />} />
-          <Route path="/friends" element={<OurFriendsPage />} />
-          <Route path='/login' element={<LoginForm/>} />
-          <Route path='/register' element={<RegistrationForm/>} />
-          <Route path="*" element={<PageNotFound />} />
-        </Route>
-      </Routes>
-    </>
+    isRefreshing && (
+      <>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route path="/main" element={<MainPage />} />
+            <Route path="/news" element={<NewsPage />} />
+            <Route path="/notices" element={<NoticesPage />} />
+            <Route path="/friends" element={<OurFriendsPage />} />
+            <Route
+              path="/login"
+              element={
+                <RestrictedRoute redirectTo="/user" component={LoginForm} />
+              }
+            />
+            <Route
+              path="/register"
+              element={
+                <RestrictedRoute
+                  redirectTo="/user"
+                  component={RegistrationForm}
+                />
+              }
+            />
+            <Route path="*" element={<PageNotFound />} />
+          </Route>
+        </Routes>
+      </>
+    )
   );
 };

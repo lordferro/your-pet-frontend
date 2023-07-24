@@ -15,7 +15,7 @@ const Header = () => {
         <Logo className={css.logo} />
         <Navigation />
       </div>
-      {isLoggedIn ? <AuthNav /> : <UserNav />}
+      {isLoggedIn ? <UserNav /> : <AuthNav />}
       {/* <AuthNav />
       <UserNav/> */}
     </header>

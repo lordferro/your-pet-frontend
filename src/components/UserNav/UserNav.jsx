@@ -1,18 +1,23 @@
 import css from './UserNav.module.css';
 import shape from '../../images/shape.svg';
-import user from '../../images/user1.svg';
+import user1 from '../../images/user1.svg';
+import { useAuth } from 'hooks';
+import { useDispatch } from 'react-redux';
+import { logOut } from 'redux/auth/operation';
 
 export const UserNav = () => {
-  const handleLogoutClick = () => {
-    console.log('Log out button clicked!');
-  };
+  const dispatch = useDispatch();
+  const {user} = useAuth
+  const handleLogOut = () => dispatch(logOut())
+
+
   return (
     <div>
       <div className={css.UserNavContainer}>
         <button
           type="button"
           className={css.buttonLogout}
-          onClick={handleLogoutClick}
+          onClick={handleLogOut}
         >
           Log out
           <img
@@ -23,8 +28,8 @@ export const UserNav = () => {
           />
         </button>
         <button type="button" className={css.buttonProf}>
-          <img src={user} alt="user" width={28} className={css.imageProf} />
-          Profile
+          <img src={user1} alt="user" width={28} className={css.imageProf} />
+          {user.name}
         </button>
       </div>
     </div>
