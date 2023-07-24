@@ -5,9 +5,13 @@
   margin: 20px auto;
 }
 
-.logoNav {
+/* .logoNav {
   display: flex;
   align-items: center;
+} */
+
+.user_navigation {
+margin-left: 270px;
 }
 
 @media (min-width: 1280px) {
@@ -30,3 +34,4 @@
     height: 28px;
   }
 }
+
