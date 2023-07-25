@@ -29,7 +29,11 @@ const ModalWindow = ({ onClose, children }) => {
   return createPortal(
     <div className={css.overlay} onClick={handleBackdropClick}>
       <div className={css.modalWindow}>
-        <RxCross1 className={css.icon} onClick={onClose} />
+        <RxCross1
+          className={css.icon}
+          aria-label="Close modal window"
+          onClick={onClose}
+        />
         <div className="modal-content">{children}</div>
       </div>
     </div>,
