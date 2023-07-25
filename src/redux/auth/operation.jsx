@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = '';
-
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -15,16 +13,11 @@ export const register = createAsyncThunk(
   '/register',
   async (credentials, thunkAPI) => {
     try {
-      const res = await axios.post('/register', credentials);
+      const res = await axios.post('auth/register', credentials);
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      if (error.response && error.response.status === 400) {
-        console.log('This name or email is already used');
-      } else {
-        console.log('An error occurred');
-      }
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.response.data.message);
     }
   }
 );
