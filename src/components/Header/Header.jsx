@@ -18,8 +18,6 @@ const Header = () => {
       <div className={css.user_navigation}>
         {isLoggedIn ? <UserNav /> : <AuthNav />}
       </div>
-      {/* <AuthNav />
-      <UserNav/> */}
     </header>
   );
 };
