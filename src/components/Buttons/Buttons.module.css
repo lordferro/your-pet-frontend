@@ -78,7 +78,8 @@
        display: flex;
        flex-direction: column;
        justify-content: center;
-       align-items: center;       
+       align-items: center;    
+       z-index: 10;   
     }
 
     .btn-mob-add:hover,
@@ -108,7 +109,91 @@
         color: #FEF9F9;
         transition: 0.5s;
         outline: none;
-    }   
+    }
+    
+    .filter-menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 5px;
+        top: 41px;
+        width: 135px;
+        border-radius: 20px;
+        padding: 8px;
+        gap: 8px;
+        border: solid 1px var(--blue-color);
+        color: var(--blue-color);
+        background-color:white;
+        z-index: 1;
+    }
+    
+    .title {
+        font-weight: 700;
+        font-size: 16px;
+        margin: 0;
+    }
+    
+    .btn-menu {
+        border: transparent;
+        background-color: transparent;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    
+    .age-menu,
+    .gender-menu {
+        font-weight: 400px;
+        font-size: 14px;
+        background-color: var(--blue-light-color);
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    
+    .title-menu {
+        display: flex;
+        align-items: center;
+    }
+    
+    .form {
+        display: flex;
+        gap: 12px;
+        font-size: 12px;
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .input {
+        margin-right: 10px;
+        background-color: transparent;
+        border: solid 2px var(--blue-color);
+        border-radius: 4px;
+        width: 20px;
+        height: 20px;
+    }
+    
+    .age,
+    .gender {
+        display: flex;
+        align-items: center;
+    }
+    
+    .input {
+        display: block;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        z-index: 2;
+    }
+    
+    .icon-check {
+        position: absolute;
+        left: 20px;
+        stroke: var(--blue-light-color);
+    }
+    
+    .input:checked+.label span {
+        stroke: var(--blue-color);
+    }
 }
 
 @media screen and (min-width: 704px){
@@ -189,6 +274,11 @@
    .icon-filter:hover {
         stroke: currentColor;
     }
+
+   .filter-menu {
+        right: 138px;
+        top: 41px;
+    }
 }
 
 
@@ -198,45 +288,3 @@
         max-width: 540px;
     }
 }
-
-
-
-.filter-menu{
-    display: flex;
-    flex-direction: column;
-    position: absolute;   
-    right: 138px;
-    top: 41px;
-    width: 135px;
-    border-radius: 20px;
-    padding: 8px;  
-    gap: 8px;
-    border: solid 1px var(--blue-color);
-    color: var(--blue-color);   
-}
-
-.title{
-    font-weight: 700;
-    font-size: 16px;
-    margin: 0;
-}
-
-.btn-menu{
-    border: transparent;
-    background-color: transparent;
-    margin-right: 10px;
-    cursor: pointer;
-}
-
-.age-menu,
-.gender-menu{
-    font-weight: 400px;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    background-color: var(--blue-light-color);
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-
