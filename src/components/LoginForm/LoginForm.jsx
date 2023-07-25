@@ -27,8 +27,8 @@ const LoginForm = () => {
         className={css.login_form}
       >
         <h2 className={css.login_title}>Login</h2>
-        <input type="email" placeholder="Email" className={css.input} />
-        <input type="password" placeholder="Password" className={css.input} />
+        <input type="email" name="email" placeholder="Email" className={css.input} />
+        <input type="password" name="password" placeholder="Password" className={css.input} />
         <button type="submit" className={css.button}>
           Login
         </button>
