@@ -1,0 +1,251 @@
+.petItem {
+  width: 280px;
+  min-height: 456px;
+  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  border-radius: 0px 0px 40px 40px;
+  overflow: hidden;
+
+  @media screen and (min-width: 768px) {
+    width: 336px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 288px;
+  }
+}
+
+.wrapper {
+  position: relative;
+}
+
+.petImageWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.petImage {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.noticeCategory {
+  position: absolute;
+  top: 16px;
+  width: 126px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: #111;
+  background-color: #cce4fb;
+  border-radius: 0px 16px 16px 0px;
+}
+
+.addToFavoriteButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  color: #54adff;
+  background-color: #c5dff6;
+  border: none;
+  cursor: url('../../../images/pawCursor.svg'), auto;
+}
+
+.addToFavoriteButtonIcon {
+  width: 24px;
+  height: 24px;
+  fill: transparent;
+  stroke: currentcolor;
+}
+
+.addToFavoriteButton:hover .addToFavoriteButtonIcon,
+.addToFavoriteButton:focus .addToFavoriteButtonIcon {
+  fill: #54adff;
+}
+
+.removeFromFavoriteButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  background-color: #cce4fb;
+  border: none;
+  cursor: url('../../../images/pawCursor.svg'), auto;
+}
+
+.removeFromFavoriteButtonIcon {
+  fill: #54adff;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 68px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  border-radius: 50%;
+  color: #54adff;
+  background-color: #c5dff6;
+  border: none;
+  cursor: url('../../../images/pawCursor.svg'), auto;
+  transition: color cubic-bezier(0.075, 0.82, 0.165, 1) 250ms,
+    background-color cubic-bezier(0.075, 0.82, 0.165, 1) 250ms;
+}
+
+.deleteButtonIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.deleteButton:hover,
+.deleteButton:focus {
+  color: #ffffff;
+  background-color: #54adff;
+}
+
+.shortPetInfoWrapper {
+  position: absolute;
+  bottom: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+.shortPetInfoWrapperList {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
+    gap: 23px;
+  }
+}
+
+.shortPetInfo {
+  display: flex;
+  width: 80px;
+  height: 28px;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 16px;
+  background-color: #cce4fb;
+  color: #111;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  cursor: url('../../../images/pawCursor.svg'), auto;
+  transition: color 250ms cubic-bezier(0.075, 0.82, 0.165, 1),
+    background-color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.shortPetInfoIcon {
+  width: 24px;
+  height: 24px;
+  color: #54adff;
+  transition: color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.shortPetInfo:hover,
+.shortPetInfo:focus {
+  color: white;
+  background-color: #54adff;
+}
+
+.shortPetInfo:hover .shortPetInfoIcon,
+.shortPetInfo:focus .shortPetInfoIcon {
+  color: white;
+}
+
+.petInfoWrapper {
+  padding: 20px 16px 24px 16px;
+
+  @media screen and (min-width: 768px) {
+    padding: 20px 20px 24px 20px;
+  }
+}
+
+.petImageDescription {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 28px;
+  color: #111;
+  font-family: Manrope;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: normal;
+
+  @media screen and (min-width: 768px) {
+    width: 231px;
+    height: 66px;
+    margin-bottom: 20px;
+  }
+}
+
+.allPetInfoModalOpen {
+  display: flex;
+  width: 248px;
+  height: 38px;
+  margin: 0 auto;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Manrope';
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: 0.64px;
+  color: #54adff;
+  background-color: transparent;
+  border-radius: 40px;
+  border: 2px solid #54adff;
+  cursor: url('../../../images/pawCursor.svg'), auto;
+  transition: color linear 250ms, background-image linear 250ms;
+}
+
+.allPetInfoModalOpen:hover,
+.allPetInfoModalOpen:focus {
+  color: #fef9f9;
+  background-image: linear-gradient(315deg, #419ef1 0%, #9bd0ff 100%);
+}

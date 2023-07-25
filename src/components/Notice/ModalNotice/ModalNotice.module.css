@@ -1,0 +1,332 @@
+.modalNoticeOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(97, 97, 97, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1200;
+}
+
+.modalNoticeWindow {
+  position: relative;
+  padding: 44px 12px 16px 12px;
+  width: 280px;
+  /* height: 786px; */
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #fff;
+
+  @media screen and (min-width: 768px) {
+    padding: 32px 31px 24px 32px;
+    width: 681px;
+    /* height: 540px; */
+  }
+}
+
+.modalNoticeWindowButtonClose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #54adff;
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  cursor: url('../../../images/pawCursor.svg'), auto;
+  transition: color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  @media screen and (min-width: 768px) {
+    top: 23px;
+    right: 26px;
+  }
+}
+
+.modalNoticeWindowButtonCloseIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.modalNoticeWindowButtonClose:hover,
+.modalNoticeWindowButtonClose:focus {
+  background-color: #54adff;
+  color: white;
+}
+
+.petInfoWrapper {
+  margin-bottom: 12px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 28px;
+    display: flex;
+    column-gap: 24px;
+  }
+}
+
+.petImageWrapper {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
+  width: 240px;
+  height: 240px;
+  border-radius: 0px 0px 40px 40px;
+  overflow: hidden;
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+    width: 262px;
+    height: 298px;
+  }
+}
+
+.petImage {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.noticeCategory {
+  position: absolute;
+  top: 16px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 126px;
+  height: 32px;
+  flex-shrink: 0;
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  color: #111;
+  background-color: #cce4fb;
+  border-radius: 0px 16px 16px 0px;
+}
+
+.petInfoTableTittle {
+  margin-top: 0;
+  margin-bottom: 22px;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.24px;
+  color: #000;
+
+  @media screen and (min-width: 768px) {
+    width: 321px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    letter-spacing: -0.28px;
+  }
+}
+
+.petInfoItem {
+  display: flex;
+  margin-bottom: 20px;
+  margin-top: 0;
+  margin-bottom: 8px;
+  padding: 0;
+}
+
+.petInfoItemHeading {
+  width: 81px;
+  text-align: left;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  color: #000;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    width: 121px;
+  }
+}
+
+.petInfoItemBody {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  color: #000;
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+.petInfoItemLink {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: underline;
+  color: #ffc107;
+  cursor: url('../../../images/pawCursor.svg'), auto;
+  transition: color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+  }
+}
+
+.petInfoItemLink:hover,
+.petInfoItemLink:focus {
+  color: #a58011;
+}
+
+.modalNoticeComment {
+  margin-top: 0;
+  margin-bottom: 12px;
+  padding: 0;
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.56px;
+  color: #000;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 70px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: 0.64px;
+  }
+}
+
+.modalNoticeButtonsWrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  row-gap: 8px;
+  align-items: center;
+  justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    justify-content: flex-end;
+    column-gap: 17px;
+    row-gap: 0px;
+  }
+}
+
+.noticeModalAddToFavoriteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  column-gap: 8px;
+  width: 256px;
+  height: 40px;
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.64px;
+  color: #fef9f9;
+  background-color: #54adff;
+  border-radius: 40px;
+  border: none;
+  cursor: url('../../../images/pawCursor.svg'), auto;
+  transition: background-image 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  @media screen and (min-width: 768px) {
+    width: 129px;
+  }
+}
+
+.noticeModalAddToFavoriteButtonIcon {
+  width: 24px;
+  height: 24px;
+  fill: transparent;
+  stroke: #fef9f9;
+}
+
+.noticeModalAddToFavoriteButton:hover,
+.noticeModalAddToFavoriteButton:focus,
+.noticeModalRemoveFromFavoriteButton:hover,
+.noticeModalRemoveFromFavoriteButton:focus {
+  background-image: linear-gradient(315deg, #419ef1 0%, #9bd0ff 100%);
+}
+
+.noticeModalAddToFavoriteButton:hover .noticeModalAddToFavoriteButtonIcon,
+.noticeModalAddToFavoriteButton:focus .noticeModalAddToFavoriteButtonIcon {
+  fill: #fef9f9;
+}
+
+.noticeModalRemoveFromFavoriteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  column-gap: 8px;
+  width: 256px;
+  height: 40px;
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.64px;
+  color: #fef9f9;
+  background-color: #54adff;
+  border-radius: 40px;
+  border: none;
+  cursor: url('../../../images/pawCursor.svg'), auto;
+  transition: background-image 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  @media screen and (min-width: 768px) {
+    width: 160px;
+  }
+}
+
+.noticeModalRemoveFromFavoriteButtonIcon {
+  fill: currentcolor;
+}
+
+.contactButtonLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  width: 256px;
+  height: 40px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.64px;
+  color: #54adff;
+  font-family: Manrope;
+  text-decoration: none;
+  background-color: transparent;
+  border-radius: 40px;
+  border: 2px solid #54adff;
+  cursor: url('../../../images/pawCursor.svg'), auto;
+  transition: background-image 250ms cubic-bezier(0.075, 0.82, 0.165, 1),
+    color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  @media screen and (min-width: 768px) {
+    width: 129px;
+  }
+}
+
+.contactButtonLink:hover,
+.contactButtonLink:focus {
+  background-image: linear-gradient(315deg, #419ef1 0%, #9bd0ff 100%);
+  color: #fef9f9;
+}
