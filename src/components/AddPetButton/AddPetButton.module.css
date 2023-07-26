@@ -1,0 +1,72 @@
+/* Button */
+.button {
+  position: relative;
+  width: 129px;
+  height: fit-content;
+
+  padding: 9px 16px;
+
+  border: none;
+  border-radius: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  z-index: 1;
+  text-decoration: none;
+  background-color: var(--blue-color);
+  color: var(--primary-white-color);
+  box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
+  transition: box-shadow 250ms linear;
+}
+
+.button:hover,
+.button:active {
+  box-shadow: 7px 13px 14px 0px rgba(116, 177, 232, 0.24);
+}
+
+.button::before {
+  content: '';
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+
+  background-image: linear-gradient(to right, #9bd0ff, #419ef1);
+  border-radius: inherit;
+  opacity: 0;
+
+  transition: opacity 250ms linear;
+}
+
+.button:hover::before,
+.button:focus::before {
+  opacity: 1;
+}
+/* Icons */
+.icon {
+  display: none;
+}
+.iconSmall {
+  display: block;
+}
+
+@media screen and (min-width: 768px) {
+  .iconSmall {
+    display: none;
+  }
+  .icon {
+    display: block;
+  }
+}
+/* Span-label */
+
+.label {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fef9f9;
+}
