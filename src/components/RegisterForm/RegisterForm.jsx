@@ -1,66 +1,90 @@
 import React from 'react';
-import css from './RegisterForm.module.css';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operation';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { validationSchema } from './RegisterValidation';
+
+import css from './RegisterForm.module.css';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    dispatch(
-      register({
-        name: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
-    form.reset();
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(register(values));
+    resetForm();
   };
 
+  
   return (
     <div className={css.registration_container}>
-      <form
-        className={css.registration_form}
+      <Formik
+        initialValues={{
+          name: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+        }}
+        validationSchema={validationSchema}
         onSubmit={handleSubmit}
-        autoComplete="off"
       >
-        <h2 className={css.registration_title}>Registration</h2>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          className={css.input}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          className={css.input}
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          className={css.input}
-        />
-        <input
-          type="password"
-          placeholder="Confirm password"
-          className={css.input}
-        />
-        <button type="submit" className={css.button}>
-          Registration
-        </button>
-        <p className={css.refTitleToLogin}>
-          Already have an account?{' '}
-          <Link to="/login" className={css.refLogin}>
-            Login
-          </Link>
-        </p>
-      </form>
+        <Form className={css.registration_form} autoComplete="off">
+          <h2 className={css.registration_title}>Registration</h2>
+          <div className={css.inputContainer}>
+            <Field
+              type="text"
+              name="name"
+              placeholder="Name"
+              className={css.input}
+            />
+            <ErrorMessage name="name" component="div" className={css.error} />
+          </div>
+          <div className={css.inputContainer}>
+            <Field
+              type="email"
+              name="email"
+              placeholder="Email"
+              className={css.input}
+            />
+            <ErrorMessage name="email" component="div" className={css.error} />
+          </div>
+          <div className={css.inputContainer}>
+            <Field
+              type="password"
+              name="password"
+              placeholder="Password"
+              className={css.input}
+            />
+            <ErrorMessage
+              name="password"
+              component="div"
+              className={css.error}
+            />
+          </div>
+          <div className={css.inputContainer}>
+            <Field
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm password"
+              className={css.input}
+            />
+            <ErrorMessage
+              name="confirmPassword"
+              component="div"
+              className={css.error}
+            />
+          </div>
+          <button type="submit" className={css.button}>
+            Registration
+          </button>
+          <p className={css.refTitleToLogin}>
+            Already have an account?{' '}
+            <Link to="/login" className={css.refLogin}>
+              Login
+            </Link>
+          </p>
+        </Form>
+      </Formik>
     </div>
   );
 };

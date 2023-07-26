@@ -69,3 +69,16 @@ p {
     margin: 0;
     padding: 0;
 }
+
+.inputContainer {
+  position: relative;
+}
+
+.error {
+  color: var(--red-color);
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  bottom: 16px; 
+  left: 16px; 
+}
