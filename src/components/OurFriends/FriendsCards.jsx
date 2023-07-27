@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { getDay, isWithinInterval } from 'date-fns';
 
+import AttentionModal from '../shared/AttentionModal';
+
 import css from './FriendsCards.module.css';
 
 export default function FriendsCards({ sponsors }) {
@@ -11,6 +13,7 @@ export default function FriendsCards({ sponsors }) {
 
   // Get today's working hours
   let todayWorkingHours = null;
+  console.log(sponsors);
   if (sponsors.workDays) {
     todayWorkingHours = sponsors.workDays[currentDay];
   }
@@ -53,98 +56,123 @@ export default function FriendsCards({ sponsors }) {
     setVisibleCardIndex(index === visibleCardIndex ? null : index);
   };
 
-  return (
-    <ul className={css.list}>
-      {sponsors.map(
-        (
-          { title, url, addressUrl, imageUrl, address, workDays, phone, email },
-          index
-        ) => (
-          <li key={title} className={css.card}>
-            {/* <div key={id}> */}
+  //temp modal code
+  const [modalOpen, setModalOpen] = useState(false);
 
-            <a href={url} className={css.title}>
-              {title}
-            </a>
-            <div className={css.columnContainer}>
-              <div className={css.imgContainer}>
-                <img
-                  src={
-                    imageUrl ||
-                    'https://static.vecteezy.com/system/resources/previews/000/618/739/original/cute-little-kitten-vector.jpg'
-                  }
-                  alt="Logo"
-                  className={css.img}
-                />
-              </div>
-              <ul className={css.info}>
-                <li
-                  className={`${css.infoItem} ${css.time}`}
-                  onClick={() => handleToggleWorkingHours(index)}
-                >
-                  <p className={css.label}>Time:</p>
-                  {workDays ? (
-                    <>
-                      {isOpenNow ? (
-                        <p className={css.text}>Is currently open</p>
-                      ) : (
-                        <p className={css.text}>Closed</p>
-                      )}
-                    </>
-                  ) : (
-                    <p className={css.text}>No information</p>
-                  )}
-                  {workDays && index === visibleCardIndex && (
-                    <div className={css.workingHoursBlock}>
-                      <table className={css.workingHoursTable}>
-                        <tbody>
-                          {workDays.map((day, dayIndex) => (
-                            <tr key={dayIndex}>
-                              <td className={css.tableColumn}>
-                                {getDayName(dayIndex)}
-                              </td>
-                              <td>
-                                {formatTime(day.from)} - {formatTime(day.to)}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-                  )}
-                </li>
-                <li className={css.infoItem}>
-                  <p className={css.label}>Adress:</p>
-                  <a
-                    href={addressUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={css.text}
+  const openModal = () => {
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  return (
+    <>
+      <button onClick={openModal}>Open Modal</button>
+      {modalOpen && <AttentionModal onClose={closeModal} />}
+
+      <ul className={css.list}>
+        {sponsors.map(
+          (
+            {
+              title,
+              url,
+              addressUrl,
+              imageUrl,
+              address,
+              workDays,
+              phone,
+              email,
+            },
+            index
+          ) => (
+            <li key={title} className={css.card}>
+              {/* <div key={id}> */}
+
+              <a href={url} className={css.title} target="blanc">
+                {title}
+              </a>
+              <div className={css.columnContainer}>
+                <div className={css.imgContainer}>
+                  <img
+                    src={
+                      imageUrl ||
+                      'https://static.vecteezy.com/system/resources/previews/000/618/739/original/cute-little-kitten-vector.jpg'
+                    }
+                    alt="Logo"
+                    className={css.img}
+                  />
+                </div>
+                <ul className={css.info}>
+                  {/* <li
+                    className={`${css.infoItem} ${css.time}`}
+                    onClick={() => handleToggleWorkingHours(index)}
                   >
-                    {address || 'website only'}
-                  </a>
-                </li>
-                {email && (
+                    <p className={css.label}>Time:</p>
+                    {workDays ? (
+                      <>
+                        {isOpenNow ? (
+                          <p className={css.text}>Is currently open</p>
+                        ) : (
+                          <p className={css.text}>Closed</p>
+                        )}
+                      </>
+                    ) : (
+                      <p className={css.text}>No information</p>
+                    )}
+                    {workDays && index === visibleCardIndex && (
+                      <div className={css.workingHoursBlock}>
+                        <table className={css.workingHoursTable}>
+                          <tbody>
+                            {workDays.map((day, dayIndex) => (
+                              <tr key={dayIndex}>
+                                <td className={css.tableColumn}>
+                                  {getDayName(dayIndex)}
+                                </td>
+                                <td>
+                                  {formatTime(day.from)} - {formatTime(day.to)}
+                                </td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </li> */}
                   <li className={css.infoItem}>
-                    <p className={css.label}>Email:</p>
-                    <a href="mailto:{email}" className={css.text}>
-                      {email}
+                    <p className={css.label}>Adress:</p>
+                    <a
+                      href={addressUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={css.text}
+                    >
+                      {address || 'website only'}
                     </a>
                   </li>
-                )}
-                {phone && (
-                  <li className={css.infoItem}>
-                    <p className={css.label}>Phone:</p>
-                    <a href="tel:{phone}" className={css.text}>
-                      {phone}
-                    </a>
-                  </li>
-                )}
-              </ul>
-            </div>
-          </li>
-        )
-      )}
-    </ul>
+                  {email && (
+                    <li className={css.infoItem}>
+                      <p className={css.label}>Email:</p>
+                      <a href="mailto:{email}" className={css.text}>
+                        {email}
+                      </a>
+                    </li>
+                  )}
+                  {phone && (
+                    <li className={css.infoItem}>
+                      <p className={css.label}>Phone:</p>
+                      <a href="tel:{phone}" className={css.text}>
+                        {phone}
+                      </a>
+                    </li>
+                  )}
+                </ul>
+              </div>
+            </li>
+          )
+        )}
+      </ul>
+    </>
   );
 }
