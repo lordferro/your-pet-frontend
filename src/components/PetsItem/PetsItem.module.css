@@ -1,0 +1,101 @@
+.cardContainer {
+  width: 280px;
+  background: #ffffff;
+  box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
+  border-radius: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 16px;
+  padding-bottom: 40px;
+}
+.cardContainer:not(:last-child) {
+  margin-bottom: 36px;
+}
+.cardImage {
+  border-radius: inherit;
+  object-fit: cover;
+  width: 240px;
+  height: 240px;
+  margin-bottom: 20px;
+}
+.cardText {
+  font-size: 14px;
+  font-weight: 400;
+}
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.trashIcon {
+  stroke: var(--blue-color);
+}
+.cardText:not(:last-child) {
+  margin-bottom: 12px;
+}
+.cardText b {
+  margin-right: 3px;
+}
+.trashBtn {
+  padding: 0;
+  line-height: 0;
+  background-color: transparent;
+  border: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  scale: 1;
+
+  transition: scale 250ms linear;
+}
+
+.trashBtn:hover,
+.trashBtn:active {
+  scale: 1.1;
+}
+
+@media screen and (min-width: 768px) {
+  .cardContainer {
+    width: 703px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+  }
+  .cardImage {
+    width: 128px;
+    height: 128px;
+    margin-bottom: 0;
+  }
+  .cardText:not(:last-child) {
+    margin-bottom: 16px;
+  }
+  .cardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 161px;
+    width: inherit;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .cardContainer {
+    width: 821px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+  }
+  .cardImage {
+    width: 161px;
+    height: 161px;
+  }
+  .cardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 161px;
+    width: inherit;
+  }
+}
