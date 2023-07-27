@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import burger from '../../images/burger.svg';
+import burger from '../../images/menu-hamburger.svg';
 import Navigation from 'components/Navigation/Navigation';
+import css from "./BurgerMenu.module.css"
 
 const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,8 @@ const BurgerMenu = () => {
         src={burger}
         alt="BurgerMenuIcon"
         onClick={handleMenuClick}
-        style={{ width: '24px', height: '24px', cursor: 'pointer' }}
+        className={css.BurgerMenu}
+        width={24}
       />
       {isOpen && <Navigation />}
     </div>

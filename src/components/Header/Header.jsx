@@ -1,23 +1,19 @@
 import React from 'react';
-import css from './Header.module.css';
-import Logo from '../Logo/Logo';
-import Navigation from '../Navigation/Navigation';
-import { AuthNav } from '../AuthNav/AuthNav';
-import { useAuth } from '../../hooks/useAuth';
-import { UserNav } from 'components/UserNav/UserNav';
+import { useMediaQuery } from 'react-responsive';
+import MobileHeader from './MobileHeader/MobileHeader';
+import TabletHeader from './TabletHeader/TabletHeader';
+import DesktopHeader from './DesktopHeader/DesktopHeader';
 
 const Header = () => {
-  const { isLoggedIn } = useAuth();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1279 });
+  const isDesktop = useMediaQuery({ minWidth: 1280 });
 
   return (
-    <header className={css.header}>
-      <Logo className={css.logo} />
-      <div>
-        <Navigation className={css.navigation}/>
-      </div>
-      <div className={css.user_navigation}>
-        {isLoggedIn ? <UserNav /> : <AuthNav />}
-      </div>
+    <header>
+      {isMobile && <MobileHeader />}
+      {isTablet && <TabletHeader />}
+      {isDesktop && <DesktopHeader />}
     </header>
   );
 };

@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    width: 704px;
+    height: 44px;
+  }
+  
+  .user_navigation {
+    display: flex;
+    align-items: center;
+
+    }
+
+  /* .burger {
+margin-left: 22px;
+  } */
