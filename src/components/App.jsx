@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import axios from 'axios';
 import { Layout } from './Layout';
 import MainPage from 'pages/MainPage';
 import NewsPage from 'pages/NewsPage';
@@ -13,6 +14,7 @@ import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operation';
 import { useAuth } from 'hooks';
 
+
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
@@ -21,10 +23,11 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    'fetchin user data'
+    'fetching user data'
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
+        <Route index element={<MainPage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/notices" element={<NoticesPage />} />
