@@ -2,7 +2,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import MainPage from 'pages/MainPage';
 import NewsPage from 'pages/NewsPage';
-import NoticesPage from 'pages/NoticesPage';
+import NoticesPage from 'pages/NoticesPage/NoticesPage';
 import OurFriendsPage from 'pages/OurFriendsPage';
 import PageNotFound from 'pages/PageNotFound';
 import LoginForm from './LoginForm/LoginForm';
