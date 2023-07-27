@@ -8,6 +8,17 @@
     margin-left: 160px;
 }
 
+  @media (max-width: 1279px) {
+    .navigation {
+      display: flex;
+      flex-direction: column;
+      font-size: 20px;
+      font-weight: 500;
+      margin-left: 25px;
+padding-left: 25px;
+    }
+  }
+
 ul {
     list-style: none;
   }
@@ -28,3 +39,4 @@ ul {
   .activeLink {
     color: var(--yellow-color);
   }
+
