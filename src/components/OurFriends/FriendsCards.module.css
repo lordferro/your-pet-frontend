@@ -74,18 +74,27 @@
   margin: 0;
 }
 
+.labelNoInfo {
+  font-weight: 600;
+  margin: 0;
+}
+
+.time:hover,
+.time:focus {
+  color: var(--blue-color);
+}
+
 .text {
+  margin: 0;
+}
+
+.textNoInfo {
   margin: 0;
 }
 
 .text:hover,
 .text:focus {
   text-decoration: underline;
-}
-
-.time:hover,
-.time:focus {
-  color: var(--blue-color);
 }
 
 .workingHoursBlock {
