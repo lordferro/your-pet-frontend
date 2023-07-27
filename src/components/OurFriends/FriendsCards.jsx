@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { getDay, isWithinInterval } from 'date-fns';
 
-import AttentionModal from '../shared/AttentionModal';
-
 import css from './FriendsCards.module.css';
 
 export default function FriendsCards({ sponsors }) {
@@ -13,7 +11,6 @@ export default function FriendsCards({ sponsors }) {
 
   // Get today's working hours
   let todayWorkingHours = null;
-  console.log(sponsors);
   if (sponsors.workDays) {
     todayWorkingHours = sponsors.workDays[currentDay];
   }
@@ -56,26 +53,13 @@ export default function FriendsCards({ sponsors }) {
     setVisibleCardIndex(index === visibleCardIndex ? null : index);
   };
 
-  //temp modal code
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const openModal = () => {
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
   return (
     <>
-      <button onClick={openModal}>Open Modal</button>
-      {modalOpen && <AttentionModal onClose={closeModal} />}
-
       <ul className={css.list}>
         {sponsors.map(
           (
             {
+              _id,
               title,
               url,
               addressUrl,
@@ -87,9 +71,7 @@ export default function FriendsCards({ sponsors }) {
             },
             index
           ) => (
-            <li key={title} className={css.card}>
-              {/* <div key={id}> */}
-
+            <li key={_id} className={css.card}>
               <a href={url} className={css.title} target="blanc">
                 {title}
               </a>
@@ -105,21 +87,24 @@ export default function FriendsCards({ sponsors }) {
                   />
                 </div>
                 <ul className={css.info}>
-                  {/* <li
-                    className={`${css.infoItem} ${css.time}`}
+                  <li
+                    className={css.infoItem}
                     onClick={() => handleToggleWorkingHours(index)}
                   >
-                    <p className={css.label}>Time:</p>
                     {workDays ? (
-                      <>
+                      <div className={css.time}>
+                        <p className={css.label}>Time:</p>
                         {isOpenNow ? (
                           <p className={css.text}>Is currently open</p>
                         ) : (
                           <p className={css.text}>Closed</p>
                         )}
-                      </>
+                      </div>
                     ) : (
-                      <p className={css.text}>No information</p>
+                      <>
+                        <p className={css.labelNoInfo}>Time:</p>
+                        <p className={css.textNoInfo}>No information</p>
+                      </>
                     )}
                     {workDays && index === visibleCardIndex && (
                       <div className={css.workingHoursBlock}>
@@ -139,7 +124,7 @@ export default function FriendsCards({ sponsors }) {
                         </table>
                       </div>
                     )}
-                  </li> */}
+                  </li>
                   <li className={css.infoItem}>
                     <p className={css.label}>Adress:</p>
                     <a

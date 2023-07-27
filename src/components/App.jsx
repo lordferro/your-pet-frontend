@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-import axios from 'axios';
 import { Layout } from './Layout';
 import MainPage from 'pages/MainPage';
 import NewsPage from 'pages/NewsPage';
@@ -13,7 +12,6 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operation';
 import { useAuth } from 'hooks';
-
 
 export const App = () => {
   const dispatch = useDispatch();
