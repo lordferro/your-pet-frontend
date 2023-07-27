@@ -4,6 +4,13 @@
     display: flex;
 }
 
+@media  (max-width: 767px) {
+  .AuthNavContainer {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .link {
   text-decoration: none; 
 }

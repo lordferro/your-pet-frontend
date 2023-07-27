@@ -1,3 +1,5 @@
+@import '../../styles/colors.module.css';
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -5,10 +7,6 @@
   margin: 20px auto;
 }
 
-/* .logoNav {
-  display: flex;
-  align-items: center;
-} */
 
 .user_navigation {
 margin-left: 270px;

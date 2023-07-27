@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import burger from '../../images/menu-hamburger.svg';
 import Navigation from 'components/Navigation/Navigation';
 import css from './BurgerMenu.module.css';
 
-const BurgerMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const BurgerMenu = ({ setIsMenuOpen, isMenuOpen }) => {
   const handleMenuClick = () => {
-    setIsOpen(!isOpen);
+    setIsMenuOpen(!isMenuOpen);
+    document.body.classList.add('lock-scroll');
   };
 
   return (
@@ -19,7 +18,7 @@ const BurgerMenu = () => {
         className={css.BurgerMenu}
         width={24}
       />
-      {isOpen && (
+      {isMenuOpen && (
         <div className={css.MenuContainer}>
           <Navigation />
         </div>

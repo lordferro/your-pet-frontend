@@ -1,40 +1,39 @@
+@import "../../styles/colors.module.css";
+
 .BurgerMenuContainer {
-  position: relative; 
+  position: relative;
 }
 
 .BurgerMenu {
-    margin-left: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin-left: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 767px) {
+  .BurgerMenu {
+    margin-left: 8px; 
   }
-  
-  @media (max-width: 767px) {
-    .BurgerMenu {
-      margin-left: 8px; 
-    }
+}
+
+.MenuContainer {
+  position: fixed;
+  background-color: var(--background-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  z-index: 1; 
+  width: 100%;
+  height: 100%;
+  top: 84px;
+  left: -150px;
+  animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    left: 100%;
   }
-  
-  .MenuContainer {
-    position: absolute;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    z-index: 1; 
-    width: 200px;
-    height: 300px;
-    left: -150px; /* Сдвигаем влево за пределы экрана */
-    top: 30px;
-    animation: slideIn 0.5s forwards; /* Применяем анимацию */
+  100% {
+    left: 0;
   }
-  
-  @keyframes slideIn {
-    0% {
-      left: 500px; /* Начальное положение за пределами экрана */
-    }
-    100% {
-      left: -180; /* Конечное положение, когда меню выезжает на экран */
-    }
-  }
-  
-/* .BurgerMenuContainer:hover .MenuContainer {
-  display: block; 
-} */
+}
