@@ -9,20 +9,21 @@ import BackgroundColor from '../components/shared/BackgroundColor';
 
 export default function OurFriendsPage() {
   const [friends, setFriends] = useState();
-  console.log(fetchFriends);
+  // console.log(fetchFriends);
 
   // const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     // setIsLoading(true);
-    fetchFriends()
-      .then(response => {
-        console.log(response);
-        setFriends(response);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    const res = fetchFriends()
+    console.log(res)
+      // .then(response => {
+      //   // console.log(response);
+      //   setFriends(response);
+      // })
+      // .catch(error => {
+      //   console.log(error);
+      // });
     // .finally(setIsLoading(false));
   }, []);
 
@@ -34,7 +35,7 @@ export default function OurFriendsPage() {
     <BackgroundColor>
       <div className={css.container}>
         <h1 className={css.title}>Our Friends</h1>
-        <FriendsCards sponsors={friends} />
+        {/* <FriendsCards sponsors={friends} /> */}
       </div>
     </BackgroundColor>
   );

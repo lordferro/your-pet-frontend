@@ -14,7 +14,6 @@ import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operation';
 import { useAuth } from 'hooks';
 
-axios.defaults.baseURL = 'https://your-pets-backend.onrender.com/api/';
 
 export const App = () => {
   const dispatch = useDispatch();
