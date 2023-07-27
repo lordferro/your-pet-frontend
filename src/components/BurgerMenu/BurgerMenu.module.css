@@ -1,0 +1,13 @@
+.BurgerMenu {
+    margin-left: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  @media (max-width: 767px) {
+    .BurgerMenu {
+      margin-left: 8px; 
+    }
+  }
+  

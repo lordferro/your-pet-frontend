@@ -29,14 +29,10 @@ export const logIn = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post('auth/login', credentials);
+      console.log('Response data:', res.data);
       setAuthHeader(res.data.token);
       return res.data;
     } catch (error) {
-      if (error.response && error.response.status === 400) {
-        console.log('Invalid email or password');
-      } else {
-        console.log('An error occurred');
-      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -67,8 +63,6 @@ export const refreshUser = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  }
-);
 
 export const getCurrentUser = createAsyncThunk(
   'user/current',
@@ -84,5 +78,6 @@ export const getCurrentUser = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message);
     }
+
   }
 );

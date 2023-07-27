@@ -25,40 +25,42 @@ const LoginForm = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form className={css.login_form} autoComplete="off">
-          <h2 className={css.login_title}>Login</h2>
-          <div className={css.inputContainer}>
-            <Field
-              type="email"
-              name="email"
-              placeholder="Email"
-              className={css.input}
-            />
-            <ErrorMessage name="email" component="div" className={css.error} />
-          </div>
-          <div className={css.inputContainer}>
-            <Field
-              type="password"
-              name="password"
-              placeholder="Password"
-              className={css.input}
-            />
-            <ErrorMessage
-              name="password"
-              component="div"
-              className={css.error}
-            />
-          </div>
-          <button type="submit" className={css.button}>
-            Login
-          </button>
-          <p className={css.refTitleToReg}>
-            Don't have an account?{' '}
-            <Link to="/register" className={css.refLogin}>
-              Register
-            </Link>
-          </p>
-        </Form>
+        {({ errors, touched }) => (
+          <Form className={css.login_form} autoComplete="off">
+            <h2 className={css.login_title}>Login</h2>
+            <div className={css.inputContainer}>
+              <Field
+                type="email"
+                name="email"
+                placeholder="Email"
+                className={`${css.input} ${touched.email && errors.email && css.errorInput}`}
+              />
+              <ErrorMessage name="email" component="div" className={css.error} />
+            </div>
+            <div className={css.inputContainer}>
+              <Field
+                type="password"
+                name="password"
+                placeholder="Password"
+                className={`${css.input} ${touched.password && errors.password && css.errorInput}`}
+              />
+              <ErrorMessage
+                name="password"
+                component="div"
+                className={css.error}
+              />
+            </div>
+            <button type="submit" className={css.button}>
+              Login
+            </button>
+            <p className={css.refTitleToReg}>
+              Don't have an account?{' '}
+              <Link to="/register" className={css.refLogin}>
+                Register
+              </Link>
+            </p>
+          </Form>
+        )}
       </Formik>
     </div>
   );
