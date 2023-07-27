@@ -1,21 +1,27 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { HeartIcon } from '../../../icons/HeartIcon';
 import { MdClear } from 'react-icons/md';
+import { useAuth } from '../../../hooks';
+import ModalWindow from '../../shared/ModalWindow';
 import cat from '../../../images/cuteCat.jpg';
 import css from './ModalNotice.module.css';
 
-export const ModalNotice = ({ onClick }) => {
-  const favorite = false;
+export const ModalNotice = ({ onModalCloseClick }) => {
+  const [modalAcessWindow, setmodalAcessWindow] = useState(false);
+  const [favorite, setFavorite] = useState(false);
+
+  const { isLoggedIn } = useAuth();
+
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
-      onClick();
+      onModalCloseClick();
     }
   };
 
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.keyCode === 27) {
-        onClick();
+        onModalCloseClick();
       }
     };
 
@@ -24,7 +30,23 @@ export const ModalNotice = ({ onClick }) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [onClick]);
+  }, [onModalCloseClick]);
+
+  // Функція для видалення або додавання картинки до улюбленої
+  const handleFavoritePet = () => {
+    if (!isLoggedIn) {
+      setmodalAcessWindow(true);
+      return;
+    }
+
+    if (!favorite) {
+      // dispatch(fetchAddToFavorite(id));
+      setFavorite(true);
+    } else {
+      // dispatch(fetchDeleteFromFavorite(id));
+      setFavorite(false);
+    }
+  };
 
   return (
     <div className={css.modalNoticeOverlay} onClick={handleBackdropClick}>
@@ -32,7 +54,7 @@ export const ModalNotice = ({ onClick }) => {
         <button
           type="button"
           className={css.modalNoticeWindowButtonClose}
-          onClick={onClick}
+          onClick={onModalCloseClick}
         >
           <MdClear className={css.modalNoticeWindowButtonCloseIcon} />
         </button>
@@ -99,17 +121,19 @@ export const ModalNotice = ({ onClick }) => {
           {favorite ? (
             <button
               className={css.noticeModalAddToFavoriteButton}
-              // onClick={handleFavoritePet}
+              onClick={handleFavoritePet}
             >
               Add to
               <HeartIcon className={css.noticeModalAddToFavoriteButtonIcon} />
             </button>
           ) : (
-            <button className={css.noticeModalRemoveFromFavoriteButton}>
+            <button
+              className={css.noticeModalRemoveFromFavoriteButton}
+              onClick={handleFavoritePet}
+            >
               Remove from
               <HeartIcon
                 className={css.noticeModalRemoveFromFavoriteButtonIcon}
-                // onClick={handleFavoritePet}
               />
             </button>
           )}
@@ -118,6 +142,9 @@ export const ModalNotice = ({ onClick }) => {
           </a>
         </div>
       </div>
+      {modalAcessWindow && (
+        <ModalWindow onClose={() => setmodalAcessWindow(false)} />
+      )}
     </div>
   );
 };

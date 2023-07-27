@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { logIn, logOut, refreshUser, register } from './operation';
+import {
+  logIn,
+  logOut,
+  refreshUser,
+  register,
+  getCurrentUser,
+} from './operation';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const authSlice = createSlice({
@@ -21,7 +27,7 @@ const authSlice = createSlice({
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.error = payload;
-        Notify.failure(payload)
+        Notify.failure(payload);
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
@@ -43,6 +49,12 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
+      })
+      .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
+        state.user = payload;
+      })
+      .addCase(getCurrentUser.rejected, (state, { payload }) => {
+        state.error = payload;
       }),
 });
 

@@ -9,7 +9,7 @@
   align-items: center;
   background: rgba(97, 97, 97, 0.6);
   backdrop-filter: blur(4px);
-  z-index: 1200;
+  z-index: 998;
 }
 
 .modalNoticeWindow {
