@@ -63,6 +63,9 @@ export const refreshUser = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
+  }
+  );
+  
 
 export const getCurrentUser = createAsyncThunk(
   'user/current',
