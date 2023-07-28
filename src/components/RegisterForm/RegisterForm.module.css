@@ -40,6 +40,11 @@
   font-weight: 400;
 }
 
+.input.errorInput {
+  border-color: var(--red-color); 
+}
+
+
 .button {
     width: 456px; 
     height: 46px;
@@ -89,4 +94,31 @@ p {
   position: absolute;
   bottom: 16px; 
   left: 16px; 
+}
+
+@media (max-width: 767px) {
+  .registration_form {
+    width: 280px;
+    height: 479px;
+    border-radius: 20px;
+  }
+  .input {
+    width: 240px;
+    margin-bottom: 14px;
+  }
+  .button {
+    width: 256px;
+    height: 48px;
+    margin-bottom: 8px
+  }
+  .error {
+    bottom: 0px;
+  }
+  .registration_title {
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  .refTitleToLogin {
+    margin-bottom: 40px;
+  }
 }

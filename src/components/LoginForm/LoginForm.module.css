@@ -10,13 +10,14 @@
 .login_title {
   margin-top: 60px;
   margin-bottom: 40px;
+  font-family: Manrope;
   font-size: 36px;
   font-weight: 500;
 }
 
 .login_form {
   width: 608px;
-  height: 417px;
+  height: 481px;
   border-radius: 40px;
   display: flex;
   flex-direction: column;
@@ -65,7 +66,7 @@
   font-size: 12px;
   font-weight: 200;
   color: #888888;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .refLogin {
@@ -93,4 +94,32 @@ p {
   position: absolute;
   bottom: 16px;
   left: 16px;
+}
+
+@media (max-width: 767px) {
+  .login_form {
+    width: 280px;
+    height: 425px;
+    border-radius: 20px;
+  }
+  .input {
+    width: 240px;
+    margin-bottom: 14px;
+  }
+  .button {
+    margin-top: 86px;
+    margin-bottom: 8px;
+    width: 256px;
+    height: 48px;
+  }
+  .error {
+    bottom: 0px;
+  }
+  .login_title  {
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  .refTitleToReg {
+    margin-bottom: 40px;
+  }
 }
