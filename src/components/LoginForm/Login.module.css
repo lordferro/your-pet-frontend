@@ -33,6 +33,7 @@
   border-radius: 40px;
   margin-bottom: 32px;
   padding-left: 16px;
+  font-family: Manrope;
   font-size: 16px;
   font-weight: 400;
   outline: none;
@@ -54,11 +55,13 @@
   cursor: pointer;
   margin-top: 8px;
   margin-bottom: 16px;
+  font-family: Manrope;
   font-size: 20px;
   font-weight: 500;
 }
 
 .refTitleToReg {
+  font-family: Manrope;
   font-size: 12px;
   font-weight: 200;
   color: #888888;
@@ -66,6 +69,7 @@
 }
 
 .refLogin {
+  font-family: Manrope;
   font-size: 12px;
   font-weight: 200;
   margin-bottom: 40px;
@@ -83,6 +87,7 @@ p {
 
 .error {
   color: var(--red-color);
+  font-family: Manrope;
   font-size: 12px;
   font-weight: 400;
   position: absolute;
