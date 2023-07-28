@@ -7,7 +7,9 @@ import OurFriendsPage from 'pages/OurFriendsPage';
 import PageNotFound from 'pages/PageNotFound';
 import LoginForm from './LoginForm/LoginForm';
 import RegistrationForm from './RegisterForm/RegisterForm';
+import UserPage from 'pages/UserPage';
 import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PriveteRoute';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operation';
@@ -26,7 +28,6 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<MainPage />} />
-        <Route path="/main" element={<MainPage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/notices" element={<NoticesPage />} />
         <Route path="/friends" element={<OurFriendsPage />} />
@@ -39,6 +40,10 @@ export const App = () => {
           element={
             <RestrictedRoute redirectTo="/user" component={RegistrationForm} />
           }
+        />
+        <Route
+          path="/user"
+          element={<PrivateRoute component={UserPage} redirectTo="/login" />}
         />
         <Route path="*" element={<PageNotFound />} />
       </Route>
