@@ -8,10 +8,13 @@ import LogoutButton from 'components/UserNav/LogoutButton/LogoutButton';
 
 const BurgerMenuTablet = ({ setIsMenuOpen, isMenuOpen, isMobile }) => {
   const { isLoggedIn } = useAuth();
+
   const handleMenuClick = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+
+  
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('lock-scroll');
