@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import burger from '../../images/menu-hamburger.svg';
 import Navigation from 'components/Navigation/Navigation';
-import css from "./BurgerMenu.module.css"
+import css from './BurgerMenu.module.css';
+import { AuthNav } from 'components/AuthNav/AuthNav';
+import Profile from 'components/UserNav/Profile/Profile';
+import { useAuth } from 'hooks';
+import LogoutButton from 'components/UserNav/LogoutButton/LogoutButton';
+import { useMediaQuery } from 'react-responsive';
 
-const BurgerMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const BurgerMenu = ({ setIsMenuOpen, isMenuOpen }) => {
+  const { isLoggedIn } = useAuth();
+  const isMobileScreen = useMediaQuery({ maxWidth: 767 });
 
   const handleMenuClick = () => {
-    setIsOpen(!isOpen);
+    setIsMenuOpen(!isMenuOpen);
+    document.body.classList.add('lock-scroll');
   };
+
   return (
-    <div>
+    <div className={css.BurgerMenuContainer}>
       <img
         src={burger}
         alt="BurgerMenuIcon"
@@ -18,7 +26,13 @@ const BurgerMenu = () => {
         className={css.BurgerMenu}
         width={24}
       />
-      {isOpen && <Navigation />}
+      {isMenuOpen && (
+        <div className={css.MenuContainer}>
+          {isLoggedIn ? <Profile showName={true} /> : isMobileScreen ? <AuthNav /> : null}
+          <Navigation />
+          {isLoggedIn ? <LogoutButton /> : null}
+        </div>
+      )}
     </div>
   );
 };

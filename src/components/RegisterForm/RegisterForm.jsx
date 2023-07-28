@@ -11,11 +11,13 @@ const RegistrationForm = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(register(values));
+    // Удаляем поле confirmPassword из объекта values
+    const { confirmPassword, ...dataToSend } = values;
+    
+    dispatch(register(dataToSend));
     resetForm();
   };
 
-  
   return (
     <div className={css.registration_container}>
       <Formik
