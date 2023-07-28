@@ -2,3 +2,6 @@
 body.lock-scroll {
     overflow: hidden;
   }
+  body {
+    background-color: #fdf7f2; 
+  }

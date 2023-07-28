@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
-import burger from '../../images/menu-hamburger.svg';
+import burger from '../../../images/menu-hamburger.svg';
 import Navigation from 'components/Navigation/Navigation';
-import css from './BurgerMenu.module.css';
+import css from '../BurgerMenu.module.css';
 import { AuthNav } from 'components/AuthNav/AuthNav';
 import Profile from 'components/UserNav/Profile/Profile';
 import { useAuth } from 'hooks';
 import LogoutButton from 'components/UserNav/LogoutButton/LogoutButton';
 import { useMediaQuery } from 'react-responsive';
 
-const BurgerMenu = ({ setIsMenuOpen, isMenuOpen }) => {
+const BurgerMenuMobile = ({ setIsMenuOpen, isMenuOpen }) => {
   const { isLoggedIn } = useAuth();
   const isMobileScreen = useMediaQuery({ maxWidth: 767 });
 
@@ -39,7 +39,11 @@ const BurgerMenu = ({ setIsMenuOpen, isMenuOpen }) => {
       />
       {isMenuOpen && (
         <div className={css.MenuContainer}>
-          {isLoggedIn ? <Profile showName={true} /> : isMobileScreen ? <AuthNav /> : null}
+          {isLoggedIn ? (
+            <Profile showName={true} />
+          ) : isMobileScreen ? (
+            <AuthNav />
+          ) : null}
           <Navigation />
           {isLoggedIn ? <LogoutButton /> : null}
         </div>
@@ -48,4 +52,4 @@ const BurgerMenu = ({ setIsMenuOpen, isMenuOpen }) => {
   );
 };
 
-export default BurgerMenu;
+export default BurgerMenuMobile;
