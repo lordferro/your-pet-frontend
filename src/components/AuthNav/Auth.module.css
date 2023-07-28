@@ -59,3 +59,14 @@
 .imageLogin {
     margin-left: 8px;
 }
+
+
+@media (max-width: 767px) {
+  .buttonLogin {
+    margin: 0px;
+    margin-bottom: 12px;
+  }
+  .buttonReg {
+    width: 165px;
+  }
+}
