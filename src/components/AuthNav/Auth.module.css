@@ -25,6 +25,7 @@
     background-color: var(--yellow-color);
     border-radius: 40px;
     border-color: transparent;
+    font-family: Manrope;
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
@@ -45,6 +46,7 @@
     background-color: var(--background-color);
     border-radius: 40px;
     border: 1px solid var(--yellow-color);
+    font-family: Manrope;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;

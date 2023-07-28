@@ -2,6 +2,7 @@
 
 .navigation {
     display:flex;
+    font-family: Manrope;
     font-size: 20px;
     font-weight: 500;
     padding: 0;
@@ -45,6 +46,7 @@ margin-top: 92px;
       justify-content: center;
       margin-right: 0px;
       margin-bottom: 60px; 
+      font-family: Manrope;
       font-size: 48px;
       font-weight: 500;
     }
