@@ -52,3 +52,8 @@ margin-top: 92px;
       margin-right: 0;
     }
   }
+  @media (max-width: 767px) {
+    .navigation_link {
+      font-size: 32px;
+    }
+  }

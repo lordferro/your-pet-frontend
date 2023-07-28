@@ -3,9 +3,9 @@ import css from './TabletHeader.module.css';
 import Logo from '../../Logo/Logo';
 import { AuthNav } from '../../AuthNav/AuthNav';
 import { useAuth } from '../../../hooks/useAuth';
-import BurgerMenu from 'components/BurgerMenu/BurgerMenu';
 import Profile from '../../UserNav/Profile/Profile';
 import LogoutButton from '../../UserNav/LogoutButton/LogoutButton';
+import BurgerMenuTablet from 'components/BurgerMenu/BurgerMenuTablet/BurgerMenuTabler';
 
 const TabletHeader = () => {
   const { isLoggedIn } = useAuth();
@@ -24,7 +24,7 @@ const TabletHeader = () => {
         ) : (
           <AuthNav />
         )}
-        <BurgerMenu
+        <BurgerMenuTablet
           className={css.burger}
           setIsMenuOpen={setIsMenuOpen}
           isMenuOpen={isMenuOpen}

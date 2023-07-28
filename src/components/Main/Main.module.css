@@ -55,7 +55,7 @@
 
   @media screen and (min-width: 768px) {
     width: 768px;
-    height: 818px;
+    /* height: 818px; */
   }
 
   @media screen and (min-width: 1280px) {

@@ -9,7 +9,7 @@ const Profile = ({ showName }) => {
     <div>
       <button type="button" className={css.buttonProf}>
         <img src={user1} alt="user" width={28} className={css.imageProf} />
-        {showName && user?.name} 
+        <p className={css.profile_name}>{showName && user?.name}</p>
       </button>
     </div>
   );
