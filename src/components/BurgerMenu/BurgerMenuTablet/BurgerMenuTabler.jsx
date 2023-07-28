@@ -8,8 +8,13 @@ import LogoutButton from 'components/UserNav/LogoutButton/LogoutButton';
 
 const BurgerMenuTablet = ({ setIsMenuOpen, isMenuOpen, isMobile }) => {
   const { isLoggedIn } = useAuth();
+
   const handleMenuClick = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleMenuItemClick = () => {
+    setIsMenuOpen(false);
   };
 
   useEffect(() => {
@@ -24,7 +29,6 @@ const BurgerMenuTablet = ({ setIsMenuOpen, isMenuOpen, isMobile }) => {
     };
   }, [isMenuOpen]);
 
-
   return (
     <div className={css.BurgerMenuContainer}>
       <img
@@ -38,12 +42,12 @@ const BurgerMenuTablet = ({ setIsMenuOpen, isMenuOpen, isMobile }) => {
         <div className={css.MenuContainer}>
           {isMobile ? (
             <>
-              {isLoggedIn && <AuthNav />}
-              <Navigation />
-              {isLoggedIn && <LogoutButton />}
+              {isLoggedIn && <AuthNav onItemClick={handleMenuItemClick} />}
+              <Navigation onItemClick={handleMenuItemClick} />
+              {isLoggedIn && <LogoutButton onItemClick={handleMenuItemClick} />}
             </>
           ) : (
-            <Navigation />
+            <Navigation onItemClick={handleMenuItemClick} />
           )}
         </div>
       )}
