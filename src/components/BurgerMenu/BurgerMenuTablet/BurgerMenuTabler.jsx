@@ -13,8 +13,10 @@ const BurgerMenuTablet = ({ setIsMenuOpen, isMenuOpen, isMobile }) => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleMenuItemClick = () => {
+    setIsMenuOpen(false);
+  };
 
-  
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('lock-scroll');
@@ -26,7 +28,6 @@ const BurgerMenuTablet = ({ setIsMenuOpen, isMenuOpen, isMobile }) => {
       document.body.classList.remove('lock-scroll');
     };
   }, [isMenuOpen]);
-
 
   return (
     <div className={css.BurgerMenuContainer}>
@@ -41,12 +42,12 @@ const BurgerMenuTablet = ({ setIsMenuOpen, isMenuOpen, isMobile }) => {
         <div className={css.MenuContainer}>
           {isMobile ? (
             <>
-              {isLoggedIn && <AuthNav />}
-              <Navigation />
-              {isLoggedIn && <LogoutButton />}
+              {isLoggedIn && <AuthNav onItemClick={handleMenuItemClick} />}
+              <Navigation onItemClick={handleMenuItemClick} />
+              {isLoggedIn && <LogoutButton onItemClick={handleMenuItemClick} />}
             </>
           ) : (
-            <Navigation />
+            <Navigation onItemClick={handleMenuItemClick} />
           )}
         </div>
       )}

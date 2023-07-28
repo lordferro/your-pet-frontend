@@ -17,7 +17,7 @@ const BurgerMenuMobile = ({ setIsMenuOpen, isMenuOpen }) => {
   };
 
   const handleMenuItemClick = () => {
-    setIsMenuOpen(false); 
+    setIsMenuOpen(false);
   };
 
   useEffect(() => {
