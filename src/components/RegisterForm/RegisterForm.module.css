@@ -60,6 +60,9 @@
   font-size: 20px;
   font-weight: 600;
 }
+.button:hover {
+  transform: scale(1.03); 
+}
 
 .refTitleToLogin {
   font-family: Manrope;

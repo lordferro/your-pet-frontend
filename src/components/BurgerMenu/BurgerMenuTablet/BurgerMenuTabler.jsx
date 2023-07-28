@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import burger from '../../../images/menu-hamburger.svg';
+import cross from '../../../images/cross-small.svg'
 import Navigation from 'components/Navigation/Navigation';
 import css from '../BurgerMenu.module.css';
 import { AuthNav } from 'components/AuthNav/AuthNav';
@@ -32,7 +33,7 @@ const BurgerMenuTablet = ({ setIsMenuOpen, isMenuOpen, isMobile }) => {
   return (
     <div className={css.BurgerMenuContainer}>
       <img
-        src={burger}
+        src={!isMenuOpen ? burger : cross}
         alt="BurgerMenuIcon"
         onClick={handleMenuClick}
         className={css.BurgerMenu}
