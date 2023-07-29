@@ -49,6 +49,12 @@
   height: 24px;
 }
 
+.icon:hover,
+.icon:focus {
+  transform: scale(1.2);
+  color: var(--green-color);
+}
+
 .title {
   margin-top: 0;
   margin-bottom: 20px;
