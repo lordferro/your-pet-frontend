@@ -1,0 +1,85 @@
+/* .title {
+  margin: 0 0 24px 17px;
+  font-family: Manrope;
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.36;
+  color: var(--black-color);
+} */
+
+.userDataContainer {
+  position: relative;
+  padding: 24px 20px 57px 20px;
+  box-sizing: border-box;
+}
+
+.informationeditUserBtn {
+  position: absolute;
+  top: 38px;
+  right: 34px;
+  border: 0;
+  background: transparent;
+}
+
+.informationeditUserBtn:focus,
+.informationeditUserBtn:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+.iconEdit {
+  width: 24px;
+  height: 24px;
+}
+
+/* Quality screen 320px */
+@media (max-width: 480px) {
+  .userDataContainer {
+    position: relative;
+    margin: 18px auto 46px auto;
+  }
+
+  .title {
+    margin: 0 0 18px 20px;
+    font-family: Manrope;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.36;
+    color: var(--black-color);
+  }
+}
+
+@media (min-width: 480px) {
+  .userDataContainer {
+    max-width: 480px;
+  }
+}
+
+/* Quality screen 768px */
+@media (min-width: 768px) {
+  .userDataContainer {
+    margin: 24px auto 57px auto;
+    max-width: 744px;
+  }
+  .title {
+    margin: 0 0 24px 33px;
+  }
+
+  .informationeditUserBtn {
+    top: 38px;
+    right: 34px;
+  }
+}
+
+/* Quality screen 1248px */
+@media (min-width: 1248px) {
+  .userDataContainer {
+    margin: 24px 16px 57px 16px;
+    width: 435px;
+  }
+
+  .title {
+    margin: 0 0 24px 17px;
+    font-size: 28px;
+  }
+}
