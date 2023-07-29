@@ -6,34 +6,9 @@
     width: 1248px;
     height: 48px;
   }
-  
-  /* .logoNav {
-    display: flex;
-    align-items: center;
-  } */
+
   
   .user_navigation {
   margin-left: 270px;
   }
-  
-  /* @media (min-width: 1280px) {
-    .header {
-      width: 1248px;
-      height: 48px;
-    }
-  }
-  
-  @media (min-width: 704px) and (max-width: 1279px) {
-    .header {
-      width: 704px;
-      height: 44px;
-    }
-  }
-  
-  @media (min-width: 280px) and (max-width: 703px) {
-    .header {
-      width: 280px;
-      height: 28px;
-    }
-  } */
   
