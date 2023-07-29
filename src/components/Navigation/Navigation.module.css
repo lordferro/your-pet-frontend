@@ -23,6 +23,10 @@ ul {
     margin-right: 0;
   }
   
+  .navigation_link:hover {
+    transform: scale(1.03); 
+  }
+
   ul li a {
     text-decoration: none;
     color: var(--black-color);
