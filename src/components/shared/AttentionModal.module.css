@@ -1,6 +1,3 @@
-@import '../../styles/colors.module.css';
-@import '../../styles/breakpoints.module.css';
-
 .overlay {
   position: fixed;
   top: 0;
@@ -10,23 +7,46 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(97, 97, 97, 0.6);
-  z-index: 100;
+  background-color: var(---backDrop);
+  z-index: 999;
 }
 
 .modalWindow {
-  width: var(--mobile);
-  margin: 100px 20px auto;
+  position: relative;
+  width: 280px;
   border-radius: 16px;
-  background-color: #ffffff;
-  padding: 16px 20px 60px;
+  background-color: var(--primary-white-color);
+  padding: 113px 20px 60px 20px;
   box-shadow: 3px 8px 14px 0px #88c6fd30;
 }
 
-.icon {
-  margin-left: 244px;
-  font-size: 24px;
+.closeModalButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--blue-color);
+  background-color: transparent;
+  border-radius: 50%;
+  border: none;
+  cursor: url('../../images/pawCursor.svg') auto;
+  transition: color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.closeModalButton:hover,
+.closeModalButton:focus {
+  background-color: var(--blue-color);
+  color: var(--primary-white-color);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
 }
 
 .icon:hover,
@@ -36,23 +56,28 @@
 }
 
 .title {
+  margin-top: 0;
+  margin-bottom: 20px;
   font-family: Manrope;
   font-size: 24px;
   font-weight: 500;
-  line-height: 33px;
+  line-height: 1.38;
   letter-spacing: 0.04em;
   text-align: center;
-  margin: 24px 0 0;
+  color: var(--black-color);
 }
 
 .text {
   font-family: Manrope;
   font-size: 14px;
   font-weight: 500;
-  line-height: 18px;
+  line-height: 1.29;
   letter-spacing: 0.04em;
   text-align: center;
-  margin: 20px 0 40px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  padding: 0;
+  color: var(--black-color);
 }
 
 .authContainer {
@@ -74,27 +99,29 @@
 @media (min-width: 768px) {
   .modalWindow {
     width: 608px;
-    margin: 200px 80px auto;
-    padding: 24px;
+    padding: 60px 40px;
   }
 
-  .icon {
-    margin-left: 560px;
+  .closeModalButton {
+    top: 24px;
+    right: 24px;
   }
 
   .title {
+    margin-bottom: 40px;
     font-size: 36px;
-    line-height: 49px;
-    margin: 44px 0 0;
+    line-height: normal;
+    letter-spacing: 1.44px;
+    line-height: 1.36;
   }
 
   .text {
     font-family: Manrope;
     font-size: 14px;
     font-weight: 500;
-    line-height: 18px;
+    line-height: 1.29;
     letter-spacing: 0.04em;
     text-align: center;
-    margin: 40px 0;
+    margin-bottom: 40px;
   }
 }

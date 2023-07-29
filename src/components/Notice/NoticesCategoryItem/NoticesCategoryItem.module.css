@@ -47,8 +47,8 @@
   font-size: 14px;
   font-weight: 500;
   line-height: normal;
-  color: #111;
-  background-color: #cce4fb;
+  color: var(--black-color);
+  background-color: var(--blue-light-color);
   border-radius: 0px 16px 16px 0px;
 }
 
@@ -64,8 +64,8 @@
   margin: 0;
   padding: 0;
   border-radius: 50%;
-  color: #54adff;
-  background-color: #c5dff6;
+  color: var(--blue-color);
+  background-color: var(--blue-light-color);
   border: none;
   cursor: url('../../../images/pawCursor.svg'), auto;
 }
@@ -79,7 +79,7 @@
 
 .addToFavoriteButton:hover .addToFavoriteButtonIcon,
 .addToFavoriteButton:focus .addToFavoriteButtonIcon {
-  fill: #54adff;
+  fill: var(--blue-color);
 }
 
 .removeFromFavoriteButton {
@@ -94,13 +94,13 @@
   margin: 0;
   padding: 0;
   border-radius: 50%;
-  background-color: #cce4fb;
+  background-color: var(--blue-light-color);
   border: none;
   cursor: url('../../../images/pawCursor.svg'), auto;
 }
 
 .removeFromFavoriteButtonIcon {
-  fill: #54adff;
+  fill: var(--blue-color);
 }
 
 .deleteButton {
@@ -115,8 +115,8 @@
   margin: 0;
   padding: 0;
   border-radius: 50%;
-  color: #54adff;
-  background-color: #c5dff6;
+  color: var(--blue-color);
+  background-color: var(--blue-light-color);
   border: none;
   cursor: url('../../../images/pawCursor.svg'), auto;
   transition: color cubic-bezier(0.075, 0.82, 0.165, 1) 250ms,
@@ -130,8 +130,8 @@
 
 .deleteButton:hover,
 .deleteButton:focus {
-  color: #ffffff;
-  background-color: #54adff;
+  color: var(--primary-white-color);
+  background-color: var(--blue-color);
 }
 
 .shortPetInfoWrapper {
@@ -169,8 +169,8 @@
   align-items: center;
   gap: 4px;
   border-radius: 16px;
-  background-color: #cce4fb;
-  color: #111;
+  background-color: var(--blue-light-color);
+  color: var(--black-color);
   font-family: Manrope;
   font-size: 12px;
   font-weight: 600;
@@ -184,19 +184,19 @@
 .shortPetInfoIcon {
   width: 24px;
   height: 24px;
-  color: #54adff;
+  color: var(--blue-color);
   transition: color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .shortPetInfo:hover,
 .shortPetInfo:focus {
-  color: white;
-  background-color: #54adff;
+  color: var(--primary-white-color);
+  background-color: var(--blue-color);
 }
 
 .shortPetInfo:hover .shortPetInfoIcon,
 .shortPetInfo:focus .shortPetInfoIcon {
-  color: white;
+  color: var(--primary-white-color);
 }
 
 .petInfoWrapper {
@@ -211,7 +211,7 @@
   padding: 0;
   margin-top: 0;
   margin-bottom: 28px;
-  color: #111;
+  color: var(--black-color);
   font-family: Manrope;
   font-size: 24px;
   font-weight: 700;
@@ -237,10 +237,10 @@
   font-weight: 600;
   line-height: normal;
   letter-spacing: 0.64px;
-  color: #54adff;
+  color: var(--blue-color);
   background-color: transparent;
   border-radius: 40px;
-  border: 2px solid #54adff;
+  border: 2px solid var(--blue-color);
   cursor: url('../../../images/pawCursor.svg'), auto;
   transition: color linear 250ms, background-image linear 250ms;
 }
