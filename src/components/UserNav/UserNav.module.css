@@ -14,11 +14,20 @@
     background-color: var(--blue-color);
     border-radius: 40px;
     border-color: transparent;
+    font-family: Manrope;
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
     margin-right: 20px;
+    padding: 0;
 }
+
+@media (max-width: 1279px) {
+    .buttonLogout {
+      margin-left: 30px; 
+    }
+  }
+
 .buttonLogout:hover {
     transform: scale(1.03); 
   }
@@ -27,12 +36,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 140px;
     height: 40px;
+    padding: 0;
     color: var(--yellow-color);
     background-color: var(--white-color);
     border-radius: 40px;
     border-color: transparent;
+    font-family: Manrope;
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
@@ -45,15 +55,28 @@
     margin-left: 8px;
 }
 .imageProf{
-    margin-right: 12px;
+    padding: 8px 12px 8px 16px;
+}
+
+.profile_name {
+    padding: 11px 16px 11px 0px
+}
+
+.link {
+    text-decoration: none;
 }
 
 @media (max-width: 767px) {
     .buttonProf {
         width: auto;
         padding: 0;
+        font-weight: 500;
     }
     .imageProf{
-        margin-right: 0;
+        padding: 0px;
+        margin-right: 8px;
+    }
+    .profile_name {
+        padding: 0px;
     }
 }

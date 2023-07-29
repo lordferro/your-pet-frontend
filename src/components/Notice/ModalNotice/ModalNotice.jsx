@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { HeartIcon } from '../../../icons/HeartIcon';
 import { MdClear } from 'react-icons/md';
 import { useAuth } from '../../../hooks';
-import ModalWindow from '../../shared/ModalWindow';
+import ModalWindow from '../../shared/AttentionModal';
 import cat from '../../../images/cuteCat.jpg';
 import css from './ModalNotice.module.css';
 

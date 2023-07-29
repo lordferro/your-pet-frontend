@@ -2,14 +2,11 @@ import css from './Auth.module.css';
 import pawprint1 from '../../images/pawprint1.svg';
 import { Link } from 'react-router-dom';
 
-export const AuthNav = () => {
-  const handleLoginClick = () => {
-    console.log('Log IN button clicked!');
-  };
+export const AuthNav = ({ onItemClick }) => {
   return (
     <div>
       <div className={css.AuthNavContainer}>
-        <Link to="/login" onClick={handleLoginClick} className={css.link}>
+        <Link to="/login" onClick={onItemClick}  className={css.link}>
           <button className={css.buttonLogin}>
             Log IN
             <img
@@ -21,7 +18,7 @@ export const AuthNav = () => {
             />
           </button>
         </Link>
-        <Link to="/register" className={css.link}>
+        <Link to="/register" onClick={onItemClick} className={css.link}>
           <button className={css.buttonReg}>Registration</button>
         </Link>
       </div>

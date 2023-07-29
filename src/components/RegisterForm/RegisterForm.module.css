@@ -11,6 +11,7 @@
 .registration_title {
     margin-top: 60px;
     margin-bottom: 40px;
+    font-family: Manrope;
     font-size: 36px;
     font-weight: 500;
 }
@@ -23,6 +24,8 @@
   flex-direction: column; 
   justify-content: center; 
   align-items: center; 
+  background-color: var(--primary-white-color);
+  box-shadow: var(--input-shadow);
 }
 
 .input {
@@ -32,9 +35,15 @@
   border-radius: 40px;
   margin-bottom: 32px; 
   padding-left: 16px;
+  font-family: Manrope;
   font-size: 16px;
   font-weight: 400;
 }
+
+.input.errorInput {
+  border-color: var(--red-color); 
+}
+
 
 .button {
     width: 456px; 
@@ -47,11 +56,16 @@
   cursor: pointer;
   margin-top: 8px;
   margin-bottom: 16px;
+  font-family: Manrope;
   font-size: 20px;
   font-weight: 600;
 }
+.button:hover {
+  transform: scale(1.03); 
+}
 
 .refTitleToLogin {
+  font-family: Manrope;
     font-size: 12px;
 font-weight: 200;
     color: #888888;
@@ -59,6 +73,7 @@ font-weight: 200;
 }
 
 .refLogin {
+  font-family: Manrope;
 font-size: 12px;
 font-weight: 200;
 
@@ -76,9 +91,37 @@ p {
 
 .error {
   color: var(--red-color);
+  font-family: Manrope;
   font-size: 12px;
   font-weight: 400;
   position: absolute;
   bottom: 16px; 
   left: 16px; 
+}
+
+@media (max-width: 767px) {
+  .registration_form {
+    width: 280px;
+    height: 479px;
+    border-radius: 20px;
+  }
+  .input {
+    width: 240px;
+    margin-bottom: 14px;
+  }
+  .button {
+    width: 256px;
+    height: 48px;
+    margin-bottom: 8px
+  }
+  .error {
+    bottom: 0px;
+  }
+  .registration_title {
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  .refTitleToLogin {
+    margin-bottom: 40px;
+  }
 }

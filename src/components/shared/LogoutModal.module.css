@@ -1,0 +1,146 @@
+@import '../../styles/colors.module.css';
+@import '../../styles/breakpoints.module.css';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(97, 97, 97, 0.6);
+  z-index: 100;
+}
+
+.modalWindow {
+  width: var(--mobile);
+  margin: 100px 20px auto;
+  border-radius: 16px;
+  background-color: #ffffff;
+  padding: 12px 12px 60px;
+  box-shadow: 3px 8px 14px 0px #88c6fd30;
+}
+
+.icon {
+  margin-left: 244px;
+  font-size: 24px;
+  color: var(--blue-color);
+}
+
+.icon:hover,
+.icon:focus {
+  transform: scale(1.2);
+  color: var(--green-color);
+}
+
+.title {
+  font-family: Manrope;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 33px;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin: 44px 0 0;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  margin: 48px 0 0;
+}
+
+.buttonCancel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 256px;
+  height: 40px;
+  color: var(--blue-color);
+  background-color: var(--primary-white-color);
+  border-radius: 40px;
+  border: 2px solid var(--blue-color);
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 8px 20px;
+}
+
+.buttonYes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 256px;
+  height: 40px;
+  color: var(--primary-white-color);
+  background-color: var(--blue-color);
+  border-radius: 40px;
+  border-color: transparent;
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 8px 20px;
+}
+
+.buttonYes:hover,
+.buttonYes:focus,
+.buttonCancel:hover,
+.buttonCancel:focus {
+  transform: scale(1.03);
+}
+
+.imageLogout {
+  margin-left: 8px;
+}
+
+/* Media query for screens with width up to 320px*/
+@media (max-width: 319px) {
+  .modalWindow {
+    width: 90%;
+  }
+  .icon {
+    margin-left: 85%;
+  }
+}
+
+/* Media query for screens with width more than 768px */
+@media (min-width: 768px) {
+  .modalWindow {
+    width: 608px;
+    margin: 300px 80px auto;
+    padding: 24px 24px 108px;
+  }
+
+  .icon {
+    margin-left: 560px;
+  }
+
+  .title {
+    font-size: 36px;
+    line-height: 49px;
+    margin: 44px 0 0;
+  }
+
+  .buttonContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .buttonCancel,
+  .buttonYes {
+    width: 129px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .modalWindow {
+    margin: 112px 80px auto;
+  }
+}

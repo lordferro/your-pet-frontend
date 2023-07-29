@@ -1,12 +1,13 @@
 import { React, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { RxCross1 } from 'react-icons/rx';
-import { AuthNav } from '../AuthNav/AuthNav';
-import css from './AttentionModal.module.css';
+import shape from '../../images/shape.svg';
+
+import css from './LogoutModal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
-const ModalWindow = ({ onClose }) => {
+const ModalWindow = ({ onClose, onLogout }) => {
   useEffect(() => {
     const handleKeyDown = e => {
       if (e.code === 'Escape') {
@@ -30,24 +31,31 @@ const ModalWindow = ({ onClose }) => {
   return createPortal(
     <div className={css.overlay} onClick={handleBackdropClick}>
       <div className={css.modalWindow}>
-        <button
-          type="button"
-          onClick={onClose}
+        <RxCross1
+          className={css.icon}
           aria-label="Close modal window"
-          className={css.closeModalButton}
-        >
-          <RxCross1 className={css.icon} />
-        </button>
+          onClick={onClose}
+        />
         <div>
-          <h2 className={css.title}>Attention</h2>
-          <p className={css.text}>
-            We would like to remind you that certain functionality is available
-            only to authorized users.If you have an account, please log in with
-            your credentials. If you do not already have an account, you must
-            register to access these features.
-          </p>
-          <div className={css.authContainer}>
-            <AuthNav />
+          <h2 className={css.title}>Already leaving?</h2>
+
+          <div className={css.buttonContainer}>
+            <button
+              type="button"
+              onClick={onClose}
+              className={css.buttonCancel}
+            >
+              Cancel
+            </button>
+            <button type="button" onClick={onLogout} className={css.buttonYes}>
+              Yes
+              <img
+                src={shape}
+                alt="pawprint"
+                width={24}
+                className={css.imageLogout}
+              />
+            </button>
           </div>
         </div>
       </div>

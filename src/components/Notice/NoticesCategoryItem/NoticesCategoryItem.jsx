@@ -7,7 +7,8 @@ import { CiLocationOn } from 'react-icons/ci';
 import { GoClock } from 'react-icons/go';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import { ModalNotice } from '../ModalNotice/ModalNotice';
-import ModalWindow from '../../shared/ModalWindow';
+import ModalWindow from '../../shared/AttentionModal';
+import { ModalDeleteWindow } from '../../shared/ModalDeleteWindow';
 
 import cat from '../../../images/cuteCat.jpg';
 import css from './NoticesCategoryItem.module.css';
@@ -15,6 +16,7 @@ import css from './NoticesCategoryItem.module.css';
 export const NoticeCategoryItem = () => {
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [modalAcessWindow, setmodalAcessWindow] = useState(false);
+  const [modalDeleteWindow, setModalDeleteCloseClick] = useState(false);
   const { isLoggedIn, user } = useAuth();
 
   const [favorite, setFavorite] = useState(false);
@@ -90,11 +92,12 @@ export const NoticeCategoryItem = () => {
             />
           </button>
         )}
-        {user.id && (
+        {!user.id && (
           <button
             className={css.deleteButton}
             type="button"
-            onClick={handleDeletePet}
+            // onClick={handleDeletePet}
+            onClick={() => setModalDeleteCloseClick(true)}
           >
             <RiDeleteBinLine className={css.deleteButtonIcon} />
           </button>
@@ -133,6 +136,12 @@ export const NoticeCategoryItem = () => {
       )}
       {modalAcessWindow && (
         <ModalWindow onClose={() => setmodalAcessWindow(false)} />
+      )}
+      {modalDeleteWindow && (
+        <ModalDeleteWindow
+          onModalDeleteCloseClick={() => setModalDeleteCloseClick(false)}
+          handleDeletePet={handleDeletePet}
+        />
       )}
     </li>
   );

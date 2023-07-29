@@ -1,4 +1,12 @@
-/* @import-normalize; bring in normalize.css styles */
+
+
+@import-normalize; /* bring in normalize.css styles */
+body.lock-scroll {
+    overflow: hidden;
+  }
+  body {
+    background-color: #fdf7f2; 
+  }
 
 ul,
 ol {
@@ -9,3 +17,4 @@ ol {
 li {
   list-style: none;
 }
+
