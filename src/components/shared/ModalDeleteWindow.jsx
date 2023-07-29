@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { MdClear } from 'react-icons/md';
 import { RiDeleteBinLine } from 'react-icons/ri';
 import css from './ModalDeleteWindow.module.css';
