@@ -30,7 +30,7 @@
   background-size: cover;
   margin: 80px auto 0;
   background-position: center;
-  background-image: url(../images/notFound/mob404.jpg);
+  background-image: url(../images/notFound/mob404.png);
 }
 
 @media (min-device-pixel-ratio: 2),
@@ -38,14 +38,14 @@
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
   .img {
-    background-image: url(../images/notFound/mob404@2x.jpg);
+    background-image: url(../images/notFound/mob404@2x.png);
   }
 }
 @media screen and (min-width: 768px) {
   .img {
     height: 308px;
     width: var(--tablet);
-    background-image: url(../images/notFound/tablet404.jpg);
+    background-image: url(../images/notFound/tablet404.png);
   }
 }
 @media screen and (min-width: 768px) and (min-device-pixel-ratio: 2),
@@ -53,14 +53,14 @@
   screen and (min-width: 768px) and (min-resolution: 192dpi),
   screen and (min-width: 768px) and (min-resolution: 2dppx) {
   .img {
-    background-image: url(../images/notFound/tablet404@2x.jpg);
+    background-image: url(../images/notFound/tablet404@2x.png);
   }
 }
 @media screen and (min-width: 1280px) {
   .img {
     height: 360px;
     width: 822px;
-    background-image: url(../images/notFound/desk404.jpg);
+    background-image: url(../images/notFound/desk404.png);
   }
 }
 @media screen and (min-width: 1280px) and (min-device-pixel-ratio: 2),
@@ -68,7 +68,7 @@
   screen and (min-width: 1280px) and (min-resolution: 192dpi),
   screen and (min-width: 1280px) and (min-resolution: 2dppx) {
   .img {
-    background-image: url(../images/notFound/desk404@2x.jpg);
+    background-image: url(../images/notFound/desk404@2x.png);
   }
 }
 
