@@ -11,7 +11,7 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(97, 97, 97, 0.6);
-  z-index: 999;
+  z-index: 100;
 }
 
 .modalWindow {
@@ -29,6 +29,12 @@
   margin-left: 244px;
   font-size: 24px;
   color: var(--blue-color);
+}
+
+.icon:hover,
+.icon:focus {
+  transform: scale(1.2);
+  color: var(--green-color);
 }
 
 /* Media query for screens with width up to 320px*/
