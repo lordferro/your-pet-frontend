@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operation';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { validationSchema } from './RegisterValidation';
+import eyeclosed from '../../images/eye-closed.svg';
+import eyeopen from '../../images/eye-open.svg';
 
 import css from './RegisterForm.module.css';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleSubmit = (values, { resetForm }) => {
-    // Удаляем поле confirmPassword из объекта values
     const { confirmPassword, ...dataToSend } = values;
-    
     dispatch(register(dataToSend));
     resetForm();
+  };
+
+  const handleEyeClick = () => {
+    setPasswordVisible((prevState) => !prevState); 
   };
 
   return (
@@ -51,12 +56,20 @@ const RegistrationForm = () => {
             <ErrorMessage name="email" component="div" className={css.error} />
           </div>
           <div className={css.inputContainer}>
-            <Field
-              type="password"
-              name="password"
-              placeholder="Password"
-              className={css.input}
-            />
+            <div style={{ position: 'relative' }}>
+              <Field
+                type={passwordVisible ? 'text' : 'password'} 
+                name="password"
+                placeholder="Password"
+                className={css.input}
+              />
+              <img
+                src={passwordVisible ? eyeopen : eyeclosed} 
+                alt={passwordVisible ? 'eye open' : 'eye closed'}
+                className={css.imageEye}
+                onClick={handleEyeClick} 
+              />
+            </div>
             <ErrorMessage
               name="password"
               component="div"

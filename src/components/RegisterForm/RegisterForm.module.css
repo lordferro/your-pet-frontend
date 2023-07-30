@@ -99,6 +99,15 @@ p {
   left: 16px; 
 }
 
+.imageEye {
+  position: absolute;
+  top: 32%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  }
+
+
 @media (max-width: 767px) {
   .registration_form {
     width: 280px;
