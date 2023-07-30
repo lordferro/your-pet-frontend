@@ -62,8 +62,7 @@ export const refreshUser = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-  );
-  
+);
 
 export const getCurrentUser = createAsyncThunk(
   'user/current',
@@ -79,6 +78,19 @@ export const getCurrentUser = createAsyncThunk(
     } catch (error) {
       return rejectWithValue(error.message);
     }
+  }
+);
 
+export const updateUser = createAsyncThunk(
+  'auth/update',
+  async (credentials, thunkAPI) => {
+    try {
+      const res = await axios.patch('auth/updateUser', credentials, {
+        headers: { 'content-type': 'multipart/form-data' },
+      });
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
 );
