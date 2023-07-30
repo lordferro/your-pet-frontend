@@ -12,6 +12,7 @@ import css from './RegisterForm.module.css';
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
   const handleSubmit = (values, { resetForm }) => {
     const { confirmPassword, ...dataToSend } = values;
@@ -19,8 +20,12 @@ const RegistrationForm = () => {
     resetForm();
   };
 
-  const handleEyeClick = () => {
-    setPasswordVisible((prevState) => !prevState); 
+  const handlePasswordEyeClick = () => {
+    setPasswordVisible(prevState => !prevState);
+  };
+
+  const handleConfirmPasswordEyeClick = () => {
+    setConfirmPasswordVisible(prevState => !prevState);
   };
 
   return (
@@ -58,16 +63,16 @@ const RegistrationForm = () => {
           <div className={css.inputContainer}>
             <div style={{ position: 'relative' }}>
               <Field
-                type={passwordVisible ? 'text' : 'password'} 
+                type={passwordVisible ? 'text' : 'password'}
                 name="password"
                 placeholder="Password"
                 className={css.input}
               />
               <img
-                src={passwordVisible ? eyeopen : eyeclosed} 
+                src={passwordVisible ? eyeopen : eyeclosed}
                 alt={passwordVisible ? 'eye open' : 'eye closed'}
                 className={css.imageEye}
-                onClick={handleEyeClick} 
+                onClick={handlePasswordEyeClick}
               />
             </div>
             <ErrorMessage
@@ -77,12 +82,20 @@ const RegistrationForm = () => {
             />
           </div>
           <div className={css.inputContainer}>
-            <Field
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm password"
-              className={css.input}
-            />
+            <div style={{ position: 'relative' }}>
+              <Field
+                type={confirmPasswordVisible ? 'text' : 'password'}
+                name="confirmPassword"
+                placeholder="Confirm password"
+                className={css.input}
+              />
+              <img
+                src={confirmPasswordVisible ? eyeopen : eyeclosed}
+                alt={confirmPasswordVisible ? 'eye open' : 'eye closed'}
+                className={css.imageEye}
+                onClick={handleConfirmPasswordEyeClick}
+              />
+            </div>
             <ErrorMessage
               name="confirmPassword"
               component="div"
