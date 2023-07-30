@@ -48,9 +48,7 @@ const RegistrationForm = () => {
                 type="text"
                 name="name"
                 placeholder="Name"
-                className={`${css.input} ${
-                  touched.email && errors.email && css.errorInput
-                }`}
+                className={`${css.input} ${touched.name && errors.name && css.errorInput}`}
               />
               <ErrorMessage name="name" component="div" className={css.error} />
             </div>
@@ -59,9 +57,7 @@ const RegistrationForm = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
-                className={`${css.input} ${
-                  touched.email && errors.email && css.errorInput
-                }`}
+                className={`${css.input} ${touched.email && errors.email && css.errorInput}`}
               />
               <ErrorMessage
                 name="email"
@@ -75,9 +71,7 @@ const RegistrationForm = () => {
                   type={passwordVisible ? 'text' : 'password'}
                   name="password"
                   placeholder="Password"
-                  className={`${css.input} ${
-                    touched.email && errors.email && css.errorInput
-                  }`}
+                  className={`${css.input} ${touched.password && errors.password && css.errorInput}`}
                 />
                 <img
                   src={passwordVisible ? eyeopen : eyeclosed}
@@ -98,9 +92,7 @@ const RegistrationForm = () => {
                   type={confirmPasswordVisible ? 'text' : 'password'}
                   name="confirmPassword"
                   placeholder="Confirm password"
-                  className={`${css.input} ${
-                    touched.email && errors.email && css.errorInput
-                  }`}
+                  className={`${css.input} ${touched.confirmPassword && errors.confirmPassword && css.errorInput}`}
                 />
                 <img
                   src={confirmPasswordVisible ? eyeopen : eyeclosed}
