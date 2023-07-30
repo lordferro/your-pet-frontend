@@ -100,7 +100,7 @@ p {
 
 .imageEye {
 position: absolute;
-top: 32%;
+top: 31%;
 right: 15px;
 transform: translateY(-50%);
 cursor: pointer;
@@ -132,5 +132,8 @@ cursor: pointer;
   }
   .refTitleToReg {
     margin-bottom: 40px;
+  }
+  .imageEye {
+    top: 39%;
   }
 }
