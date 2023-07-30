@@ -178,7 +178,7 @@
   font-family: Manrope;
   font-weight: 700;
   line-height: 1.36;
-  color: var(--submit-text-color);
+  color: var(--primary-white-color);
   border-radius: 20px;
   border: 1px solid var(--blue-color);
   background-color: var(--blue-color);
