@@ -40,7 +40,6 @@
   outline: none;
 }
 
-
 .input.errorInput {
   border-color: var(--red-color); 
 }
@@ -98,6 +97,15 @@ p {
   bottom: 16px;
   left: 16px;
 }
+
+.imageEye {
+position: absolute;
+top: 32%;
+right: 15px;
+transform: translateY(-50%);
+cursor: pointer;
+}
+
 
 @media (max-width: 767px) {
   .login_form {

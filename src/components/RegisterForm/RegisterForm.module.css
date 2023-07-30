@@ -38,6 +38,7 @@
   font-family: Manrope;
   font-size: 16px;
   font-weight: 400;
+  outline: none;
 }
 
 .input.errorInput {
@@ -76,7 +77,6 @@ font-weight: 200;
   font-family: Manrope;
 font-size: 12px;
 font-weight: 200;
-
 color:var(--blue-color);
 }
 
@@ -98,6 +98,15 @@ p {
   bottom: 16px; 
   left: 16px; 
 }
+
+.imageEye {
+position: absolute;
+top: 32%;
+right: 15px;
+transform: translateY(-50%);
+cursor: pointer;
+}
+
 
 @media (max-width: 767px) {
   .registration_form {
