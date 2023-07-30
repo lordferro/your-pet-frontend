@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operation';
 import { useAuth } from 'hooks';
+import Loader from './Loader/Loader';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    'fetching user data'
+    <Loader/>
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>

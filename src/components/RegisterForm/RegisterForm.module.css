@@ -133,4 +133,7 @@ cursor: pointer;
   .refTitleToLogin {
     margin-bottom: 40px;
   }
+  .imageEye {
+    top: 39%;
+  }
 }
