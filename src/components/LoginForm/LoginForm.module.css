@@ -40,7 +40,6 @@
   outline: none;
 }
 
-
 .input.errorInput {
   border-color: var(--red-color); 
 }

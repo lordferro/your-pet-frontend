@@ -11,7 +11,7 @@ import css from './LoginForm.module.css';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const [passwordVisible, setPasswordVisible] = useState(false); 
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(logIn(values));
@@ -19,7 +19,7 @@ const LoginForm = () => {
   };
 
   const handleEyeClick = () => {
-    setPasswordVisible((prevState) => !prevState); 
+    setPasswordVisible(prevState => !prevState);
   };
 
   return (
@@ -40,23 +40,31 @@ const LoginForm = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
-                className={`${css.input} ${touched.email && errors.email && css.errorInput}`}
+                className={`${css.input} ${
+                  touched.email && errors.email && css.errorInput
+                }`}
               />
-              <ErrorMessage name="email" component="div" className={css.error} />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className={css.error}
+              />
             </div>
             <div className={css.inputContainer}>
               <div style={{ position: 'relative' }}>
                 <Field
-                  type={passwordVisible ? 'text' : 'password'} 
+                  type={passwordVisible ? 'text' : 'password'}
                   name="password"
                   placeholder="Password"
-                  className={`${css.input} ${touched.password && errors.password && css.errorInput}`}
+                  className={`${css.input} ${
+                    touched.password && errors.password && css.errorInput
+                  }`}
                 />
                 <img
-                  src={passwordVisible ? eyeopen : eyeclosed} 
+                  src={passwordVisible ? eyeopen : eyeclosed}
                   alt={passwordVisible ? 'eye open' : 'eye closed'}
                   className={css.imageEye}
-                  onClick={handleEyeClick} 
+                  onClick={handleEyeClick}
                 />
               </div>
               <ErrorMessage

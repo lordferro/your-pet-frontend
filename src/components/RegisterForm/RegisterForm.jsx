@@ -40,78 +40,92 @@ const RegistrationForm = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        <Form className={css.registration_form} autoComplete="off">
-          <h2 className={css.registration_title}>Registration</h2>
-          <div className={css.inputContainer}>
-            <Field
-              type="text"
-              name="name"
-              placeholder="Name"
-              className={css.input}
-            />
-            <ErrorMessage name="name" component="div" className={css.error} />
-          </div>
-          <div className={css.inputContainer}>
-            <Field
-              type="email"
-              name="email"
-              placeholder="Email"
-              className={css.input}
-            />
-            <ErrorMessage name="email" component="div" className={css.error} />
-          </div>
-          <div className={css.inputContainer}>
-            <div style={{ position: 'relative' }}>
+        {({ errors, touched }) => (
+          <Form className={css.registration_form} autoComplete="off">
+            <h2 className={css.registration_title}>Registration</h2>
+            <div className={css.inputContainer}>
               <Field
-                type={passwordVisible ? 'text' : 'password'}
+                type="text"
+                name="name"
+                placeholder="Name"
+                className={`${css.input} ${
+                  touched.email && errors.email && css.errorInput
+                }`}
+              />
+              <ErrorMessage name="name" component="div" className={css.error} />
+            </div>
+            <div className={css.inputContainer}>
+              <Field
+                type="email"
+                name="email"
+                placeholder="Email"
+                className={`${css.input} ${
+                  touched.email && errors.email && css.errorInput
+                }`}
+              />
+              <ErrorMessage
+                name="email"
+                component="div"
+                className={css.error}
+              />
+            </div>
+            <div className={css.inputContainer}>
+              <div style={{ position: 'relative' }}>
+                <Field
+                  type={passwordVisible ? 'text' : 'password'}
+                  name="password"
+                  placeholder="Password"
+                  className={`${css.input} ${
+                    touched.email && errors.email && css.errorInput
+                  }`}
+                />
+                <img
+                  src={passwordVisible ? eyeopen : eyeclosed}
+                  alt={passwordVisible ? 'eye open' : 'eye closed'}
+                  className={css.imageEye}
+                  onClick={handlePasswordEyeClick}
+                />
+              </div>
+              <ErrorMessage
                 name="password"
-                placeholder="Password"
-                className={css.input}
-              />
-              <img
-                src={passwordVisible ? eyeopen : eyeclosed}
-                alt={passwordVisible ? 'eye open' : 'eye closed'}
-                className={css.imageEye}
-                onClick={handlePasswordEyeClick}
+                component="div"
+                className={css.error}
               />
             </div>
-            <ErrorMessage
-              name="password"
-              component="div"
-              className={css.error}
-            />
-          </div>
-          <div className={css.inputContainer}>
-            <div style={{ position: 'relative' }}>
-              <Field
-                type={confirmPasswordVisible ? 'text' : 'password'}
+            <div className={css.inputContainer}>
+              <div style={{ position: 'relative' }}>
+                <Field
+                  type={confirmPasswordVisible ? 'text' : 'password'}
+                  name="confirmPassword"
+                  placeholder="Confirm password"
+                  className={`${css.input} ${
+                    touched.email && errors.email && css.errorInput
+                  }`}
+                />
+                <img
+                  src={confirmPasswordVisible ? eyeopen : eyeclosed}
+                  alt={confirmPasswordVisible ? 'eye open' : 'eye closed'}
+                  className={css.imageEye}
+                  onClick={handleConfirmPasswordEyeClick}
+                />
+              </div>
+              <ErrorMessage
                 name="confirmPassword"
-                placeholder="Confirm password"
-                className={css.input}
-              />
-              <img
-                src={confirmPasswordVisible ? eyeopen : eyeclosed}
-                alt={confirmPasswordVisible ? 'eye open' : 'eye closed'}
-                className={css.imageEye}
-                onClick={handleConfirmPasswordEyeClick}
+                component="div"
+                className={css.error}
               />
             </div>
-            <ErrorMessage
-              name="confirmPassword"
-              component="div"
-              className={css.error}
-            />
-          </div>
-          <button type="submit" className={css.button}>
-            Registration
-          </button>
-          <p className={css.refTitleToLogin}>
-            Already have an account?{' '}
-            <Link to="/login" className={css.refLogin}>
-              Login
-            </Link>
-          </p>
-        </Form>
+            <button type="submit" className={css.button}>
+              Registration
+            </button>
+            <p className={css.refTitleToLogin}>
+              Already have an account?{' '}
+              <Link to="/login" className={css.refLogin}>
+                Login
+              </Link>
+            </p>
+          </Form>
+        )}
       </Formik>
     </div>
   );
