@@ -12,6 +12,7 @@ import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/operation';
 import LogoutModal from '../shared/LogoutModal';
+import Notiflix from 'notiflix';
 
 export const UserForm = ({ readonly, user, onSubmit, saveNewAvatar }) => {
   const [avatarURL, setAvatarURL] = useState();
@@ -24,6 +25,7 @@ export const UserForm = ({ readonly, user, onSubmit, saveNewAvatar }) => {
   const [isLogoutConfirmShow, setIsLogoutConfirmShow] = useState(false);
 
   useEffect(() => {
+    setAvatarURL(null);
     setName(user.name);
     setEmail(user.email);
     setBirthDate(user.birthDate);
@@ -119,6 +121,11 @@ export const UserForm = ({ readonly, user, onSubmit, saveNewAvatar }) => {
 
   const onFileSelect = event => {
     const file = event.target.files[0];
+    console.log('file', file);
+    if (file.size > 1024 * 1024 * 3) {
+      Notiflix.Notify.warning('You should select files up to 3 Mb');
+      return;
+    }
     setAvatarURL(file);
   };
 
@@ -158,7 +165,6 @@ export const UserForm = ({ readonly, user, onSubmit, saveNewAvatar }) => {
 
   const onConfirmAvatar = () => {
     saveNewAvatar(avatarURL);
-    setAvatarURL(false);
   };
 
   return (
