@@ -79,4 +79,7 @@
     .profile_name {
         padding: 0px;
     }
+    .buttonLogout {
+        margin-right: 150px; 
+      }
 }
