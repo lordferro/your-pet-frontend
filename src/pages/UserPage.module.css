@@ -13,7 +13,7 @@
   box-sizing: border-box;
 }
 
-.informationeditUserBtn {
+.informationEditUserBtn {
   position: absolute;
   top: 38px;
   right: 34px;
@@ -21,15 +21,14 @@
   background: transparent;
 }
 
-.informationeditUserBtn:focus,
-.informationeditUserBtn:hover {
+.informationEditUserBtn:focus,
+.informationEditUserBtn:hover {
   cursor: pointer;
   transform: scale(1.03);
 }
 
 .iconEdit {
-  width: 24px;
-  height: 24px;
+  color: var(--blue-color);
 }
 
 /* Quality screen 320px */
@@ -65,7 +64,7 @@
     margin: 0 0 24px 33px;
   }
 
-  .informationeditUserBtn {
+  .informationEditUserBtn {
     top: 38px;
     right: 34px;
   }

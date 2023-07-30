@@ -1,9 +1,10 @@
 import ModalUserInfo from 'components/ModalUserInfo/ModalUserInfo';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { PiPencilSimpleLineLight } from 'react-icons/pi';
+
 import { updateUser } from 'redux/auth/operation';
 import { selectUser } from 'redux/auth/selectors';
-import EditUserDataImg from '../images/edit.svg';
 // import { ReactComponent as EditUserDataImg } from '../../images/edit.svg';
 import css from './UserPage.module.css';
 
@@ -66,9 +67,10 @@ const UserPage = () => {
       <div className={css.userDataContainer}>
         <button
           onClick={onToggleModalShow}
-          className={css.informationeditUserBtn}
+          className={css.informationEditUserBtn}
+          aria-label="edit user data"
         >
-          <img src={EditUserDataImg} className={css.iconEdit} alt="edit"></img>
+          <PiPencilSimpleLineLight className={css.iconEdit} size={24} />
         </button>
         <UserForm readonly={true} user={user} />
       </div>
