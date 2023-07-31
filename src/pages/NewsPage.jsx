@@ -1,11 +1,4 @@
-export default function NewsPage() {
-    return (
-      <div>
-        <h1>News</h1>
-      </div>
-    );
-  }
-  import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs';
