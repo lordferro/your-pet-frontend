@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operation';
 import { useAuth } from 'hooks';
+import Loader from './Loader/Loader';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -23,13 +24,27 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    'fetching user data'
+    <Loader />
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route path="/main" index element={<MainPage />} />
         <Route path="/news" element={<NewsPage />} />
-        <Route path="/notices" element={<NoticesPage />} />
+        <Route path="/notices/:categoryName" element={<NoticesPage />}>
+          <Route path="sell" element={<NoticesPage />} />
+          <Route path="lost-found" element={<NoticesPage />} />
+          <Route path="for-free" element={<NoticesPage />} />
+        </Route>
+
+        <Route
+          path="/notices/favorite"
+          element={<PrivateRoute component={NoticesPage} redirectTo="/login" />}
+        />
+        <Route
+          path="/notices/own"
+          element={<PrivateRoute component={NoticesPage} redirectTo="/login" />}
+        />
+
         <Route path="/friends" element={<OurFriendsPage />} />
         <Route
           path="/login"
