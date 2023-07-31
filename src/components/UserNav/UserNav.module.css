@@ -1,4 +1,9 @@
 @import '../../styles/colors.module.css';
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
 
 .UserNavContainer {
     display: flex;
@@ -20,6 +25,7 @@
     cursor: pointer;
     margin-right: 20px;
     padding: 0;
+    transition: transform 0.3s ease;
 }
 
 @media (max-width: 1279px) {
@@ -29,7 +35,7 @@
   }
 
 .buttonLogout:hover {
-    transform: scale(1.03); 
+    animation: pulse 1s infinite
   }
 
 .buttonProf {
@@ -46,9 +52,10 @@
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
+    transition: transform 0.3s ease;
 }
 .buttonProf:hover {
-    transform: scale(1.03); 
+    animation: pulse 1s infinite
   }
 
 .imageLogout {
@@ -56,10 +63,6 @@
 }
 .imageProf{
     padding: 8px 12px 8px 16px;
-}
-
-.profile_name {
-    padding: 11px 16px 11px 0px
 }
 
 .link {
