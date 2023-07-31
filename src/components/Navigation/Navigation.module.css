@@ -1,5 +1,11 @@
 @import '../../styles/colors.module.css';
 
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
 .navigation {
     display:flex;
     font-family: Manrope;
@@ -8,6 +14,7 @@
     padding: 0;
     margin-left: 160px;
     justify-content: center;
+    transition: transform 0.3s ease;
 }
 
 
@@ -24,7 +31,7 @@ ul {
   }
   
   .navigation_link:hover {
-    transform: scale(1.03); 
+    animation: pulse 1s infinite
   }
 
   ul li a {
