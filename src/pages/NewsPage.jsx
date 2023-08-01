@@ -12,7 +12,6 @@ import {
 } from '../redux/news/newsSelector';
 
 import css from './newsPage.module.css';
-
 import NewsForm from 'components/News/NewsForm';
 import NewsList from 'components/News/NewsList';
 import Loader from 'components/Loader/Loader';
