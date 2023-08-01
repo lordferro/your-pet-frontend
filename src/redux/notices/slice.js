@@ -3,6 +3,8 @@ import {
   fetchNotices,
   fetchFavotiteNotices,
   fetchUserNotices,
+  fetchAddToFavorite,
+  fetchDeleteFromFavorite,
 } from './operations';
 
 const initialState = {
@@ -64,6 +66,34 @@ const noticesSlice = createSlice({
       })
       .addCase(fetchUserNotices.rejected, (state, action) => {
         handleRejected(state, action);
+      })
+      .addCase(fetchAddToFavorite.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(fetchAddToFavorite.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user.favoritePets.push(action.payload.id);
+        state.error = null;
+      })
+      .addCase(fetchAddToFavorite.rejected, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = payload;
+      })
+      .addCase(fetchDeleteFromFavorite.pending, state => {
+        //         state.loading = true;
+      })
+      .addCase(fetchDeleteFromFavorite.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        if (Array.isArray(state.user.favorite)) {
+          state.user.favorite = state.user.favorite.filter(
+            id => id !== payload.id
+          );
+        }
+      })
+      .addCase(fetchDeleteFromFavorite.rejected, (state, { payload }) => {
+        state.notices = { data: [] };
+        state.isLoading = false;
+        state.error = payload;
       });
   },
 });

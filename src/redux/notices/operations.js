@@ -3,6 +3,8 @@ import {
   getUserFavoritesNotices,
   getUserNotices,
   instance,
+  addToFavoriteNotices,
+  removeFromFavoriteNotices,
 } from 'services/noticesAPI';
 
 export const fetchNotices = createAsyncThunk(
@@ -49,6 +51,30 @@ export const fetchUserNotices = createAsyncThunk(
       return response.notices;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchAddToFavorite = createAsyncThunk(
+  'notices/favorites',
+  async (id, { rejectWithValue }) => {
+    try {
+      const data = await addToFavoriteNotices(id);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const fetchRemoveFromFavorite = createAsyncThunk(
+  '/notices/favorites',
+  async (id, { rejectWithValue }) => {
+    try {
+      const data = await removeFromFavoriteNotices(id);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
     }
   }
 );

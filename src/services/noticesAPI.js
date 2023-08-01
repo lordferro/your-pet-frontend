@@ -22,3 +22,13 @@ export const deleteUserNoticeById = async (id, token) => {
   const { data } = await instance.delete(`notices/${id}`, config);
   return data;
 };
+
+export const addToFavoriteNotices = async _id => {
+  const { data } = await instance.post(`notices/favorites/${_id}`);
+  return data;
+};
+
+export const removeFromFavoriteNotices = async _id => {
+  const { data } = await instance.delete(`notices/favorites/${_id}`);
+  return data;
+};
