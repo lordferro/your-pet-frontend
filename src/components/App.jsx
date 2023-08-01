@@ -8,6 +8,7 @@ import PageNotFound from 'pages/PageNotFound';
 import LoginForm from './LoginForm/LoginForm';
 import RegistrationForm from './RegisterForm/RegisterForm';
 import UserPage from 'pages/UserPage';
+import Addpet from '../pages/Add-pet/Add-pet';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PriveteRoute';
 import { useDispatch } from 'react-redux';
@@ -31,7 +32,21 @@ export const App = () => {
         <Route index element={<MainPage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/news" element={<NewsPage />} />
-        <Route path="/notices" element={<NoticesPage />} />
+        <Route path="/notices/:categoryName" element={<NoticesPage />}>
+          <Route path="sell" element={<NoticesPage />} />
+          <Route path="lost-found" element={<NoticesPage />} />
+          <Route path="for-free" element={<NoticesPage />} />
+        </Route>
+
+        <Route
+          path="/notices/favorite"
+          element={<PrivateRoute component={NoticesPage} redirectTo="/login" />}
+        />
+        <Route
+          path="/notices/own"
+          element={<PrivateRoute component={NoticesPage} redirectTo="/login" />}
+        />
+
         <Route path="/friends" element={<OurFriendsPage />} />
         <Route
           path="/login"
@@ -47,6 +62,11 @@ export const App = () => {
           path="/user"
           element={<PrivateRoute component={UserPage} redirectTo="/login" />}
         />
+        <Route
+          path="/add-pet"
+          element={<PrivateRoute component={Addpet} redirectTo="/user" />}
+        />
+
         <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>
