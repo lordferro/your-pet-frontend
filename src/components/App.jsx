@@ -20,7 +20,7 @@ const UserPage = lazy(() => import('pages/UserPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing, user } = useAuth();
+  const { isRefreshing } = useAuth();
   useEffect(() => {
     dispatch(refreshUser());
 
@@ -29,7 +29,7 @@ export const App = () => {
   if (isRefreshing) {
     return <Loader />;
   }
-console.log(user)
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
