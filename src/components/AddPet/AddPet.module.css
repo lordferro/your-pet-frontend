@@ -1,0 +1,115 @@
+@import '../../styles/colors.module.css';
+@import '../../styles/breakpoints.module.css';
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;700&display=swap');
+/* @import-normalize; */
+
+/*  */
+@media screen and (min-width: 280px) {
+  .tabtitle {
+    font-family: Manrope;
+    font-size: 10px;
+    font-weight: 500;
+    text-align: left;
+    color: var(--blue-color);
+  }
+  .FormDiv {
+    flex-shrink: 0;
+    width: 280px;
+    margin: 0px auto;
+    top: 68px;
+    left: 20px;
+    padding: 8px;
+    border-radius: 40px;
+    background-color: #fff;
+
+    box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
+  }
+  .FormDivSale {
+    background-color: #fff;
+    flex-shrink: 0;
+    width: 280px;
+    margin: 0px auto;
+    top: 68px;
+    left: 20px;
+    padding: 8px;
+    border-radius: 40px;
+    box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
+  }
+  .formTitle {
+    margin: 0;
+    padding-bottom: 20px;
+    padding-left: 12px;
+    padding-top: 12px;
+    color: var(#111);
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .formTitle1 {
+    margin: 0;
+    padding-bottom: 20px;
+    padding-left: 12px;
+    padding-top: 12px;
+    color: var(#111);
+    font-family: Manrope;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .FormDiv {
+    position: relative;
+    flex-shrink: 0;
+    margin: 0px auto;
+    width: 408px;
+    background-color: #fff;
+    /* height: 496px; */
+    top: 68px;
+    left: 20px;
+    padding: 8px;
+    margin-bottom: 100px;
+    border-radius: 40px;
+    /* background-color: transparent; */
+    margin-bottom: 30px;
+    box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
+  }
+  .FormDivSale {
+    width: 704px;
+    height: 602px;
+    flex-shrink: 0;
+    padding: 32px 20px 32px 29px;
+    background-color: #fff;
+  }
+  .formTitle {
+    margin: 0;
+    padding-bottom: 20px;
+    padding-left: 32px;
+    padding-top: 20px;
+    color: var(--unnamed, #111);
+    font-family: Manrope;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .formTitle1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Manrope;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  .ProgressBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
