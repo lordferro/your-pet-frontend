@@ -1,5 +1,6 @@
 .cardContainer {
-  width: 280px;
+  max-width: 280px;
+  margin: 0 auto;
   background: #ffffff;
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
   border-radius: 20px;
@@ -55,7 +56,7 @@
 
 @media screen and (min-width: 768px) {
   .cardContainer {
-    width: 703px;
+    max-width: 703px;
     padding-top: 20px;
     display: flex;
     justify-content: flex-start;
@@ -78,9 +79,9 @@
     width: inherit;
   }
 }
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1248px) {
   .cardContainer {
-    width: 821px;
+    max-width: 821px;
     padding-bottom: 20px;
     display: flex;
     justify-content: flex-start;
