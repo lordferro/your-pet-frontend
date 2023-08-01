@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import css from './newsList.module.css';
+import css from './NewsList.module.css';
 import dayjs from 'dayjs';
 import defaultImage from '../../images/img_default.jpg';
 
