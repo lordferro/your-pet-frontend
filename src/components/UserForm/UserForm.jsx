@@ -312,24 +312,18 @@ export const UserForm = ({ readonly, user, onSubmit, saveNewAvatar }) => {
             )}
 
             {readonly ? (
-              <div className={css.x}>
-                <p className={css.label} />
-                <button
-                  type="button"
-                  className={css.btnOut}
-                  onClick={onToggleLogoutConfirmModal}
-                >
-                  <img src={OutImg} className={css.iconOut} alt="check"></img>
-                  Log Out
-                </button>
-              </div>
+              <button
+                type="button"
+                className={css.btnOut}
+                onClick={onToggleLogoutConfirmModal}
+              >
+                <img src={OutImg} className={css.iconOut} alt="check" />
+                Log Out
+              </button>
             ) : (
-              <div className={css.formField}>
-                <p className={css.label} />
-                <button type="submit" className={css.btnSubmit}>
-                  Save
-                </button>
-              </div>
+              <button type="submit" className={css.btnSubmit}>
+                Save
+              </button>
             )}
           </div>
         </form>

@@ -1,22 +1,33 @@
-/* .title {
-  margin: 0 0 24px 17px;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: var(--mobile);
+  margin: 40px auto;
+  gap: 40px;
+}
+
+.title {
+  align-self: start;
+  margin-top: 0;
+  margin-bottom: 18px;
   font-family: Manrope;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 500;
   line-height: 1.36;
   color: var(--black-color);
-} */
+}
 
 .userDataContainer {
   position: relative;
-  padding: 24px 20px 57px 20px;
   box-sizing: border-box;
 }
 
 .informationEditUserBtn {
   position: absolute;
-  top: 38px;
-  right: 34px;
+  top: 60px;
+  right: 14px;
   border: 0;
   background: transparent;
 }
@@ -33,15 +44,13 @@
 /* User's pets*/
 .userPetsContainer {
   display: block;
-  max-width: 280px;
-  margin-top: 30px;
-  padding: 0 20px;
+  width: 100%;
 }
 .userPetsInfo {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 18px;
 }
 .userPetsTitle {
   font-family: Manrope;
@@ -49,64 +58,51 @@
   font-weight: 500;
   line-height: 1.36;
   color: var(--black-color);
-}
-
-/* Quality screen 320px */
-@media (max-width: 480px) {
-  .userDataContainer {
-    position: relative;
-    margin: 18px auto 46px auto;
-  }
-
-  .title {
-    margin: 0 0 18px 20px;
-    font-family: Manrope;
-    font-size: 20px;
-    font-weight: 500;
-    line-height: 1.36;
-    color: var(--black-color);
-  }
-}
-
-@media (min-width: 480px) {
-  .userDataContainer {
-    max-width: 480px;
-  }
+  margin: 0;
 }
 
 /* Quality screen 768px */
 @media (min-width: 768px) {
-  .userDataContainer {
-    margin: 24px auto 57px auto;
-    max-width: 744px;
+  .container {
+    width: var(--tablet);
+    margin: 60px auto;
+    gap: 28px;
   }
+
   .title {
-    margin: 0 0 24px 33px;
+    font-size: 28px;
+    margin-bottom: 24px;
   }
 
   .informationEditUserBtn {
-    top: 38px;
-    right: 34px;
+    top: 76px;
+    right: 18px;
   }
   .userPetsTitle {
     font-size: 28px;
+    margin-bottom: 24px;
   }
   .userPetsContainer {
     max-width: 703px;
   }
 }
 
-/* Quality screen 1248px */
-@media (min-width: 1248px) {
-  .userDataContainer {
-    margin: 24px 16px 57px 16px;
-    width: 435px;
+/* Quality screen 1280px */
+@media (min-width: 1280px) {
+  .container {
+    width: var(--desktop);
+    flex-direction: row;
+    align-items: start;
   }
 
   .title {
-    margin: 0 0 24px 17px;
-    font-size: 28px;
+    margin-top: 0px;
   }
+
+  .userDataContainer {
+    width: 395px;
+  }
+
   .userPetsContainer {
     max-width: 821px;
   }

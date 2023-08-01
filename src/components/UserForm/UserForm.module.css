@@ -2,8 +2,6 @@
 
 .card {
   display: flex;
-  /* margin: 24px 20px 57px 20px; */
-  /* height: 520px; */
   background: #ffffff;
   box-shadow: 3px 8px 14px #88c6fd;
 }
@@ -105,6 +103,9 @@
 }
 
 .btnOut {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -174,6 +175,7 @@
 }
 
 .btnSubmit {
+  margin-top: 10px;
   padding: 6px 0;
   width: 100%;
   font-family: Manrope;
@@ -257,10 +259,11 @@
 }
 
 /* Quality screen 768px */
-@media (min-width: 768px) and (max-width: 1247px) {
+@media (min-width: 768px) {
   .card {
     justify-content: flex-end;
     width: 704px;
+    height: 268px;
     border-radius: 40px;
   }
 
@@ -295,15 +298,23 @@
 
   .btnSubmit {
     font-size: 16px;
+    margin-top: 0;
+    width: 255px;
+    margin-left: 100px;
   }
 }
 
-/* Quality screen 1248px */
-@media (min-width: 1248px) {
+/* Quality screen 1280px */
+@media (min-width: 1280px) {
   .card {
     width: 395px;
     height: 520px;
     border-radius: 40px;
+  }
+
+  .form {
+    flex-direction: column;
+    padding: 20px;
   }
 
   .avatarReadonlyON {
@@ -316,17 +327,5 @@
 
   .btnDual {
     margin-bottom: 25px;
-  }
-
-  .label {
-    font-size: 18px;
-  }
-
-  .input {
-    font-size: 16px;
-  }
-
-  .btnSubmit {
-    font-size: 16px;
   }
 }

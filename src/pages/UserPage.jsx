@@ -1,4 +1,5 @@
 import Loader from '../components/Loader/Loader';
+import BackgroundColor from '../components/shared/BackgroundColor';
 import ModalUserInfo from 'components/ModalUserInfo/ModalUserInfo';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -78,37 +79,40 @@ const UserPage = () => {
   }
 
   return (
-    <>
-      <h2 className={css.title}>My information:</h2>
-      <div className={css.userDataContainer}>
-        <button
-          onClick={onToggleModalShow}
-          className={css.informationEditUserBtn}
-          aria-label="edit user data"
-        >
-          <PiPencilSimpleLineLight className={css.iconEdit} size={24} />
-        </button>
-        <UserForm readonly={true} user={user} />
-      </div>
-      <div className={css.userPetsContainer}>
-        <div className={css.userPetsInfo}>
-          <h2 className={css.userPetsTitle}>My pets:</h2>
-          <AddPetButton />
+    <BackgroundColor>
+      <div className={css.container}>
+        <div className={css.userDataContainer}>
+          <h2 className={css.title}>My information:</h2>
+          <button
+            onClick={onToggleModalShow}
+            className={css.informationEditUserBtn}
+            aria-label="edit user data"
+          >
+            <PiPencilSimpleLineLight className={css.iconEdit} size={24} />
+          </button>
+          <UserForm readonly={true} user={user} />
         </div>
-        <PetsList />
+
+        <div className={css.userPetsContainer}>
+          <div className={css.userPetsInfo}>
+            <h2 className={css.userPetsTitle}>My pets:</h2>
+            <AddPetButton />
+          </div>
+          <PetsList />
+        </div>
+        {isModalShow && (
+          <ModalUserInfo onClose={onToggleModalShow}>
+            <UserForm
+              readonly={false}
+              user={user}
+              onSubmit={onSubmit}
+              saveNewAvatar={saveNewAvatar}
+            />
+          </ModalUserInfo>
+        )}
+        {isGreetingShow && <GreetingModal onClose={onCloseGreetingModal} />}
       </div>
-      {isModalShow && (
-        <ModalUserInfo onClose={onToggleModalShow}>
-          <UserForm
-            readonly={false}
-            user={user}
-            onSubmit={onSubmit}
-            saveNewAvatar={saveNewAvatar}
-          />
-        </ModalUserInfo>
-      )}
-      {isGreetingShow && <GreetingModal onClose={onCloseGreetingModal} />}
-    </>
+    </BackgroundColor>
   );
 };
 
