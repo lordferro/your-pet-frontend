@@ -13,3 +13,12 @@ export const getUserNotices = async () => {
   const { data } = await instance.get(`notices/user/notices`);
   return data;
 };
+export const deleteUserNoticeById = async (id, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const { data } = await instance.delete(`notices/${id}`, config);
+  return data;
+};

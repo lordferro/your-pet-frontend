@@ -14,6 +14,8 @@ import GreetingModal from '../components/shared/GreetingModal';
 import css from './UserPage.module.css';
 import { hideGreeting } from 'redux/auth/slice';
 
+import { PetsList } from '../components/PetsList/PetsList';
+import { AddPetButton } from 'components/AddPetButton/AddPetButton';
 const { UserForm } = require('components/UserForm/UserForm');
 
 const UserPage = () => {
@@ -87,6 +89,13 @@ const UserPage = () => {
           <PiPencilSimpleLineLight className={css.iconEdit} size={24} />
         </button>
         <UserForm readonly={true} user={user} />
+      </div>
+      <div className={css.userPetsContainer}>
+        <div className={css.userPetsInfo}>
+          <h2 className={css.userPetsTitle}>My pets:</h2>
+          <AddPetButton />
+        </div>
+        <PetsList />
       </div>
       {isModalShow && (
         <ModalUserInfo onClose={onToggleModalShow}>
