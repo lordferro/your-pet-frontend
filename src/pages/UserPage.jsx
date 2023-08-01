@@ -1,12 +1,18 @@
+import Loader from '../components/Loader/Loader';
 import ModalUserInfo from 'components/ModalUserInfo/ModalUserInfo';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { PiPencilSimpleLineLight } from 'react-icons/pi';
 
 import { updateUser } from 'redux/auth/operation';
-import { selectUser } from 'redux/auth/selectors';
-// import { ReactComponent as EditUserDataImg } from '../../images/edit.svg';
+import {
+  selectIsUpdating,
+  selectShowGreeting,
+  selectUser,
+} from 'redux/auth/selectors';
+import GreetingModal from '../components/shared/GreetingModal';
 import css from './UserPage.module.css';
+import { hideGreeting } from 'redux/auth/slice';
 
 const { UserForm } = require('components/UserForm/UserForm');
 
@@ -14,6 +20,8 @@ const UserPage = () => {
   const [isModalShow, setIsModalShow] = useState(false);
 
   const user = useSelector(selectUser);
+  const isLoading = useSelector(selectIsUpdating);
+  const isGreetingShow = useSelector(selectShowGreeting);
 
   const dispatch = useDispatch();
 
@@ -23,9 +31,8 @@ const UserPage = () => {
 
   const onSubmit = newUserData => {
     const formData = new FormData();
-    console.log('formData', formData);
 
-    if (newUserData.userAvatar !== user.userAvatar) {
+    if (newUserData.userAvatar !== user.userAvatar && user.userAvatar) {
       formData.append('userAvatar', newUserData.userAvatar);
     }
     if (newUserData.name !== user.name) {
@@ -45,7 +52,6 @@ const UserPage = () => {
     }
 
     console.log('updated formData', formData);
-    console.log('formData.length', Object.fromEntries(formData.entries()));
 
     if (Object.keys(Object.fromEntries(formData.entries())).length) {
       dispatch(updateUser(formData));
@@ -60,6 +66,14 @@ const UserPage = () => {
 
     dispatch(updateUser(formData));
   };
+
+  const onCloseGreetingModal = () => {
+    dispatch(hideGreeting());
+  };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <>
@@ -84,6 +98,7 @@ const UserPage = () => {
           />
         </ModalUserInfo>
       )}
+      {isGreetingShow && <GreetingModal onClose={onCloseGreetingModal} />}
     </>
   );
 };

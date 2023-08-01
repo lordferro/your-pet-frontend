@@ -1,20 +1,21 @@
+import { lazy } from 'react';
+import Loader from './Loader/Loader';
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout';
-import MainPage from 'pages/MainPage';
-import NewsPage from 'pages/NewsPage';
-import NoticesPage from 'pages/NoticesPage/NoticesPage';
-import OurFriendsPage from 'pages/OurFriendsPage';
-import PageNotFound from 'pages/PageNotFound';
-import LoginForm from './LoginForm/LoginForm';
-import RegistrationForm from './RegisterForm/RegisterForm';
-import UserPage from 'pages/UserPage';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PriveteRoute';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operation';
 import { useAuth } from 'hooks';
-import Loader from './Loader/Loader';
+import { Layout } from './Layout';
+const MainPage = lazy(() => import('pages/MainPage'));
+const NewsPage = lazy(() => import('pages/NewsPage'));
+const NoticesPage = lazy(() => import('pages/NoticesPage/NoticesPage'));
+const OurFriendsPage = lazy(() => import('pages/OurFriendsPage'));
+const PageNotFound = lazy(() => import('pages/PageNotFound'));
+const LoginForm = lazy(() => import('./LoginForm/LoginForm'));
+const RegistrationForm = lazy(() => import('./RegisterForm/RegisterForm'));
+const UserPage = lazy(() => import('pages/UserPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -23,11 +24,11 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
+  if (isRefreshing) {
+    return <Loader />;
+  }
 
-    <Loader/>
-
-  ) : (
+  return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<MainPage />} />

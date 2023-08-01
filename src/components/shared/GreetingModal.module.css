@@ -1,0 +1,150 @@
+@import '../../styles/colors.module.css';
+@import '../../styles/breakpoints.module.css';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(97, 97, 97, 0.6);
+  z-index: 100;
+}
+
+.modalWindow {
+  margin: auto 20px auto;
+  padding: 16px 10px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 3px 8px 14px 0px #88c6fd30;
+}
+
+.icon {
+  font-size: 24px;
+  color: var(--blue-color);
+}
+
+.icon:hover,
+.icon:focus {
+  transform: scale(1.2);
+}
+
+.title {
+  font-family: Manrope;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin: 44px auto 0 auto;
+}
+
+.text {
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.33;
+  letter-spacing: 0.04em;
+  text-align: center;
+  margin: 24px auto 40px auto;
+}
+
+.buttonGo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 248px;
+  height: 40px;
+  color: var(--primary-white-color);
+  background-color: var(--blue-color);
+  border-radius: 40px;
+  border-color: transparent;
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 8px 20px;
+}
+
+.buttonGo:hover,
+.buttonGo:focus {
+  cursor: pointer;
+  transform: scale(1.03);
+}
+
+.imagePawprint {
+  margin-left: 12px;
+}
+
+/* Media query for screens with width up to 320px*/
+@media (max-width: 319px) {
+  .modalWindow {
+    width: 280px;
+    height: 287px;
+  }
+  .icon {
+    margin-left: 244px;
+  }
+}
+
+@media (max-width: 767px) {
+  .modalWindow {
+    width: 280px;
+    height: 287px;
+  }
+  .icon {
+    margin-left: 244px;
+  }
+}
+
+/* Media query for screens with width more than 768px */
+@media (min-width: 768px) {
+  .modalWindow {
+    border-radius: 40px;
+    width: 608px;
+    margin: auto 80px auto;
+    padding: 24px 24px 108px;
+  }
+
+  .icon {
+    margin-left: 580px;
+  }
+
+  .title {
+    font-size: 36px;
+    line-height: 1.36;
+    margin: 60px auto 0 auto;
+  }
+
+  .text {
+    font-size: 24px;
+    line-height: 1.33;
+    margin: 52px auto 60px auto;
+  }
+}
+
+@media (min-width: 1280px) {
+  .modalWindow {
+    border-radius: 40px;
+    margin: auto 80px auto;
+  }
+
+  .title {
+    font-size: 36px;
+    line-height: 1.36;
+    margin: 60px auto 0 auto;
+  }
+
+  .text {
+    font-size: 24px;
+    line-height: 1.33;
+    margin: 52px auto 60px auto;
+  }
+
+  .icon {
+    margin-left: 580px;
+  }
+}
