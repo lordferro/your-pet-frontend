@@ -5,6 +5,7 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PriveteRoute';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import Addpet from 'pages/Add-pet/Add-pet';
 import { refreshUser } from 'redux/auth/operation';
 import { useAuth } from 'hooks';
 import { Layout } from './Layout';
@@ -63,6 +64,10 @@ export const App = () => {
         <Route
           path="/user"
           element={<PrivateRoute component={UserPage} redirectTo="/login" />}
+        />
+        <Route
+          path="/add-pet"
+          element={<PrivateRoute component={Addpet} redirectTo="/login" />}
         />
         <Route path="*" element={<PageNotFound />} />
       </Route>
