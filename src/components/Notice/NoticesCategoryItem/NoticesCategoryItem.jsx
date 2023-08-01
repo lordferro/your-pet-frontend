@@ -1,82 +1,112 @@
 import { useState } from 'react';
 // import { useDispatch } from 'react-redux';
-import { useAuth } from '../../../hooks';
-import { HeartIcon } from '../../../icons/HeartIcon';
+import moment from 'moment';
+// import Notify from 'notiflix';
 import { BsGenderFemale, BsGenderMale } from 'react-icons/bs';
 import { CiLocationOn } from 'react-icons/ci';
 import { GoClock } from 'react-icons/go';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import { useAuth } from '../../../hooks';
+import { HeartIcon } from '../../../icons/HeartIcon';
 import { ModalNotice } from '../ModalNotice/ModalNotice';
 import ModalWindow from '../../shared/AttentionModal';
 import { ModalDeleteWindow } from '../../shared/ModalDeleteWindow';
-
 import cat from '../../../images/cuteCat.jpg';
+
 import css from './NoticesCategoryItem.module.css';
 
-export const NoticeCategoryItem = () => {
+export const NoticeCategoryItem = ({
+  _id,
+  name,
+  title,
+  birthday,
+  type,
+  comments,
+  sex,
+  action,
+  price,
+  location,
+  petAvatar,
+  owner,
+}) => {
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [modalAcessWindow, setmodalAcessWindow] = useState(false);
   const [modalDeleteWindow, setModalDeleteCloseClick] = useState(false);
   const { isLoggedIn, user } = useAuth();
-
-  const [favorite, setFavorite] = useState(false);
   // const dispatch = useDispatch();
 
-  // Для відображення статі
-  const male = true;
-  const sex = male;
+  const [favorite, setFavorite] = useState(() => {
+    if (isLoggedIn) {
+      if (user.favoritePets.includes(_id)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return false;
+  });
 
   const handleDeletePet = _id => {
     // dispatch(fetchDeleteNotice(_id));
-    // setShowModalAccess(false);
+    // Notify.Notiflix.Success('This item was succesfully deleted!');
+    setModalDeleteCloseClick(false);
   };
 
   // Функція для видалення або додавання картинки до улюбленої
   const handleFavoritePet = () => {
-    if (!isLoggedIn) {
-      setmodalAcessWindow(true);
-      return;
-    }
+    // if (!isLoggedIn) {
+    //   setmodalAcessWindow(true);
+    //   return;
+    // }
 
     if (!favorite) {
-      // dispatch(fetchAddToFavorite(id));
+      // dispatch(fetchAddToFavorite(_id));
+
       setFavorite(true);
-    } else {
-      // dispatch(fetchDeleteFromFavorite(id));
+      // } else {
+      //   dispatch(fetchRemoveFromFavorite(_id));
       setFavorite(false);
     }
   };
 
   // Функція для нормалізації локації
-  const normalizedLocation = location => {
-    return location.slice(0, 4) + `...`;
+  const normalizedLocation = loc => {
+    return loc.slice(0, 4) + `...`;
   };
 
   // Функція для обрахунку віку
-  const ageCount = birthDate => {
-    const num = Number(birthDate);
-    const birthDay = new Date(num);
-    const currentDate = Date.now();
+  const ageCount = birthData => {
+    const birthDate = moment(birthData, 'DD-MM-YYYY');
+    const currentDate = moment();
 
-    const diffInYears = Math.floor(
-      (currentDate - birthDay) / (1000 * 60 * 60 * 24) / 365
-    );
-    if (diffInYears === 0) {
-      const diffInMounth = Math.floor(
-        (currentDate - birthDay) / (1000 * 60 * 60 * 24) / 30
-      );
-      return diffInMounth + ' mon';
+    const yearsDiff = currentDate.diff(birthDate, 'years');
+    const monthsDiff = currentDate.diff(birthDate, 'month') % 12;
+    const totalMonths = yearsDiff * 12 + monthsDiff;
+
+    if (totalMonths < 12) {
+      return `${totalMonths} mon...`;
     }
-    return diffInYears + ' year';
+
+    if (totalMonths >= 12 && totalMonths < 24) {
+      return `1 year`;
+    }
+
+    return `${yearsDiff} years`;
   };
 
+  const age = ageCount(birthday);
+
   return (
-    <li className={css.petItem}>
+    <li className={css.petItem} key={_id}>
       <div className={css.wrapper}>
         <div className={css.petImageWrapper}>
-          <img alt={'pet'} src={cat} className={css.petImage} />
+          {petAvatar !== 'String' ? (
+            <img alt={'pet'} src={petAvatar} className={css.petImage} />
+          ) : (
+            <img alt={'pet'} src={cat} className={css.petImage} />
+          )}
         </div>
-        <p className={css.noticeCategory}>In good hands</p>
+        <p className={css.noticeCategory}>{action}</p>
         {!favorite ? (
           <button
             className={css.addToFavoriteButton}
@@ -92,11 +122,10 @@ export const NoticeCategoryItem = () => {
             />
           </button>
         )}
-        {!user.id && (
+        {user._id === owner.userId && (
           <button
             className={css.deleteButton}
             type="button"
-            // onClick={handleDeletePet}
             onClick={() => setModalDeleteCloseClick(true)}
           >
             <RiDeleteBinLine className={css.deleteButtonIcon} />
@@ -106,11 +135,11 @@ export const NoticeCategoryItem = () => {
           <ul className={css.shortPetInfoWrapperList}>
             <li className={css.shortPetInfo}>
               <CiLocationOn className={css.shortPetInfoIcon} />
-              {normalizedLocation('Chernigiv')}
+              {normalizedLocation(location)}
             </li>
             <li className={css.shortPetInfo}>
               <GoClock className={css.shortPetInfoIcon} />
-              {ageCount('20.12.2020')}
+              {age}
             </li>
             <li className={css.shortPetInfo}>
               {sex === 'female' ? (
@@ -118,12 +147,13 @@ export const NoticeCategoryItem = () => {
               ) : (
                 <BsGenderMale className={css.shortPetInfoIcon} />
               )}
+              {sex}
             </li>
           </ul>
         </div>
       </div>
       <div className={css.petInfoWrapper}>
-        <p className={css.petImageDescription}>Cute dog looking for a home</p>
+        <p className={css.petImageDescription}>{title}</p>
         <p
           className={css.allPetInfoModalOpen}
           onClick={() => setShowInfoModal(true)}
@@ -132,7 +162,21 @@ export const NoticeCategoryItem = () => {
         </p>
       </div>
       {showInfoModal && (
-        <ModalNotice onModalCloseClick={() => setShowInfoModal(false)} />
+        <ModalNotice
+          onModalCloseClick={() => setShowInfoModal(false)}
+          _id={_id}
+          name={name}
+          title={title}
+          birthday={birthday}
+          type={type}
+          comments={comments}
+          sex={sex}
+          action={action}
+          price={price}
+          location={location}
+          petAvatar={petAvatar}
+          owner={owner}
+        />
       )}
       {modalAcessWindow && (
         <ModalWindow onClose={() => setmodalAcessWindow(false)} />
@@ -141,6 +185,7 @@ export const NoticeCategoryItem = () => {
         <ModalDeleteWindow
           onModalDeleteCloseClick={() => setModalDeleteCloseClick(false)}
           handleDeletePet={handleDeletePet}
+          name={name}
         />
       )}
     </li>

@@ -21,9 +21,9 @@ const handleFulfilled = (state, action) => {
   state.items = action.payload;
   state.totalPages = action.payload.totalPages;
 };
-const handleRejected = (state, action) => {
+const handleRejected = (state, { payload }) => {
   state.isLoading = false;
-  state.error = action.payload;
+  state.error = payload;
 };
 
 const noticesSlice = createSlice({

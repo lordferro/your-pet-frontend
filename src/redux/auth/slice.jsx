@@ -7,6 +7,7 @@ import {
   getCurrentUser,
   updateUser,
 } from './operation';
+
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const authSlice = createSlice({
