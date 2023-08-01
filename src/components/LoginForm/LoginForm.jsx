@@ -6,7 +6,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { validationSchema } from './LoginValidation';
 import eyeclosed from '../../images/eye-closed.svg';
 import eyeopen from '../../images/eye-open.svg';
-
+import smallCross from '../../images/cross-small.svg';
+import check from '../../images/check.svg';
 import css from './LoginForm.module.css';
 
 const LoginForm = () => {
@@ -32,7 +33,7 @@ const LoginForm = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched }) => (
+        {({ errors, touched, setFieldValue }) => (
           <Form className={css.login_form} autoComplete="off">
             <h2 className={css.login_title}>Login</h2>
             <div className={css.inputContainer}>
@@ -42,8 +43,18 @@ const LoginForm = () => {
                 placeholder="Email"
                 className={`${css.input} ${
                   touched.email && errors.email && css.errorInput
-                }`}
+                } ${!errors.email && touched.email && css.successInput}`}
               />
+              {touched.email && errors.email ? (
+                <img
+                  src={smallCross}
+                  alt="small cross"
+                  className={css.imageCross}
+                  onClick={() => setFieldValue('email', '')}
+                />
+              ) : !errors.email && touched.email ? (
+                <img src={check} alt="check" className={css.imageCheck} />
+              ) : null}
               <ErrorMessage
                 name="email"
                 component="div"
@@ -58,7 +69,7 @@ const LoginForm = () => {
                   placeholder="Password"
                   className={`${css.input} ${
                     touched.password && errors.password && css.errorInput
-                  }`}
+                  } ${!errors.password && touched.password && css.successInput}`}
                 />
                 <img
                   src={passwordVisible ? eyeopen : eyeclosed}
