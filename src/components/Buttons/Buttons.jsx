@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuth } from '../../hooks';
 import { ReactComponent as PlusSmall } from '../../images/plus-small.svg';
@@ -8,7 +7,6 @@ import { ReactComponent as Filter } from '../../images/filters-3.svg';
 import { ReactComponent as Down } from '../../images/chevron-down.svg';
 import { ReactComponent as Tick } from '../../images/tick.svg';
 import css from './Buttons.module.css';
-
 import { useNavigate } from 'react-router-dom';
 import ModalWindow from '../shared/AttentionModal';
 
@@ -59,7 +57,6 @@ const Buttons = ({ handleCategoryChange }) => {
     }
   };
 
-
   const handleCategoryFilterClick = event => {
     handleCategoryChange(event.target.innerText);
   };
@@ -96,13 +93,11 @@ const Buttons = ({ handleCategoryChange }) => {
           className={css.btn}
           onClick={handleCategoryFilterClick}
         >
-
           in good hands
         </button>
 
         {isLoggedIn && (
           <div className={css['btn-auth']}>
-
             <button
               type="button"
               className={css.btn}
@@ -115,7 +110,6 @@ const Buttons = ({ handleCategoryChange }) => {
               className={css.btn}
               onClick={handleCategoryFilterClick}
             >
-
               my ads
             </button>
           </div>
@@ -146,6 +140,7 @@ const Buttons = ({ handleCategoryChange }) => {
         </button>
 
         {/* Add Pet */}
+
         <button
           type="button"
           className={css['btn-add']}
