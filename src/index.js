@@ -12,13 +12,11 @@ axios.defaults.baseURL = 'https://your-pets-backend.onrender.com/api/';
 // axios.defaults.baseURL = 'http://localhost:8000/api/';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <PersistGate persistor={persistor}>
-        <BrowserRouter basename="/yourPet">
-          <App />
-        </BrowserRouter>
-      </PersistGate>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <PersistGate persistor={persistor}>
+      <BrowserRouter basename="/yourPet">
+        <App />
+      </BrowserRouter>
+    </PersistGate>
+  </Provider>
 );

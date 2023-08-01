@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+
 import moment from 'moment';
 // import Notify from 'notiflix';
 import { BsGenderFemale, BsGenderMale } from 'react-icons/bs';
@@ -11,13 +11,14 @@ import { HeartIcon } from '../../../icons/HeartIcon';
 import { ModalNotice } from '../ModalNotice/ModalNotice';
 import ModalWindow from '../../shared/AttentionModal';
 import { ModalDeleteWindow } from '../../shared/ModalDeleteWindow';
-import {
-  fetchAddToFavorite,
-  fetchRemoveFromFavorite,
-} from '../../../redux/notices/operations';
+
 import cat from '../../../images/cuteCat.jpg';
 
 import css from './NoticesCategoryItem.module.css';
+import {
+  addToFavoriteNotices,
+  removeFromFavoriteNotices,
+} from 'services/noticesAPI';
 
 export const NoticeCategoryItem = ({
   _id,
@@ -32,23 +33,25 @@ export const NoticeCategoryItem = ({
   location,
   petAvatar,
   owner,
+  handelDeleteFavorite,
+  handelAddFavorite,
 }) => {
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [modalAcessWindow, setmodalAcessWindow] = useState(false);
   const [modalDeleteWindow, setModalDeleteCloseClick] = useState(false);
   const { isLoggedIn, user } = useAuth();
-  const dispatch = useDispatch();
 
-  const [favorite, setFavorite] = useState(() => {
-    if (isLoggedIn) {
-      if (user.favoritePets.includes(_id)) {
-        return true;
-      } else {
-        return false;
-      }
+  const [favorite, setFavorite] = useState(false);
+
+  useEffect(() => {
+    if (user?.favoritePets?.includes(_id)) {
+      setFavorite(true);
+      console.log(favorite);
+    } else {
+      setFavorite(false);
     }
-    return false;
-  });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleDeletePet = _id => {
     // dispatch(fetchDeleteNotice(_id));
@@ -64,10 +67,16 @@ export const NoticeCategoryItem = ({
     }
 
     if (!favorite) {
-      dispatch(fetchAddToFavorite(_id));
+      addToFavoriteNotices(_id).then(() => {
+        handelAddFavorite(_id);
+      });
+      console.log('+');
       setFavorite(true);
     } else {
-      dispatch(fetchRemoveFromFavorite(_id));
+      removeFromFavoriteNotices(_id).then(() => {
+        handelDeleteFavorite(_id);
+      });
+      console.log('-');
       setFavorite(false);
     }
   };
@@ -179,6 +188,8 @@ export const NoticeCategoryItem = ({
           location={location}
           petAvatar={petAvatar}
           owner={owner}
+          handelDeleteFavorite={handelDeleteFavorite}
+          handelAddFavorite={handelAddFavorite}
         />
       )}
       {modalAcessWindow && (
