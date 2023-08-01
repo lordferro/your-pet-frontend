@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 import {
   getUserFavoritesNotices,
   getUserNotices,
-  instance,
   addToFavoriteNotices,
   removeFromFavoriteNotices,
 } from 'services/noticesAPI';
@@ -21,7 +21,7 @@ export const fetchNotices = createAsyncThunk(
         sex,
         age,
       };
-      const response = await instance.get(`/notices`, {
+      const response = await axios.get(`/notices`, {
         params,
       });
       return response.data;
@@ -31,7 +31,7 @@ export const fetchNotices = createAsyncThunk(
   }
 );
 
-export const fetchFavotiteNotices = createAsyncThunk(
+export const fetchFavoriteNotices = createAsyncThunk(
   'notices/favorites',
   async (_, thunkAPI) => {
     try {
@@ -44,7 +44,7 @@ export const fetchFavotiteNotices = createAsyncThunk(
 );
 
 export const fetchUserNotices = createAsyncThunk(
-  'notices/user/notices',
+  'notices/own',
   async (_, thunkAPI) => {
     try {
       const response = await getUserNotices();

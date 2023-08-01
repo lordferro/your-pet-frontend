@@ -29,4 +29,4 @@ const newsSlice = createSlice({
   },
 });
 
-export default newsSlice.reducer;
+export const newsReducer = newsSlice.reducer;

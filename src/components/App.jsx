@@ -9,6 +9,8 @@ import Addpet from 'pages/Add-pet/Add-pet';
 import { refreshUser } from 'redux/auth/operation';
 import { useAuth } from 'hooks';
 import { Layout } from './Layout';
+import axios from 'axios';
+import { fetchNotices } from 'redux/notices/operations';
 const MainPage = lazy(() => import('pages/MainPage'));
 const NewsPage = lazy(() => import('pages/NewsPage'));
 const NoticesPage = lazy(() => import('pages/NoticesPage/NoticesPage'));
@@ -23,6 +25,7 @@ export const App = () => {
   const { isRefreshing } = useAuth();
   useEffect(() => {
     dispatch(refreshUser());
+
   }, [dispatch]);
 
   if (isRefreshing) {

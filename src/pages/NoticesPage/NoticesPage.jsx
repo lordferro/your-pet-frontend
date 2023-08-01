@@ -3,7 +3,7 @@ import { NoticeSearch } from '../../components/Notice/NoticesSearch/NoticesSearc
 import Buttons from 'components/Buttons/Buttons';
 import css from './NoticesPage.module.css';
 import {
-  fetchFavotiteNotices,
+  fetchFavoriteNotices,
   fetchNotices,
   fetchUserNotices,
 } from 'redux/notices/operations';
@@ -44,7 +44,7 @@ export default function NoticesPage() {
 
   const limit = 12;
 
-  const totalPages = Math.ceil(notices.length / limit);
+  const totalPages = Math.ceil(notices?.length / limit);
 
   const handleFilterChange = useCallback(
     (filterName, filterValue) => {
@@ -70,7 +70,7 @@ export default function NoticesPage() {
   useEffect(() => {
     const fetchData = () => {
       if (category === 'favorite') {
-        dispatch(fetchFavotiteNotices());
+        dispatch(fetchFavoriteNotices());
       } else if (category === 'own') {
         dispatch(fetchUserNotices());
       } else dispatch(fetchNotices());

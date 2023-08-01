@@ -1,15 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const instance = axios.create({
-  baseURL: 'https://your-pet.onrender.com/api',
-});
+// export const instance = axios.create({
+//   baseURL: 'https://your-pet.onrender.com/api',
+// });
 
 export const fetchNews = createAsyncThunk(
   'news/all',
   async ({ searchQuery, page }, thunkAPI) => {
     try {
-      const response = await instance.get('/news', {
+      const response = await axios.get('/news', {
         params: {
           search: searchQuery,
           page,
