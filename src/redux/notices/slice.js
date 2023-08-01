@@ -1,9 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchNotices, fetchUserNotices } from './operations';
+import {
+  fetchFavoriteNotices,
+  fetchNotices,
+  fetchUserNotices,
+} from './operations';
 
 const initialState = {
   items: [],
-  totalPages: null,
   isLoading: false,
   error: null,
 };
@@ -15,7 +18,6 @@ const handlePending = state => {
 const handleFulfilled = (state, action) => {
   state.isLoading = false;
   state.items = action.payload;
-  state.totalPages = action.payload.totalPages;
 };
 const handleRejected = (state, { payload }) => {
   state.isLoading = false;
@@ -47,6 +49,17 @@ const noticesSlice = createSlice({
         state.items = action.payload;
       })
       .addCase(fetchUserNotices.rejected, (state, action) => {
+        handleRejected(state, action);
+      })
+      .addCase(fetchFavoriteNotices.pending, state => {
+        state.items = [];
+        handlePending(state);
+      })
+      .addCase(fetchFavoriteNotices.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.items = action.payload;
+      })
+      .addCase(fetchFavoriteNotices.rejected, (state, action) => {
         handleRejected(state, action);
       });
   },
