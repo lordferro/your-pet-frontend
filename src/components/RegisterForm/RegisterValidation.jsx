@@ -16,7 +16,10 @@ export const validationSchema = Yup.object().shape({
     .matches(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
       'Must be at least one number, one lowercase and an uppercase letter'
-    ),
+    )
+    .test('is-secure', 'Password is secure', (value) => {
+      return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(value);
+    }),
   confirmPassword: Yup.string()
     .required('Password confirmation is required')
     .oneOf([Yup.ref('password')], 'Passwords must match'),

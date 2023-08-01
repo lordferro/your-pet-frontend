@@ -45,7 +45,9 @@
 .input.errorInput {
   border-color: var(--red-color); 
 }
-
+.successInput {
+  border-color: var( --green-color);
+}
 
 .button {
     width: 456px; 
@@ -100,12 +102,41 @@ p {
   left: 16px; 
 }
 
+.successMessage {
+  color: var(--green-color);
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  bottom: 16px; 
+  left: 16px; 
+}
+
 .imageEye {
 position: absolute;
 top: 32%;
 right: 15px;
 transform: translateY(-50%);
 cursor: pointer;
+}
+
+.imageCheck {
+  height: 24px;
+  position: absolute;
+top: 32%;
+right: 15px;
+transform: translateY(-50%);
+cursor: pointer;
+color: var(--green-color);
+}
+
+.imageCross {
+    position: absolute;
+top: 32%;
+right: 15px;
+transform: translateY(-50%);
+cursor: pointer;
+color: var(--green-color);
 }
 
 
