@@ -1,28 +1,26 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import Notiflix from 'notiflix';
 import { CiSearch } from 'react-icons/ci';
 import { MdClear } from 'react-icons/md';
 import css from './NoticesSearch.module.css';
 
-export const NoticeSearch = () => {
+export const NoticeSearch = ({ handleSearchChange }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchValue = searchParams.get('query');
+  const searchValue = searchParams.get('searchQuery');
   const [keyWord, setKeyWord] = useState(searchValue || '');
 
-  const handleSearchChange = event => {
-    setKeyWord(event.currentTarget.value.toLowerCase());
+  const handelInputChange = event => {
+    console.log(keyWord);
+    setKeyWord(event.currentTarget.value.toLowerCase().trim());
+    console.log(keyWord);
   };
 
   const handleFormSubmit = event => {
     event.preventDefault();
-    const query = keyWord.trim().toLocaleLowerCase();
-    if (query === '') {
-      setSearchParams({});
-      Notiflix.Notify.info('Please enter something');
-      return;
-    }
-    setSearchParams({ query: query });
+
+    handleSearchChange(keyWord);
+
+    setSearchParams({ searchQuery: keyWord });
     setKeyWord('');
   };
 
@@ -42,7 +40,7 @@ export const NoticeSearch = () => {
           autoComplete="off"
           autoFocus
           placeholder="Search"
-          onChange={handleSearchChange}
+          onChange={handelInputChange}
         />
         <button type="submit" className={css.noticeSearchFormButton}>
           <CiSearch className={css.noticeSearchFormButtonIcon} />

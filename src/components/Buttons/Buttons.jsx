@@ -9,10 +9,16 @@ import { ReactComponent as Down } from '../../images/chevron-down.svg';
 import { ReactComponent as Tick } from '../../images/tick.svg';
 import css from './Buttons.module.css';
 
-const Buttons = () => {
+import { useNavigate } from 'react-router-dom';
+import ModalWindow from '../shared/AttentionModal';
+
+const Buttons = ({ handleCategoryChange }) => {
   const [filterOpen, setFilterOpen] = useState(false);
   const [menuAgeOpen, setMenuAgeOpen] = useState(false);
   const [menuGenderOpen, setMenuGenderOpen] = useState(false);
+  const [modalAcessWindow, setmodalAcessWindow] = useState(false);
+
+  const navigate = useNavigate();
 
   const { isLoggedIn } = useAuth();
 
@@ -53,25 +59,63 @@ const Buttons = () => {
     }
   };
 
+
+  const handleCategoryFilterClick = event => {
+    handleCategoryChange(event.target.innerText);
+  };
+
+  const handleAddPetClick = () => {
+    if (!isLoggedIn) {
+      setmodalAcessWindow(true);
+      return;
+    }
+
+    navigate('/add-pet');
+  };
+
   return (
     <div className={css['btn-group']}>
       <div className={css.buttons}>
-        <button type="button" className={css.btn} autoFocus>
+        <button
+          type="button"
+          className={css.btn}
+          onClick={handleCategoryFilterClick}
+          autoFocus
+        >
           sell
         </button>
-        <button type="button" className={css.btn}>
+        <button
+          type="button"
+          className={css.btn}
+          onClick={handleCategoryFilterClick}
+        >
           lost/found
         </button>
-        <button type="button" className={css.btn}>
+        <button
+          type="button"
+          className={css.btn}
+          onClick={handleCategoryFilterClick}
+        >
+
           in good hands
         </button>
 
         {isLoggedIn && (
           <div className={css['btn-auth']}>
-            <button type="button" className={css.btn}>
+
+            <button
+              type="button"
+              className={css.btn}
+              onClick={handleCategoryFilterClick}
+            >
               favorite ads
             </button>
-            <button type="button" className={css.btn}>
+            <button
+              type="button"
+              className={css.btn}
+              onClick={handleCategoryFilterClick}
+            >
+
               my ads
             </button>
           </div>
@@ -102,21 +146,23 @@ const Buttons = () => {
         </button>
 
         {/* Add Pet */}
-        <Link to="/add-pet">
-          <button type="button" className={css['btn-add']}>
-            Add Pet{' '}
-            <span className={css['icon-plus']}>
-              <PlusSmall />
-            </span>
-          </button>
-          <button type="button" className={css['btn-mob-add']}>
-            {' '}
-            <span className={css['icon']}>
-              <Plus />
-            </span>
-            Add pet
-          </button>
-        </Link>
+        <button
+          type="button"
+          className={css['btn-add']}
+          onClick={handleAddPetClick}
+        >
+          Add Pet{' '}
+          <span className={css['icon-plus']}>
+            <PlusSmall />
+          </span>
+        </button>
+        <button type="button" className={css['btn-mob-add']}>
+          {' '}
+          <span className={css['icon']}>
+            <Plus />
+          </span>
+          Add pet
+        </button>
       </div>
 
       {/* Filter- menu */}
@@ -235,6 +281,9 @@ const Buttons = () => {
             )}
           </div>
         </div>
+      )}
+      {modalAcessWindow && (
+        <ModalWindow onClose={() => setmodalAcessWindow(false)} />
       )}
     </div>
   );
