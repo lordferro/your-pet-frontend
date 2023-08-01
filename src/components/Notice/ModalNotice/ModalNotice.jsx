@@ -6,7 +6,21 @@ import ModalWindow from '../../shared/AttentionModal';
 import cat from '../../../images/cuteCat.jpg';
 import css from './ModalNotice.module.css';
 
-export const ModalNotice = ({ onModalCloseClick }) => {
+export const ModalNotice = ({
+  onModalCloseClick,
+  id,
+  name,
+  title,
+  birthday,
+  type,
+  comments,
+  sex,
+  action,
+  price,
+  location,
+  petAvatar,
+  owner,
+}) => {
   const [modalAcessWindow, setmodalAcessWindow] = useState(false);
   const [favorite, setFavorite] = useState(false);
 
@@ -60,51 +74,59 @@ export const ModalNotice = ({ onModalCloseClick }) => {
         </button>
         <div className={css.petInfoWrapper}>
           <div className={css.petImageWrapper}>
-            <img className={css.petImage} alt={'pet'} src={cat} />
-            <p className={css.noticeCategory}>In good hands</p>
+            {petAvatar ? (
+              <img className={css.petImage} alt={'pet'} src={petAvatar} />
+            ) : (
+              <img alt={'pet'} src={cat} className={css.petImage} />
+            )}
+            <p className={css.noticeCategory}>{action}</p>
           </div>
           <div>
-            <h2 className={css.petInfoTableTittle}>
-              Cute dog looking for a home
-            </h2>
+            <h2 className={css.petInfoTableTittle}>{title}</h2>
             <table className={css.petInfoTable}>
               <tbody>
                 <tr className={css.petInfoItem}>
                   <th className={css.petInfoItemHeading}>Name:</th>
-                  <td className={css.petInfoItemBody}>Rich</td>
+                  <td className={css.petInfoItemBody}>{name}</td>
                 </tr>
                 <tr className={css.petInfoItem}>
                   <th className={css.petInfoItemHeading}>Birthday:</th>
-                  <td className={css.petInfoItemBody}>21.09.2020</td>
+                  <td className={css.petInfoItemBody}>{birthday}</td>
                 </tr>
                 <tr className={css.petInfoItem}>
                   <th className={css.petInfoItemHeading}>Type:</th>
-                  <td className={css.petInfoItemBody}>Pomeranian</td>
+                  <td className={css.petInfoItemBody}>{type}</td>
                 </tr>
                 <tr className={css.petInfoItem}>
                   <th className={css.petInfoItemHeading}>Place:</th>
-                  <td className={css.petInfoItemBody}>Lviv</td>
+                  <td className={css.petInfoItemBody}>{location}</td>
                 </tr>
                 <tr className={css.petInfoItem}>
                   <th className={css.petInfoItemHeading}>The sex:</th>
-                  <td className={css.petInfoItemBody}>female</td>
+                  <td className={css.petInfoItemBody}>{sex}</td>
                 </tr>
+                {price && action === 'sell' && (
+                  <tr className={css.petInfoItem}>
+                    <th className={css.petInfoItemHeading}>Price:</th>
+                    <td className={css.petInfoItemBody}>{price}</td>
+                  </tr>
+                )}
                 <tr className={css.petInfoItem}>
                   <th className={css.petInfoItemHeading}>Email:</th>
                   <td className={css.petInfoItemBody}>
                     <a
-                      href={'mailto:someone@example.com'}
+                      href="mailto:{owner.email}"
                       className={css.petInfoItemLink}
                     >
-                      someone@example.com
+                      {owner.email}
                     </a>
                   </td>
                 </tr>
                 <tr className={css.petInfoItem}>
                   <td className={css.petInfoItemHeading}>Phone:</td>
                   <td className={css.petInfoItemBody}>
-                    <a href={'tel:1233'} className={css.petInfoItemLink}>
-                      +38034343444
+                    <a href="tel:{owner.phone}" className={css.petInfoItemLink}>
+                      {owner.phone}
                     </a>
                   </td>
                 </tr>
@@ -112,11 +134,7 @@ export const ModalNotice = ({ onModalCloseClick }) => {
             </table>
           </div>
         </div>
-        <p className={css.modalNoticeComment}>
-          Comments: Rich would be the perfect addition to an active family that
-          loves to play and go on walks. I bet he would love having a doggy
-          playmate too!
-        </p>
+        <p className={css.modalNoticeComment}>Comments: {comments}</p>
         <div className={css.modalNoticeButtonsWrapper}>
           {favorite ? (
             <button
@@ -137,7 +155,7 @@ export const ModalNotice = ({ onModalCloseClick }) => {
               />
             </button>
           )}
-          <a href={'tel:1233'} className={css.contactButtonLink}>
+          <a href="tel:{owner.phone}" className={css.contactButtonLink}>
             Contact
           </a>
         </div>
