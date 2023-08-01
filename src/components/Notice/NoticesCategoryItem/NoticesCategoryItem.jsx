@@ -1,5 +1,5 @@
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import moment from 'moment';
 // import Notify from 'notiflix';
 import { BsGenderFemale, BsGenderMale } from 'react-icons/bs';
@@ -11,6 +11,10 @@ import { HeartIcon } from '../../../icons/HeartIcon';
 import { ModalNotice } from '../ModalNotice/ModalNotice';
 import ModalWindow from '../../shared/AttentionModal';
 import { ModalDeleteWindow } from '../../shared/ModalDeleteWindow';
+import {
+  fetchAddToFavorite,
+  fetchRemoveFromFavorite,
+} from '../../../redux/notices/operations';
 import cat from '../../../images/cuteCat.jpg';
 
 import css from './NoticesCategoryItem.module.css';
@@ -33,7 +37,7 @@ export const NoticeCategoryItem = ({
   const [modalAcessWindow, setmodalAcessWindow] = useState(false);
   const [modalDeleteWindow, setModalDeleteCloseClick] = useState(false);
   const { isLoggedIn, user } = useAuth();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [favorite, setFavorite] = useState(() => {
     if (isLoggedIn) {
@@ -54,17 +58,16 @@ export const NoticeCategoryItem = ({
 
   // Функція для видалення або додавання картинки до улюбленої
   const handleFavoritePet = () => {
-    // if (!isLoggedIn) {
-    //   setmodalAcessWindow(true);
-    //   return;
-    // }
+    if (!isLoggedIn) {
+      setmodalAcessWindow(true);
+      return;
+    }
 
     if (!favorite) {
-      // dispatch(fetchAddToFavorite(_id));
-
+      dispatch(fetchAddToFavorite(_id));
       setFavorite(true);
-      // } else {
-      //   dispatch(fetchRemoveFromFavorite(_id));
+    } else {
+      dispatch(fetchRemoveFromFavorite(_id));
       setFavorite(false);
     }
   };

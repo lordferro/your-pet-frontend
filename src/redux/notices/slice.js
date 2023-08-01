@@ -1,9 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  fetchNotices,
-  fetchFavotiteNotices,
-  fetchUserNotices,
-} from './operations';
+import { fetchNotices, fetchUserNotices } from './operations';
 
 const initialState = {
   items: [],
@@ -42,18 +38,6 @@ const noticesSlice = createSlice({
       .addCase(fetchNotices.rejected, (state, action) => {
         handleRejected(state, action);
       })
-      .addCase(fetchFavotiteNotices.pending, state => {
-        state.items = [];
-        handlePending(state);
-      })
-      .addCase(fetchFavotiteNotices.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.items = action.payload;
-      })
-      .addCase(fetchFavotiteNotices.rejected, (state, action) => {
-        handleRejected(state, action);
-      })
-
       .addCase(fetchUserNotices.pending, state => {
         state.items = [];
         handlePending(state);

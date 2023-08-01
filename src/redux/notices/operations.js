@@ -1,8 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 import {
   getUserFavoritesNotices,
   getUserNotices,
-  instance,
+  addToFavoriteNotices,
+  removeFromFavoriteNotices,
 } from 'services/noticesAPI';
 
 export const fetchNotices = createAsyncThunk(
@@ -19,7 +21,7 @@ export const fetchNotices = createAsyncThunk(
         sex,
         age,
       };
-      const response = await instance.get(`/notices`, {
+      const response = await axios.get(`/notices`, {
         params,
       });
       return response.data;
@@ -29,7 +31,7 @@ export const fetchNotices = createAsyncThunk(
   }
 );
 
-export const fetchFavotiteNotices = createAsyncThunk(
+export const fetchFavoriteNotices = createAsyncThunk(
   'notices/favorites',
   async (_, thunkAPI) => {
     try {
@@ -42,13 +44,37 @@ export const fetchFavotiteNotices = createAsyncThunk(
 );
 
 export const fetchUserNotices = createAsyncThunk(
-  'notices/user/notices',
+  'notices/own',
   async (_, thunkAPI) => {
     try {
       const response = await getUserNotices();
       return response.notices;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchAddToFavorite = createAsyncThunk(
+  'notices/favorites',
+  async (id, { rejectWithValue }) => {
+    try {
+      const data = await addToFavoriteNotices(id);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data.message);
+    }
+  }
+);
+
+export const fetchRemoveFromFavorite = createAsyncThunk(
+  '/notices/favorites',
+  async (id, { rejectWithValue }) => {
+    try {
+      const data = await removeFromFavoriteNotices(id);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
     }
   }
 );
