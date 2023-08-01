@@ -8,6 +8,7 @@ import PageNotFound from 'pages/PageNotFound';
 import LoginForm from './LoginForm/LoginForm';
 import RegistrationForm from './RegisterForm/RegisterForm';
 import UserPage from 'pages/UserPage';
+import Addpet from '../pages/Add-pet/Add-pet';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PriveteRoute';
 import { useDispatch } from 'react-redux';
@@ -24,7 +25,7 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <Loader/>
+    <Loader />
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
@@ -47,6 +48,11 @@ export const App = () => {
           path="/user"
           element={<PrivateRoute component={UserPage} redirectTo="/login" />}
         />
+        <Route
+          path="/add-pet"
+          element={<PrivateRoute component={Addpet} redirectTo="/user" />}
+        />
+
         <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>
