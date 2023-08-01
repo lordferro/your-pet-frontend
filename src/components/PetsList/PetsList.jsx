@@ -8,6 +8,7 @@ import { getCurrentUser } from 'redux/auth/operation';
 
 import styles from './PetsList.module.css';
 
+import NoPetsAddedYet from '../../images/notHavePets.png';
 import Loader from '../Loader/Loader';
 import { PetsItem } from 'components/PetsItem/PetsItem';
 
@@ -47,14 +48,27 @@ export const PetsList = () => {
   return isLoading ? (
     <Loader />
   ) : (
-    <ul className={styles.list}>
-      {pets.map(pet => (
-        <PetsItem
-          key={pet._id}
-          pet={pet}
-          handleDeleteItem={() => handleDeleteItem(pet._id)}
-        />
-      ))}
-    </ul>
+    <>
+      {pets.length <= 0 ? (
+        <div className={styles.noPetWrapper}>
+          <div className={styles.noPetsMessage}>No pets added yet</div>
+          <img
+            className={styles.noPetsImg}
+            src={NoPetsAddedYet}
+            alt="No Pets added yet"
+          />
+        </div>
+      ) : (
+        <ul className={styles.list}>
+          {pets.map(pet => (
+            <PetsItem
+              key={pet._id}
+              pet={pet}
+              handleDeleteItem={() => handleDeleteItem(pet._id)}
+            />
+          ))}
+        </ul>
+      )}
+    </>
   );
 };

@@ -19,6 +19,9 @@
   height: 240px;
   margin-bottom: 20px;
 }
+.cardContent {
+  width: 100%;
+}
 .cardText {
   font-size: 14px;
   font-weight: 400;
@@ -73,7 +76,6 @@
   }
   .cardContent {
     height: 161px;
-    width: inherit;
   }
 }
 @media screen and (min-width: 1248px) {
@@ -91,6 +93,5 @@
   }
   .cardContent {
     height: 161px;
-    width: inherit;
   }
 }
