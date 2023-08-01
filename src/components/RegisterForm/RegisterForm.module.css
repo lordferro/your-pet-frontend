@@ -45,7 +45,15 @@
 .input.errorInput {
   border-color: var(--red-color); 
 }
+.successInput {
+  border-color: var( --green-color);
+}
 
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
 
 .button {
     width: 456px; 
@@ -61,9 +69,10 @@
   font-family: Manrope;
   font-size: 20px;
   font-weight: 600;
+  transition: transform 0.3s ease;
 }
 .button:hover {
-  transform: scale(1.03); 
+  animation: pulse 1s infinite
 }
 
 .refTitleToLogin {
@@ -100,8 +109,39 @@ p {
   left: 16px; 
 }
 
+.successMessage {
+  color: var(--green-color);
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 400;
+  position: absolute;
+  bottom: 16px; 
+  left: 16px; 
+}
+
 .imageEye {
-position: absolute;
+  position: absolute;
+  top: 32%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: right 0.3s ease; 
+}
+
+
+
+
+.imageCheck {
+  height: 24px;
+  position: absolute;
+top: 32%;
+right: 15px;
+transform: translateY(-50%);
+cursor: pointer;
+}
+
+.imageCross {
+    position: absolute;
 top: 32%;
 right: 15px;
 transform: translateY(-50%);
@@ -135,6 +175,12 @@ cursor: pointer;
     margin-bottom: 40px;
   }
   .imageEye {
+    top: 39%;
+  }
+  .imageCross{
+    top: 39%;
+  }
+  .imageCheck {
     top: 39%;
   }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import burger from '../../../images/menu-hamburger.svg';
-import cross from '../../../images/cross-small.svg'
+import cross from '../../../images/cross-burger.svg'
 import Navigation from 'components/Navigation/Navigation';
 import css from '../BurgerMenu.module.css';
 import { AuthNav } from 'components/AuthNav/AuthNav';
