@@ -16,7 +16,14 @@ const authSlice = createSlice({
     token: null,
     isLoggedIn: false,
     isRefreshing: false,
+    isUpdating: false,
+    isGreetingShow: false,
     error: null,
+  },
+  reducers: {
+    hideGreeting(state, action) {
+      state.isGreetingShow = false;
+    },
   },
   extraReducers: builder =>
     builder
@@ -25,6 +32,7 @@ const authSlice = createSlice({
         state.user = action.payload;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.isGreetingShow = true;
       })
       .addCase(register.rejected, (state, { payload }) => {
         state.error = payload;
@@ -56,15 +64,15 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(updateUser.pending, (state, action) => {
-        state.isRefreshing = false;
+        state.isUpdating = true;
       })
       .addCase(updateUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
-        state.isRefreshing = false;
+        state.isUpdating = false;
       })
       .addCase(updateUser.rejected, (state, action) => {
-        state.isRefreshing = false;
+        state.isUpdating = false;
       })
       .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
         state.user = payload;
@@ -74,4 +82,5 @@ const authSlice = createSlice({
       }),
 });
 
+export const { hideGreeting } = authSlice.actions;
 export const authReducer = authSlice.reducer;
