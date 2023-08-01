@@ -5,10 +5,14 @@ import { useAuth } from '../../../hooks';
 import ModalWindow from '../../shared/AttentionModal';
 import cat from '../../../images/cuteCat.jpg';
 import css from './ModalNotice.module.css';
+import {
+  addToFavoriteNotices,
+  removeFromFavoriteNotices,
+} from 'services/noticesAPI';
 
 export const ModalNotice = ({
   onModalCloseClick,
-  id,
+  _id,
   name,
   title,
   birthday,
@@ -20,6 +24,8 @@ export const ModalNotice = ({
   location,
   petAvatar,
   owner,
+  handelDeleteFavorite,
+  handelAddFavorite,
 }) => {
   const [modalAcessWindow, setmodalAcessWindow] = useState(false);
   const [favorite, setFavorite] = useState(false);
@@ -48,16 +54,17 @@ export const ModalNotice = ({
 
   // Функція для видалення або додавання картинки до улюбленої
   const handleFavoritePet = () => {
-    if (!isLoggedIn) {
-      setmodalAcessWindow(true);
-      return;
-    }
-
     if (!favorite) {
-      // dispatch(fetchAddToFavorite(id));
+      addToFavoriteNotices(_id).then(() => {
+        handelAddFavorite(_id);
+      });
+      console.log('+');
       setFavorite(true);
     } else {
-      // dispatch(fetchDeleteFromFavorite(id));
+      removeFromFavoriteNotices(_id).then(() => {
+        handelDeleteFavorite(_id);
+      });
+      console.log('-');
       setFavorite(false);
     }
   };
@@ -160,7 +167,7 @@ export const ModalNotice = ({
           </a>
         </div>
       </div>
-      {modalAcessWindow && (
+      {!isLoggedIn && !modalAcessWindow && (
         <ModalWindow onClose={() => setmodalAcessWindow(false)} />
       )}
     </div>
