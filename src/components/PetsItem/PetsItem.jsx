@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { ReactComponent as TrashIcon } from '../../images/trash-2.svg';
 import styles from './PetsItem.module.css';
 
@@ -39,4 +41,16 @@ export const PetsItem = ({ pet, handleDeleteItem }) => {
       </li>
     </>
   );
+};
+
+PetsItem.propTypes = {
+  pet: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    comments: PropTypes.string,
+    petAvatar: PropTypes.string,
+  }),
+  handleDeleteItem: PropTypes.func.isRequired,
 };
