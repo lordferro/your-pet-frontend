@@ -36,8 +36,8 @@ const RegistrationForm = () => {
     setConfirmPasswordVisible((prevState) => !prevState);
   };
 
-  const handleEmailClearClick = (setFieldValue) => {
-    setFieldValue('email', '');
+  const handleClearClick = (fieldName, setFieldValue) => {
+    setFieldValue(fieldName, '');
   };
 
   return (
@@ -61,30 +61,45 @@ const RegistrationForm = () => {
                 name="name"
                 placeholder="Name"
                 className={`${css.input} ${
-                  touched.name && errors.name && css.errorInput
-                } ${!errors.name && touched.name && css.successInput}`}
+                  (touched.name && errors.name && css.errorInput) ||
+                  (touched.name && !errors.name && css.successInput)
+                }`}
               />
+              {touched.name && !errors.name && (
+                <img src={check} alt="check" className={css.imageCheck} />
+              )}
+              {touched.name && errors.name && (
+                <img
+                  src={smallCross}
+                  alt="small cross"
+                  className={css.imageCross}
+                  onClick={() => handleClearClick('name', setFieldValue)}
+                />
+              )}
               <ErrorMessage name="name" component="div" className={css.error} />
             </div>
+
             <div className={css.inputContainer}>
               <Field
                 type="email"
                 name="email"
                 placeholder="Email"
                 className={`${css.input} ${
-                  touched.email && errors.email && css.errorInput
-                } ${!errors.email && touched.email && css.successInput}`}
+                  (touched.email && errors.email && css.errorInput) ||
+                  (touched.email && !errors.email && css.successInput)
+                }`}
               />
-              {touched.email && errors.email ? (
+              {touched.email && !errors.email && (
+                <img src={check} alt="check" className={css.imageCheck} />
+              )}
+              {touched.email && errors.email && (
                 <img
                   src={smallCross}
                   alt="small cross"
                   className={css.imageCross}
-                  onClick={() => handleEmailClearClick(setFieldValue)}
+                  onClick={() => handleClearClick('email', setFieldValue)}
                 />
-              ) : !errors.email && touched.email ? (
-                <img src={check} alt="check" className={css.imageCheck} />
-              ) : null}
+              )}
               <ErrorMessage name="email" component="div" className={css.error} />
             </div>
 
@@ -95,13 +110,34 @@ const RegistrationForm = () => {
                   name="password"
                   placeholder="Password"
                   className={`${css.input} ${
-                    touched.password && errors.password && css.errorInput
-                  } ${!errors.password && touched.password && css.successInput}`}
+                    (touched.password && errors.password && css.errorInput) ||
+                    (touched.password && !errors.password && css.successInput)
+                  }`}
                 />
+                {touched.password && !errors.password && (
+                  <img
+                    src={check}
+                    alt="check"
+                    className={css.imageCheck}
+                  />
+                )}
+                {touched.password && errors.password && (
+                  <img
+                    src={smallCross}
+                    alt="small cross"
+                    className={css.imageCross}
+                    onClick={() => handleClearClick('password', setFieldValue)}
+                  />
+                )}
                 <img
                   src={passwordVisible ? eyeopen : eyeclosed}
-                  alt={passwordVisible ? 'eye open' : 'eye closed'}
+                  alt="toggle password visibility"
                   className={css.imageEye}
+                  style={
+                    touched.password
+                      ? { right: '40px' }
+                      : {}
+                  }
                   onClick={handlePasswordEyeClick}
                 />
               </div>
@@ -118,13 +154,30 @@ const RegistrationForm = () => {
                   name="confirmPassword"
                   placeholder="Confirm password"
                   className={`${css.input} ${
-                    touched.confirmPassword && errors.confirmPassword && css.errorInput
-                  } ${!errors.confirmPassword && touched.confirmPassword && css.successInput}`}
+                    (touched.confirmPassword && errors.confirmPassword && css.errorInput) ||
+                    (touched.confirmPassword && !errors.confirmPassword && css.successInput)
+                  }`}
                 />
+                {touched.confirmPassword && !errors.confirmPassword && (
+                  <img src={check} alt="check" className={css.imageCheck} />
+                )}
+                {touched.confirmPassword && errors.confirmPassword && (
+                  <img
+                    src={smallCross}
+                    alt="small cross"
+                    className={css.imageCross}
+                    onClick={() => handleClearClick('confirmPassword', setFieldValue)}
+                  />
+                )}
                 <img
-                  src={confirmPasswordVisible ? eyeopen : eyeclosed}
-                  alt={confirmPasswordVisible ? 'eye open' : 'eye closed'}
+                  src={passwordVisible ? eyeopen : eyeclosed}
+                  alt="toggle confirm password visibility"
                   className={css.imageEye}
+                  style={
+                    touched.confirmPassword
+                      ? { right: '40px' }
+                      : {}
+                  }
                   onClick={handleConfirmPasswordEyeClick}
                 />
               </div>

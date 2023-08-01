@@ -33,7 +33,7 @@ const LoginForm = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched, setFieldValue }) => (
+        {({ values, errors, touched, setFieldValue }) => (
           <Form className={css.login_form} autoComplete="off">
             <h2 className={css.login_title}>Login</h2>
             <div className={css.inputContainer}>
@@ -71,10 +71,30 @@ const LoginForm = () => {
                     touched.password && errors.password && css.errorInput
                   } ${!errors.password && touched.password && css.successInput}`}
                 />
+                {touched.password && (errors.password || !values.password) && (
+                  <img
+                    src={smallCross}
+                    alt="small cross"
+                    className={css.imageCross}
+                    onClick={() => setFieldValue('password', '')}
+                  />
+                )}
+                {touched.password && !errors.password && (
+                  <img
+                    src={check}
+                    alt="check"
+                    className={css.imageCheck}
+                  />
+                )}
                 <img
                   src={passwordVisible ? eyeopen : eyeclosed}
-                  alt={passwordVisible ? 'eye open' : 'eye closed'}
+                  alt="toggle password visibility"
                   className={css.imageEye}
+                  style={
+                    touched.password
+                      ? { right: '40px' }
+                      : {}
+                  }
                   onClick={handleEyeClick}
                 />
               </div>
