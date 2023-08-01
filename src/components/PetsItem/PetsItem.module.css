@@ -72,9 +72,6 @@
     margin-bottom: 16px;
   }
   .cardContent {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
     height: 161px;
     width: inherit;
   }
@@ -93,9 +90,6 @@
     height: 161px;
   }
   .cardContent {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
     height: 161px;
     width: inherit;
   }

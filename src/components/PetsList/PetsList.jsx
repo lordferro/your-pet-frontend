@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import Notiflix from 'notiflix';
 
 import { selectUser } from 'redux/auth/selectors';
+import { getCurrentUser } from 'redux/auth/operation';
 
 import styles from './PetsList.module.css';
 
 import Loader from '../Loader/Loader';
 import { PetsItem } from 'components/PetsItem/PetsItem';
 
-import { getCurrentUser } from '../../services/auth';
 import { deleteUserNoticeById } from '../../services/noticesAPI';
 
 export const PetsList = () => {
@@ -17,18 +18,20 @@ export const PetsList = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const token = useSelector(selectUser)?.token;
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    getCurrentUser()
+    dispatch(getCurrentUser())
       .then(user => {
-        setPets(user.myPets);
+        console.log('User:', user);
+        setPets(user.payload.myPets);
         setIsLoading(false);
       })
       .catch(error => {
-        console.log('error with fetching current user', error);
+        console.log('Error fetching current user:', error);
         setIsLoading(false);
       });
-  }, []);
+  }, [dispatch]);
 
   const handleDeleteItem = petId => {
     deleteUserNoticeById(petId, token)

@@ -64,7 +64,7 @@ export const refreshUser = createAsyncThunk(
 );
 
 export const getCurrentUser = createAsyncThunk(
-  'user/current',
+  'auth/current',
   async (_, { rejectWithValue, getState }) => {
     try {
       const value = getState().auth.token;
@@ -72,7 +72,7 @@ export const getCurrentUser = createAsyncThunk(
         return rejectWithValue('Unable to fetch user');
       }
       setAuthHeader(value);
-      const { data } = await axios.get('user/current');
+      const { data } = await axios.get('auth/current');
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
