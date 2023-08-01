@@ -11,11 +11,11 @@ import {
   selectTotalPages,
 } from '../redux/news/newsSelector';
 
-import css from './NewsPage.module.css';
-
+import css from './newsPage.module.css';
 import NewsForm from 'components/News/NewsForm';
 import NewsList from 'components/News/NewsList';
 import Loader from 'components/Loader/Loader';
+import BackgroundColor from '../components/shared/BackgroundColor';
 
 const NewsPage = () => {
   const dispatch = useDispatch();
@@ -44,7 +44,8 @@ const NewsPage = () => {
   };
 
   return (
-    <>
+    <BackgroundColor>
+    <div className={css.container}>
       <h1 className={css.title}>News</h1>
       <NewsForm handleSearchChange={handleSearchChange} />
       {isLoading && !error && <Loader />}
@@ -65,7 +66,8 @@ const NewsPage = () => {
           />
         </div>
       )}
-    </>
+    </div>
+    </BackgroundColor>
   );
 };
 
