@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   margin-top: 80px;
+  margin-bottom: 180px;
 }
 
 .login_title {
@@ -39,7 +40,6 @@
   font-weight: 400;
   outline: none;
 }
-
 
 .input.errorInput {
   border-color: var(--red-color); 
@@ -99,6 +99,15 @@ p {
   left: 16px;
 }
 
+.imageEye {
+position: absolute;
+top: 31%;
+right: 15px;
+transform: translateY(-50%);
+cursor: pointer;
+}
+
+
 @media (max-width: 767px) {
   .login_form {
     width: 280px;
@@ -124,5 +133,8 @@ p {
   }
   .refTitleToReg {
     margin-bottom: 40px;
+  }
+  .imageEye {
+    top: 39%;
   }
 }

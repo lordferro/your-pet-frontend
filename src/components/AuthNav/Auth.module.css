@@ -15,6 +15,14 @@
   text-decoration: none; 
 }
 
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+
 .buttonLogin {
     display: flex;
     align-items: center;
@@ -31,9 +39,10 @@
     cursor: pointer;
     margin-right: 20px;
     text-decoration: none;
+    transition: transform 0.3s ease;
 }
-.buttonLogin:hover {
-    transform: scale(1.03); 
+.buttonLogin:hover {      
+    animation: pulse 1s infinite
   }
   
 .buttonReg {
@@ -51,11 +60,12 @@
     font-weight: 600;
     cursor: pointer;
     text-decoration: none;
+    transition: transform 0.3s ease;
 }
 
 
 .buttonReg:hover {
-    transform: scale(1.03); 
+  animation: pulse 1s infinite
   }
 
 .imageLogin {

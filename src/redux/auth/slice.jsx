@@ -5,6 +5,7 @@ import {
   refreshUser,
   register,
   getCurrentUser,
+  updateUser,
 } from './operation';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
@@ -34,6 +35,10 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
+      .addCase(logIn.rejected, (state, action) => {
+        state.error = action.payload;
+        Notify.failure(action.payload);
+      })
       .addCase(logOut.fulfilled, (state, action) => {
         state.user = { name: null, email: null };
         state.token = null;
@@ -48,6 +53,17 @@ const authSlice = createSlice({
         state.isRefreshing = false;
       })
       .addCase(refreshUser.rejected, (state, action) => {
+        state.isRefreshing = false;
+      })
+      .addCase(updateUser.pending, (state, action) => {
+        state.isRefreshing = false;
+      })
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(updateUser.rejected, (state, action) => {
         state.isRefreshing = false;
       })
       .addCase(getCurrentUser.fulfilled, (state, { payload }) => {

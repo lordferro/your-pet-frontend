@@ -24,11 +24,14 @@ export const App = () => {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <Loader />
+
+    <Loader/>
+
   ) : (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route path="/main" index element={<MainPage />} />
+        <Route index element={<MainPage />} />
+        <Route path="/main" element={<MainPage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/notices/:categoryName" element={<NoticesPage />}>
           <Route path="sell" element={<NoticesPage />} />
