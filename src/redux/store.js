@@ -9,20 +9,10 @@ import {
   REGISTER,
 } from 'redux-persist';
 
-import storage from 'redux-persist/lib/storage';
-import { authReducer } from './auth/slice';
-import newsReducer from './news/newsSlice';
-
-
 import { rootReducer } from './rootReducer';
 
 export const store = configureStore({
-
-  reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
-    news: newsReducer,
-  },
-
+  reducer: rootReducer,
   middleware: getDefaultMiddleware => [
     ...getDefaultMiddleware({
       serializableCheck: {
