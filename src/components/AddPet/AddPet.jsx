@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import ProgressBar from './progressBar/progressBar';
@@ -15,65 +13,92 @@ import { useNavigate } from 'react-router-dom';
 const validationSchema = {
   current1: Yup.object().shape({
     name: Yup.string().min(2).max(16).required(),
-    date: Yup.string().required(),
+    birthday: Yup.string().required(),
     type: Yup.string().required(),
   }),
   current2: Yup.object().shape({
     name: Yup.string().required(),
-    date: Yup.string().required(),
+    birthday: Yup.string().required(),
     type: Yup.string().required(),
     title: Yup.string().required(),
   }),
   current3: Yup.object().shape({
     name: Yup.string().required(),
-    date: Yup.string().required(),
+    birthday: Yup.string().required(),
     type: Yup.string().required(),
     title: Yup.string().required(),
   }),
   current4: Yup.object().shape({
     name: Yup.string().required(),
-    date: Yup.string().required(),
+    birthday: Yup.string().required(),
     type: Yup.string().required(),
-    title: Yup.string().required(),
   }),
 };
-const addPet = createAsyncThunk('/pets', async (detales, thunkAPI) => {
+
+const addPet = async detales => {
   try {
     const res = await axios.post('/pets', detales);
+    console.log('addpet' + res);
     return res.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data.message);
+    console.log(error.response.data.message);
   }
-});
-
+};
 const AddPet = () => {
   const [step, setStep] = useState(1);
   const [current, setCurrent] = useState(1);
   const [error, setError] = useState({});
-  const [avatar, setAvatar] = useState({});
-  const [action, setAction] = useState('your pet');
+  const [avatar, setAvatar] = useState(null);
+  const [action, setAction] = useState('my pet');
   const [detales, setDetaes] = useState({
-    _id: '',
     action: '',
     name: '',
-    date: '',
+    birthday: '',
     comments: '',
     petAvatar: '',
     title: '',
     type: '',
     location: '',
-    price: '',
+    price: '0',
     sex: '',
   });
-  const navigate = useNavigate();
-  function submit({ resetForm }) {
-    if (step === 4) {
-      detales.action = action;
-      detales.petAvatar = avatar;
-      detales._id = nanoid();
-      addPet(detales);
 
-      navigate('/user');
+  const navigate = useNavigate();
+  function submit() {
+    if (step === 4) {
+      const dateForSubmit =
+        detales.birthday.substr(8, 2) +
+        '-' +
+        detales.birthday.substr(5, 2) +
+        '-' +
+        detales.birthday.substr(0, 4);
+
+      const formData = new FormData();
+      formData.append('action', action);
+      formData.append('name', detales.name);
+      formData.append('petAvatar', avatar);
+      formData.append('type', detales.type);
+      formData.append('comments', detales.comments);
+      formData.append('birthday', dateForSubmit);
+
+      if (current === 3 || current === 4) {
+        formData.append('title', detales.title);
+        formData.append('sex', detales.sex);
+        formData.append('location', detales.location);
+      }
+
+      if (current === 2) {
+        console.log(detales.sex);
+        formData.append('title', detales.title);
+        formData.append('sex', detales.sex);
+        formData.append('location', detales.location);
+        formData.append('price', detales.price);
+      }
+      addPet(formData);
+      if (current === 1) {
+        navigate('/user');
+      } else navigate('/notices/own');
+
       console.log('sucsess');
     }
   }
@@ -97,7 +122,9 @@ const AddPet = () => {
         <Form
           autoComplete="off"
           className={
-            (current === 2 && step === 3) || (current === 3 && step === 3)
+            (current === 2 && step === 3) ||
+            (current === 3 && step === 3) ||
+            (current === 4 && step === 3)
               ? css.FormDivSale
               : css.FormDiv
           }
@@ -117,7 +144,10 @@ const AddPet = () => {
             </h1>
           ) : null}
           {step > 1 && current === 4 ? (
-            <h1 className={css.formTitle}> Pet in good hands</h1>
+            <h1 className={step === 3 ? css.formTitle1 : css.formTitle}>
+              {' '}
+              Pet in good hands
+            </h1>
           ) : null}
 
           <ProgressBar step={step} current={current}></ProgressBar>
@@ -129,7 +159,7 @@ const AddPet = () => {
               setOption={SetOption}
               current={current}
               touched={touched}
-            ></Option>
+            />
           ) : null}
 
           {step === 2 ? (
@@ -138,7 +168,7 @@ const AddPet = () => {
               errors={error}
               values={values}
               touched={touched}
-            ></Detales>
+            />
           ) : null}
 
           {step === 3 ? (
@@ -147,7 +177,7 @@ const AddPet = () => {
               errors={error}
               current={current}
               setAvatar={setAvatar}
-            ></More>
+            />
           ) : null}
 
           <FormBtn
@@ -159,7 +189,7 @@ const AddPet = () => {
             values={values}
             setDetaes={setDetaes}
             current={current}
-          ></FormBtn>
+          />
         </Form>
       )}
     </Formik>

@@ -33,7 +33,9 @@ const ProgressBar = ({ step, current }) => {
   return (
     <div
       className={
-        (step === 3) & (current === 2) || (step === 3) & (current === 3)
+        (step === 3) & (current === 2) ||
+        (step === 3) & (current === 3) ||
+        (step === 3) & (current === 4)
           ? css.progressBar1
           : css.progressBar
       }
