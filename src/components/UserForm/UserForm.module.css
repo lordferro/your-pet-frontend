@@ -135,7 +135,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  margin: 0 auto 21px;
 }
 
 .btnConfirm {
@@ -200,10 +200,6 @@
     margin-bottom: 21px;
   }
 
-  .btnDual {
-    margin-bottom: 21px;
-  }
-
   .label {
     font-size: 14px;
   }
@@ -247,10 +243,6 @@
 
   .btnEdit {
     margin-top: 14px;
-    margin-bottom: 21px;
-  }
-
-  .btnDual {
     margin-bottom: 21px;
   }
 
@@ -318,6 +310,11 @@
     padding: 20px;
   }
 
+  .avatar {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .avatarReadonlyON {
     margin: 0 auto 63px auto;
   }
@@ -327,6 +324,7 @@
   }
 
   .btnDual {
+    margin-left: 0;
     margin-bottom: 25px;
   }
 }

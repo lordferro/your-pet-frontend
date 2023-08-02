@@ -12,7 +12,6 @@ export const NoticeSearch = ({ handleSearchChange }) => {
   const handelInputChange = event => {
     console.log(keyWord);
     setKeyWord(event.currentTarget.value.toLowerCase().trim());
-    console.log(keyWord);
   };
 
   const handleFormSubmit = event => {
@@ -21,12 +20,12 @@ export const NoticeSearch = ({ handleSearchChange }) => {
     handleSearchChange(keyWord);
 
     setSearchParams({ searchQuery: keyWord });
-    setKeyWord('');
   };
 
   const handleInputClear = event => {
     setSearchParams('');
     setKeyWord('');
+    handleSearchChange('');
   };
 
   return (

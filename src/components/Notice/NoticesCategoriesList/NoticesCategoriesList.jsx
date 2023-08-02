@@ -9,9 +9,7 @@ import {
 
 export const NoticesCategoriesList = ({ cards }) => {
   const [favoritesPets, setFavoritesPets] = useState([]);
-  // const sortedCard = [...card].sort(
-  //   (a, b) => new Date(b.date) - new Date(a.date)
-  // );
+
   const { user } = useAuth();
   useEffect(() => {
     setFavoritesPets(user.favoritePets);

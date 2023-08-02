@@ -14,6 +14,7 @@
 
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(auto-fillt, minmax(336px, 1fr));
+
     column-gap: 32px;
     row-gap: 46px;
     margin-top: 40px;
@@ -162,7 +163,7 @@
   border-radius: 20px;
   border: transparent;
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
-
+  
   @media screen and (min-width: 480px) {
     width: 380px;
   }
