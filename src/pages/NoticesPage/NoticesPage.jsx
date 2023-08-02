@@ -5,6 +5,7 @@ import css from './NoticesPage.module.css';
 import {
   fetchFavoriteNotices,
   fetchNotices,
+  fetchPage,
   fetchUserNotices,
 } from 'redux/notices/operations';
 import {
@@ -42,9 +43,7 @@ export default function NoticesPage() {
 
   const [activePage, setActivePage] = useState(0);
 
-  const limit = 12;
-
-  const totalPages = Math.ceil(notices?.length / limit);
+  const [totalPages, setTotalPages] = useState();
 
   const handleFilterChange = useCallback(
     (filterName, filterValue) => {
@@ -109,6 +108,17 @@ export default function NoticesPage() {
   }, [searchQuery, dispatch, handleFilterChange]);
 
   useEffect(() => {
+    dispatch(fetchPage())
+      .then(total => {
+        console.log('total:', total.payload.length);
+        const totalPages = Math.ceil(total.payload.length / 4);
+        setTotalPages(totalPages);
+        console.log(totalPages);
+      })
+      .catch(error => {
+        console.log('Error fetching current user:', error);
+      });
+
     const fetchData = () => {
       if (category === 'favorite') {
         dispatch(fetchFavoriteNotices());
@@ -138,10 +148,9 @@ export default function NoticesPage() {
 
       {category !== 'favorite' &&
         category !== 'own' &&
-        notices &&
-        totalPages > 1 &&
-        notices.length > 0 && (
-          <div className={css.wrapper}>
+        notices.length > 0 &&
+        totalPages > 1 && (
+          <div className={css.paginationWrapper}>
             <ReactPaginate
               previousLabel={<BsArrowLeft />}
               nextLabel={<BsArrowRight />}
@@ -149,8 +158,8 @@ export default function NoticesPage() {
               onPageChange={handlePageClick}
               containerClassName={css.pagination}
               activeClassName={css.paginationActive}
-              pageRangeDisplayed={2}
-              marginPagesDisplayed={2}
+              pageRangeDisplayed={1}
+              marginPagesDisplayed={1}
               breakLabel={'...'}
               forcePage={activePage}
             />

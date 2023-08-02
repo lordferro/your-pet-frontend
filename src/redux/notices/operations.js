@@ -7,19 +7,34 @@ import {
   removeFromFavoriteNotices,
 } from 'services/noticesAPI';
 
+export const fetchPage = createAsyncThunk(
+  'notices/page',
+  async (_, thunkAPI) => {
+    try {
+      const { category } = thunkAPI.getState().filters;
+      const params = {
+        action: category,
+      };
+      const response = await axios.get(`/notices`, {
+        params,
+      });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const fetchNotices = createAsyncThunk(
   'notices/filter',
   async (_, thunkAPI) => {
     try {
-      const { category, searchQuery, page, limit, sex, age } =
-        thunkAPI.getState().filters;
+      const { category, searchQuery, page } = thunkAPI.getState().filters;
       const params = {
         action: category,
         searchQuery: searchQuery,
         page,
-        limit,
-        sex,
-        age,
+        limit: 4,
       };
       const response = await axios.get(`/notices`, {
         params,

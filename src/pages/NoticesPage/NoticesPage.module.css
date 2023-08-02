@@ -79,3 +79,10 @@
   border-color: #54adff;
   color: #fef9f9;
 }
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
