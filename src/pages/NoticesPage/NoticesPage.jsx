@@ -28,7 +28,7 @@ export default function NoticesPage() {
 
   const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  const [category = 'sell', setCategory] = useState();
+  const [category, setCategory] = useState('sell');
 
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -52,33 +52,6 @@ export default function NoticesPage() {
     },
     [dispatch]
   );
-
-  useEffect(() => {
-    handleFilterChange('category', category);
-    setActivePage(0);
-  }, [category, dispatch, handleFilterChange]);
-
-  useEffect(() => {
-    handleFilterChange('page', activePage + 1);
-  }, [activePage, dispatch, handleFilterChange]);
-
-  useEffect(() => {
-    setActivePage(0);
-    handleFilterChange('searchQuery', searchQuery);
-  }, [searchQuery, dispatch, handleFilterChange]);
-
-  useEffect(() => {
-    const fetchData = () => {
-      if (category === 'favorite') {
-        dispatch(fetchFavoriteNotices());
-      } else if (category === 'own') {
-        dispatch(fetchUserNotices());
-      } else dispatch(fetchNotices());
-    };
-    fetchData();
-    // console.log(notices);
-    // console.log(totalPages);
-  }, [category, dispatch, searchQuery, isLoggedIn, user, activePage]);
 
   const handleSearchChange = value => {
     setSearchQuery(value);
@@ -121,6 +94,31 @@ export default function NoticesPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     setActivePage(selected);
   };
+
+  useEffect(() => {
+    handleFilterChange('category', category);
+    setActivePage(0);
+  }, [category, dispatch, handleFilterChange]);
+
+  useEffect(() => {
+    handleFilterChange('page', activePage + 1);
+  }, [activePage, dispatch, handleFilterChange]);
+
+  useEffect(() => {
+    setActivePage(0);
+    handleFilterChange('searchQuery', searchQuery);
+  }, [searchQuery, dispatch, handleFilterChange]);
+
+  useEffect(() => {
+    const fetchData = () => {
+      if (category === 'favorite') {
+        dispatch(fetchFavoriteNotices());
+      } else if (category === 'own') {
+        dispatch(fetchUserNotices());
+      } else dispatch(fetchNotices());
+    };
+    fetchData();
+  }, [category, isLoggedIn, user, dispatch, searchQuery, activePage]);
 
   return (
     <div className={css.container}>

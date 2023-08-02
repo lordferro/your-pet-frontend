@@ -23,7 +23,6 @@ export const App = () => {
   const { isRefreshing } = useAuth();
   useEffect(() => {
     dispatch(refreshUser());
-
   }, [dispatch]);
 
   if (isRefreshing) {
@@ -40,16 +39,18 @@ export const App = () => {
           <Route path="sell" element={<NoticesPage />} />
           <Route path="lost-found" element={<NoticesPage />} />
           <Route path="for-free" element={<NoticesPage />} />
+          <Route path="favorite" element={<NoticesPage />} />
+          <Route path="own" element={<NoticesPage />} />
         </Route>
 
-        <Route
+        {/* <Route
           path="/notices/favorite"
           element={<PrivateRoute component={NoticesPage} redirectTo="/login" />}
         />
         <Route
           path="/notices/own"
           element={<PrivateRoute component={NoticesPage} redirectTo="/login" />}
-        />
+        /> */}
 
         <Route path="/friends" element={<OurFriendsPage />} />
         <Route

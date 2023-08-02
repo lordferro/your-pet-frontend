@@ -2,7 +2,6 @@ import axios from 'axios';
 
 export const getUserFavoritesNotices = async () => {
   const { data } = await axios.get(`/notices/favorites`);
-  console.log(data)
   return data;
 };
 

@@ -36,7 +36,7 @@ export const fetchFavoriteNotices = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await getUserFavoritesNotices();
-      return response.favorite;
+      return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -48,7 +48,7 @@ export const fetchUserNotices = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await getUserNotices();
-      return response.notices;
+      return response;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
