@@ -1,6 +1,5 @@
+@import-normalize;
 
-
-@import-normalize; /* bring in normalize.css styles */
 body.lock-scroll {
     overflow: hidden;
   }
