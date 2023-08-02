@@ -183,4 +183,7 @@ cursor: pointer;
   .imageCheck {
     top: 39%;
   }
+  .successMessage {
+top:50px;
+  }
 }
