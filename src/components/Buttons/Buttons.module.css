@@ -20,6 +20,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+    cursor: url('../../images/pawCursor.svg'), auto;
   }
 
   .btn-filter {
@@ -36,6 +37,7 @@
     border: transparent;
     background-color: var(--blue-light-color);
     color: var(--blue-color);
+    cursor: url('../../images/pawCursor.svg'), auto;
   }
 
   .btn-mob-filter:hover,
@@ -76,6 +78,7 @@
     justify-content: center;
     align-items: center;
     z-index: 10;
+    cursor: url('../../images/pawCursor.svg'), auto;
   }
 
   .btn-mob-add:hover,
@@ -94,6 +97,7 @@
     font-weight: 500;
     font-size: 14px;
     height: 35px;
+    cursor: url('../../images/pawCursor.svg'), auto;
   }
 
   .btn:hover,
@@ -118,6 +122,7 @@
     color: var(--blue-color);
     background-color: white;
     z-index: 1;
+    cursor: url('../../images/pawCursor.svg'), auto;
   }
 
   .title {
@@ -130,7 +135,7 @@
     border: transparent;
     background-color: transparent;
     margin-right: 10px;
-    cursor: pointer;
+    cursor: url('../../images/pawCursor.svg'), auto;
   }
 
   .age-menu,
@@ -139,7 +144,7 @@
     font-size: 14px;
     background-color: var(--blue-light-color);
     border-radius: 20px;
-    cursor: pointer;
+    cursor: url('../../images/pawCursor.svg'), auto;
   }
 
   .title-menu {
@@ -212,7 +217,7 @@
     border-radius: 40px;
     background-color: var(--blue-color);
     color: #fef9f9;
-    cursor: pointer;
+    cursor: url('../../images/pawCursor.svg'), auto;
     font-weight: 700;
     font-size: 16px;
     justify-content: center;
@@ -234,7 +239,7 @@
     border-radius: 40px;
     background-color: transparent;
     color: var(--blue-color);
-    cursor: pointer;
+    cursor: url('../../images/pawCursor.svg'), auto;
     font-weight: 700;
     font-size: 16px;
     justify-content: center;

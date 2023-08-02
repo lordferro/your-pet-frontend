@@ -10,31 +10,31 @@
 }
 
 .registration_title {
-    margin-top: 60px;
-    margin-bottom: 40px;
-    font-family: Manrope;
-    font-size: 36px;
-    font-weight: 500;
+  margin-top: 60px;
+  margin-bottom: 40px;
+  font-family: Manrope;
+  font-size: 36px;
+  font-weight: 500;
 }
 
 .registration_form {
   width: 608px;
   height: 617px;
   border-radius: 40px;
-  display: flex; 
-  flex-direction: column; 
-  justify-content: center; 
-  align-items: center; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: var(--primary-white-color);
   box-shadow: var(--input-shadow);
 }
 
 .input {
-  width: 440px; 
+  width: 440px;
   height: 46px;
   border: 1px solid var(--blue-color);
   border-radius: 40px;
-  margin-bottom: 32px; 
+  margin-bottom: 32px;
   padding-left: 16px;
   font-family: Manrope;
   font-size: 16px;
@@ -43,27 +43,33 @@
 }
 
 .input.errorInput {
-  border-color: var(--red-color); 
+  border-color: var(--red-color);
 }
 .successInput {
-  border-color: var( --green-color);
+  border-color: var(--green-color);
 }
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .button {
-    width: 456px; 
-    height: 46px;
-    border: 1px solid var(--blue-color);
+  width: 456px;
+  height: 46px;
+  border: 1px solid var(--blue-color);
   background-color: var(--blue-color);
   color: #fff;
   border: none;
   border-radius: 40px;
-  cursor: pointer;
+  cursor: url('../../images/pawCursor.svg'), auto;
   margin-top: 8px;
   margin-bottom: 16px;
   font-family: Manrope;
@@ -72,27 +78,28 @@
   transition: transform 0.3s ease;
 }
 .button:hover {
-  animation: pulse 1s infinite
+  animation: pulse 1s infinite;
 }
 
 .refTitleToLogin {
   font-family: Manrope;
-    font-size: 12px;
-font-weight: 200;
-    color: #888888;
-    margin-bottom: 60px;
+  font-size: 12px;
+  font-weight: 200;
+  color: #888888;
+  margin-bottom: 60px;
 }
 
 .refLogin {
   font-family: Manrope;
-font-size: 12px;
-font-weight: 200;
-color:var(--blue-color);
+  font-size: 12px;
+  font-weight: 200;
+  color: var(--blue-color);
+  cursor: url('../../images/pawCursor.svg'), auto;
 }
 
 p {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .inputContainer {
@@ -105,8 +112,8 @@ p {
   font-size: 12px;
   font-weight: 400;
   position: absolute;
-  bottom: 16px; 
-  left: 16px; 
+  bottom: 16px;
+  left: 16px;
 }
 
 .successMessage {
@@ -115,8 +122,8 @@ p {
   font-size: 12px;
   font-weight: 400;
   position: absolute;
-  bottom: 16px; 
-  left: 16px; 
+  bottom: 16px;
+  left: 16px;
 }
 
 .imageEye {
@@ -124,30 +131,26 @@ p {
   top: 32%;
   right: 15px;
   transform: translateY(-50%);
-  cursor: pointer;
-  transition: right 0.3s ease; 
+  cursor: url('../../images/pawCursor.svg'), auto;
+  transition: right 0.3s ease;
 }
-
-
-
 
 .imageCheck {
   height: 24px;
   position: absolute;
-top: 32%;
-right: 15px;
-transform: translateY(-50%);
-cursor: pointer;
+  top: 32%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: url('../../images/pawCursor.svg'), auto;
 }
 
 .imageCross {
-    position: absolute;
-top: 32%;
-right: 15px;
-transform: translateY(-50%);
-cursor: pointer;
+  position: absolute;
+  top: 32%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: url('../../images/pawCursor.svg'), auto;
 }
-
 
 @media (max-width: 767px) {
   .registration_form {
@@ -162,7 +165,7 @@ cursor: pointer;
   .button {
     width: 256px;
     height: 48px;
-    margin-bottom: 8px
+    margin-bottom: 8px;
   }
   .error {
     bottom: 0px;
@@ -177,13 +180,13 @@ cursor: pointer;
   .imageEye {
     top: 39%;
   }
-  .imageCross{
+  .imageCross {
     top: 39%;
   }
   .imageCheck {
     top: 39%;
   }
   .successMessage {
-top:50px;
+    top: 50px;
   }
 }

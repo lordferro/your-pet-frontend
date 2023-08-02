@@ -20,6 +20,7 @@
   color: var(--primary-white-color);
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
   transition: box-shadow 250ms linear;
+  cursor: url('../../../src/images/pawCursor.svg'), auto;
 }
 
 .button:hover,

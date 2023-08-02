@@ -7,7 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(---backDrop);
+  background-color: rgba(97, 97, 97, 0.6);
+  backdrop-filter: blur(4px);
   z-index: 999;
 }
 
@@ -34,7 +35,7 @@
   background-color: transparent;
   border-radius: 50%;
   border: none;
-  cursor: url('../../images/pawCursor.svg') auto;
+  cursor: url('../../../src/images/pawCursor.svg') auto;
   transition: color 250ms cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 

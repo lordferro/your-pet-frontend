@@ -1,10 +1,10 @@
 @import '../../styles/colors.module.css';
 
 .AuthNavContainer {
-    display: flex;
+  display: flex;
 }
 
-@media  (max-width: 767px) {
+@media (max-width: 767px) {
   .AuthNavContainer {
     display: flex;
     flex-direction: column;
@@ -12,66 +12,69 @@
 }
 
 .link {
-  text-decoration: none; 
+  text-decoration: none;
+  cursor: url('../../images/pawCursor.svg'), auto;
 }
-
 
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-
 
 .buttonLogin {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 165px;
-    height: 40px;
-    color: var(--background-color);
-    background-color: var(--yellow-color);
-    border-radius: 40px;
-    border-color: transparent;
-    font-family: Manrope;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-right: 20px;
-    text-decoration: none;
-    transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 165px;
+  height: 40px;
+  color: var(--background-color);
+  background-color: var(--yellow-color);
+  border-radius: 40px;
+  border-color: transparent;
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: url('../../images/pawCursor.svg'), auto;
+  margin-right: 20px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
 }
-.buttonLogin:hover {      
-    animation: pulse 1s infinite
-  }
-  
-.buttonReg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 140px;
-    height: 40px;
-    color: var(--yellow-color);
-    background-color: var(--background-color);
-    border-radius: 40px;
-    border: 1px solid var(--yellow-color);
-    font-family: Manrope;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    transition: transform 0.3s ease;
+.buttonLogin:hover {
+  animation: pulse 1s infinite;
 }
 
+.buttonReg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 40px;
+  color: var(--yellow-color);
+  background-color: var(--background-color);
+  border-radius: 40px;
+  border: 1px solid var(--yellow-color);
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: url('../../images/pawCursor.svg'), auto;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
 
 .buttonReg:hover {
-  animation: pulse 1s infinite
-  }
-
-.imageLogin {
-    margin-left: 8px;
+  animation: pulse 1s infinite;
 }
 
+.imageLogin {
+  margin-left: 8px;
+}
 
 @media (max-width: 767px) {
   .buttonLogin {
