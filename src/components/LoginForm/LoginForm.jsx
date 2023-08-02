@@ -9,6 +9,7 @@ import eyeopen from '../../images/eye-open.svg';
 import smallCross from '../../images/cross-small.svg';
 import check from '../../images/check.svg';
 import css from './LoginForm.module.css';
+import BackgroundImg from 'components/shared/BackgroundImg';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className={css.login_container}>
+    <BackgroundImg> <div className={css.login_container}>
       <Formik
         initialValues={{
           email: '',
@@ -116,7 +117,8 @@ const LoginForm = () => {
           </Form>
         )}
       </Formik>
-    </div>
+    </div></BackgroundImg>
+   
   );
 };
 
