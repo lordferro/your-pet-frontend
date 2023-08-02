@@ -46,7 +46,7 @@
   background-color: transparent;
   border: transparent;
   border-radius: 50%;
-  cursor: pointer;
+  cursor: url('../../images/pawCursor.svg'), auto;
   scale: 1;
 
   transition: scale 250ms linear;

@@ -141,21 +141,29 @@ export const ModalNotice = ({
                     </a>
                   </td>
                 </tr>
-                <tr className={css.petInfoItem}>
-                  <td className={css.petInfoItemHeading}>Phone:</td>
-                  <td className={css.petInfoItemBody}>
-                    <a href="tel:{owner.phone}" className={css.petInfoItemLink}>
-                      {owner.phone}
-                    </a>
-                  </td>
-                </tr>
+                {owner.phone && (
+                  <tr className={css.petInfoItem}>
+                    <td className={css.petInfoItemHeading}>Phone:</td>
+                    <td className={css.petInfoItemBody}>
+                      <a
+                        href="tel:{owner.phone}"
+                        className={css.petInfoItemLink}
+                      >
+                        {owner.phone}
+                      </a>
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
         </div>
-        <p className={css.modalNoticeComment}>Comments: {comments}</p>
+        {comments && (
+          <p className={css.modalNoticeComment}>Comments: {comments}</p>
+        )}
+
         <div className={css.modalNoticeButtonsWrapper}>
-          {favorite ? (
+          {!favorite ? (
             <button
               className={css.noticeModalAddToFavoriteButton}
               onClick={handleFavoritePet}
@@ -174,9 +182,11 @@ export const ModalNotice = ({
               />
             </button>
           )}
-          <a href="tel:{owner.phone}" className={css.contactButtonLink}>
-            Contact
-          </a>
+          {owner.phone && (
+            <a href="tel:{owner.phone}" className={css.contactButtonLink}>
+              Contact
+            </a>
+          )}
         </div>
       </div>
       {modalAcessWindow && (

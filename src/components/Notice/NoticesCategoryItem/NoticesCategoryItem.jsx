@@ -12,8 +12,6 @@ import { ModalNotice } from '../ModalNotice/ModalNotice';
 import ModalWindow from '../../shared/AttentionModal';
 import { ModalDeleteWindow } from '../../shared/ModalDeleteWindow';
 
-import cat from '../../../images/cuteCat.jpg';
-
 import css from './NoticesCategoryItem.module.css';
 import {
   addToFavoriteNotices,
@@ -40,14 +38,12 @@ export const NoticeCategoryItem = ({
   const [modalAcessWindow, setmodalAcessWindow] = useState(false);
   const [modalDeleteWindow, setModalDeleteCloseClick] = useState(false);
   const { isLoggedIn, user } = useAuth();
-  // console.log(user);
 
   const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
     if (user?.favoritePets?.includes(_id)) {
       setFavorite(true);
-      // console.log(favorite);
     } else {
       setFavorite(false);
     }
@@ -71,13 +67,13 @@ export const NoticeCategoryItem = ({
       addToFavoriteNotices(_id).then(() => {
         handelAddFavorite(_id);
       });
-      console.log('+');
+
       setFavorite(true);
     } else {
       removeFromFavoriteNotices(_id).then(() => {
         handelDeleteFavorite(_id);
       });
-      console.log('-');
+
       setFavorite(false);
     }
   };
@@ -116,11 +112,7 @@ export const NoticeCategoryItem = ({
     <li className={css.petItem} key={_id}>
       <div className={css.wrapper}>
         <div className={css.petImageWrapper}>
-          {petAvatar !== 'String' ? (
-            <img alt={'pet'} src={petAvatar} className={css.petImage} />
-          ) : (
-            <img alt={'pet'} src={cat} className={css.petImage} />
-          )}
+          <img alt={'pet'} src={petAvatar} className={css.petImage} />
         </div>
         <p className={css.noticeCategory}>{action}</p>
         {!favorite ? (
@@ -194,6 +186,7 @@ export const NoticeCategoryItem = ({
           owner={owner}
           handelDeleteFavorite={handelDeleteFavorite}
           handelAddFavorite={handelAddFavorite}
+          favorite={favorite}
         />
       )}
       {modalAcessWindow && (

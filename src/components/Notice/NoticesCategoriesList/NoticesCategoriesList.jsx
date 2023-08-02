@@ -13,7 +13,6 @@ export const NoticesCategoriesList = ({ cards }) => {
   const { user } = useAuth();
   useEffect(() => {
     setFavoritesPets(user.favoritePets);
-    // console.log(favoritesPets)
   }, [favoritesPets, user.favoritePets]);
 
   const handelDeleteFavorite = id => {

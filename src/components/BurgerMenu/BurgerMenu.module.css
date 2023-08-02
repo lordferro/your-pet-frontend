@@ -1,4 +1,4 @@
-@import "../../styles/colors.module.css";
+@import '../../styles/colors.module.css';
 
 .BurgerMenuContainer {
   position: relative;
@@ -9,15 +9,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  cursor: url('../../../src/images/pawCursor.svg') auto;
 }
-
 
 .MenuContainer {
   position: fixed;
   background-color: var(--background-color);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-  z-index: 25; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 25;
   width: 100%;
   height: 100%;
   top: 70px;
@@ -37,7 +36,7 @@
 
 @media (max-width: 767px) {
   .BurgerMenu {
-    margin-left: 0px; 
+    margin-left: 0px;
   }
   .MenuContainer div {
     display: flex;
