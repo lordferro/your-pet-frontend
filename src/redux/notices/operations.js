@@ -15,7 +15,7 @@ export const fetchNotices = createAsyncThunk(
         thunkAPI.getState().filters;
       const params = {
         action: category,
-        searchQery: searchQuery,
+        searchQuery: searchQuery,
         page,
         limit,
         sex,

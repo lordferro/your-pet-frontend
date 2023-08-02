@@ -87,7 +87,6 @@ export default function NoticesPage() {
         setCategory('sell');
         break;
     }
-    setSearchQuery('');
   };
 
   const handlePageClick = ({ selected }) => {

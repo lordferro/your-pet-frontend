@@ -27,6 +27,7 @@
   }
 
   .btn-mob-filter {
+    visibility: hidden;
     display: flex;
     width: 40px;
     height: 40px;
@@ -199,8 +200,11 @@
     display: none;
   }
 
-  .btn-add,
   .btn-filter {
+    visibility: hidden;
+  }
+
+  .btn-add {
     display: block;
   }
 
