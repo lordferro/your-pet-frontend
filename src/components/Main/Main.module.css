@@ -166,6 +166,7 @@
 
 .mainPetsPicture {
   position: absolute;
+  width: 100%;
   height: 394px;
   width: 320px;
   right: 0px;
