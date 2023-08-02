@@ -6,6 +6,7 @@ import css from './ModalDeleteWindow.module.css';
 export const ModalDeleteWindow = ({
   onModalDeleteCloseClick,
   handleDeletePet,
+  name,
 }) => {
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
@@ -39,7 +40,7 @@ export const ModalDeleteWindow = ({
         </button>
         <h2 className={css.modalDeleteWindowTittle}>Delete adverstiment?</h2>
         <p className={css.modalDeleteWindowdescription}>
-          Are you sure you want to delete “Cute dog looking for a home”? <br />
+          Are you sure you want to delete “{name}”? <br />
           You can`t undo this action.
         </p>
 

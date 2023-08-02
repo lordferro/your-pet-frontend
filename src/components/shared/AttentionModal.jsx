@@ -1,6 +1,6 @@
 import { React, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { RxCross1 } from 'react-icons/rx';
+import { MdClear } from 'react-icons/md';
 import { AuthNav } from '../AuthNav/AuthNav';
 import css from './AttentionModal.module.css';
 
@@ -36,7 +36,7 @@ const ModalWindow = ({ onClose }) => {
           aria-label="Close modal window"
           className={css.closeModalButton}
         >
-          <RxCross1 className={css.icon} />
+          <MdClear className={css.icon} />
         </button>
         <div>
           <h2 className={css.title}>Attention</h2>

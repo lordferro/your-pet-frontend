@@ -40,6 +40,7 @@ export const NoticeCategoryItem = ({
   const [modalAcessWindow, setmodalAcessWindow] = useState(false);
   const [modalDeleteWindow, setModalDeleteCloseClick] = useState(false);
   const { isLoggedIn, user } = useAuth();
+  console.log(user);
 
   const [favorite, setFavorite] = useState(false);
 
@@ -50,7 +51,7 @@ export const NoticeCategoryItem = ({
     } else {
       setFavorite(false);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleDeletePet = _id => {
@@ -83,7 +84,10 @@ export const NoticeCategoryItem = ({
 
   // Функція для нормалізації локації
   const normalizedLocation = loc => {
-    return loc.slice(0, 4) + `...`;
+    if (loc.length > 4) return loc.slice(0, 4) + `...`;
+    else {
+      return loc;
+    }
   };
 
   // Функція для обрахунку віку
