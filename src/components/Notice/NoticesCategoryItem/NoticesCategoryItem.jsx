@@ -40,14 +40,14 @@ export const NoticeCategoryItem = ({
   const [modalAcessWindow, setmodalAcessWindow] = useState(false);
   const [modalDeleteWindow, setModalDeleteCloseClick] = useState(false);
   const { isLoggedIn, user } = useAuth();
-  console.log(user);
+  // console.log(user);
 
   const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
     if (user?.favoritePets?.includes(_id)) {
       setFavorite(true);
-      console.log(favorite);
+      // console.log(favorite);
     } else {
       setFavorite(false);
     }
