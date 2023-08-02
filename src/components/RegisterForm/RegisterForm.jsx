@@ -184,7 +184,7 @@ const RegistrationForm = () => {
                     />
                   )}
                   <img
-                    src={passwordVisible ? eyeopen : eyeclosed}
+                    src={confirmPasswordVisible ? eyeopen : eyeclosed}
                     alt="toggle confirm password visibility"
                     className={css.imageEye}
                     style={touched.confirmPassword ? { right: '40px' } : {}}
