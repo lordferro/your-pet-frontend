@@ -7,14 +7,14 @@ const Footer = () => {
       <div className={css.container}>
         <p className={css.text}>
           It would be great if you like to support
-          <a className={css.link} href="https://u24.gov.ua/" target="blanc">
+          <a className={css.link} href="https://u24.gov.ua/" target="_blanc">
             Ukraine
           </a>
           and
           <a
             className={css.link}
             href="https://uanimals.org/how-to-help/"
-            target="blanc"
+            target="_blanc"
           >
             Ukrainian animals
           </a>

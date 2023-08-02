@@ -54,6 +54,11 @@ export const ModalNotice = ({
 
   // Функція для видалення або додавання картинки до улюбленої
   const handleFavoritePet = () => {
+    if (!isLoggedIn) {
+      setmodalAcessWindow(true);
+      return;
+    }
+
     if (!favorite) {
       addToFavoriteNotices(_id).then(() => {
         handelAddFavorite(_id);
@@ -67,6 +72,11 @@ export const ModalNotice = ({
       console.log('-');
       setFavorite(false);
     }
+  };
+
+  //Функція для нормалізації дати народження
+  const normalizedBirthDate = date => {
+    return date.replaceAll('-', '.');
   };
 
   return (
@@ -98,7 +108,9 @@ export const ModalNotice = ({
                 </tr>
                 <tr className={css.petInfoItem}>
                   <th className={css.petInfoItemHeading}>Birthday:</th>
-                  <td className={css.petInfoItemBody}>{birthday}</td>
+                  <td className={css.petInfoItemBody}>
+                    {normalizedBirthDate(birthday)}
+                  </td>
                 </tr>
                 <tr className={css.petInfoItem}>
                   <th className={css.petInfoItemHeading}>Type:</th>
@@ -167,7 +179,7 @@ export const ModalNotice = ({
           </a>
         </div>
       </div>
-      {!isLoggedIn && !modalAcessWindow && (
+      {modalAcessWindow && (
         <ModalWindow onClose={() => setmodalAcessWindow(false)} />
       )}
     </div>
