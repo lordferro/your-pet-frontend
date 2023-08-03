@@ -126,12 +126,14 @@ export const ModalNotice = ({
                 <tr className={css.petInfoItem}>
                   <th className={css.petInfoItemHeading}>Email:</th>
                   <td className={css.petInfoItemBody}>
-                    <a
-                      href="mailto:{owner.email}"
-                      className={css.petInfoItemLink}
-                    >
-                      {owner.email}
-                    </a>
+                    {owner.email && (
+                      <a
+                        href="mailto:{owner.email}"
+                        className={css.petInfoItemLink}
+                      >
+                        {owner.email}
+                      </a>
+                    )}
                   </td>
                 </tr>
                 {owner.phone && (
