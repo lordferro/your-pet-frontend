@@ -71,11 +71,11 @@ export const fetchUserNotices = createAsyncThunk(
 );
 
 export const fetchAddToFavorite = createAsyncThunk(
-  'notices/favorites',
+  'notices/addFavorite',
   async (id, { rejectWithValue }) => {
     try {
-      const data = await addToFavoriteNotices(id);
-      return data;
+      await addToFavoriteNotices(id);
+      return id;
     } catch (error) {
       return rejectWithValue(error.response.data.message);
     }
@@ -83,11 +83,11 @@ export const fetchAddToFavorite = createAsyncThunk(
 );
 
 export const fetchRemoveFromFavorite = createAsyncThunk(
-  '/notices/favorites',
+  'notices/removeFavorite',
   async (id, { rejectWithValue }) => {
     try {
-      const data = await removeFromFavoriteNotices(id);
-      return data;
+     await removeFromFavoriteNotices(id);
+      return id;
     } catch (error) {
       return rejectWithValue(error);
     }
