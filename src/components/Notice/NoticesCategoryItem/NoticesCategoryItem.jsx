@@ -1,8 +1,6 @@
-
 import { memo, useState } from 'react';
-
+import { useDispatch } from 'react-redux';
 import moment from 'moment';
-
 import { BsGenderFemale, BsGenderMale } from 'react-icons/bs';
 import { CiLocationOn } from 'react-icons/ci';
 import { GoClock } from 'react-icons/go';
@@ -12,10 +10,7 @@ import { HeartIcon } from '../../../icons/HeartIcon';
 import { ModalNotice } from '../ModalNotice/ModalNotice';
 import ModalWindow from '../../shared/AttentionModal';
 import { ModalDeleteWindow } from '../../shared/ModalDeleteWindow';
-
 import css from './NoticesCategoryItem.module.css';
-
-import { useDispatch } from 'react-redux';
 
 import {
   fetchAddToFavorite,
@@ -37,6 +32,7 @@ export const NoticeCategoryItem = memo(
     petAvatar,
     owner,
     isFavorite,
+    handleDeleteNotice,
   }) => {
     const [showInfoModal, setShowInfoModal] = useState(false);
     const [modalAcessWindow, setmodalAcessWindow] = useState(false);
@@ -45,11 +41,11 @@ export const NoticeCategoryItem = memo(
     const dispatch = useDispatch();
 
     const handleDeletePet = _id => {
-      // dispatch(fetchDeleteNotice(_id));
-      // Notify.Notiflix.Success('This item was succesfully deleted!');
+      handleDeleteNotice(_id);
       setModalDeleteCloseClick(false);
     };
 
+    console.log(user);
     // Функція для видалення або додавання картинки до улюбленої
     const handleFavoritePet = () => {
       if (!isLoggedIn) {
@@ -183,10 +179,10 @@ export const NoticeCategoryItem = memo(
             onModalDeleteCloseClick={() => setModalDeleteCloseClick(false)}
             handleDeletePet={handleDeletePet}
             name={name}
+            _id={_id}
           />
         )}
       </li>
     );
   }
 );
-

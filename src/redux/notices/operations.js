@@ -88,10 +88,22 @@ export const fetchRemoveFromFavorite = createAsyncThunk(
   'notices/removeFavorite',
   async (id, { rejectWithValue }) => {
     try {
-     await removeFromFavoriteNotices(id);
+      await removeFromFavoriteNotices(id);
       return id;
     } catch (error) {
       return rejectWithValue(error);
     }
   }
 );
+
+// export const fetchDeleteNotice = createAsyncThunk(
+//   'notices/delete',
+//   async (id, { rejectWithValue }) => {
+//     try {
+//       const data = await axios.delete(`/notices/{id}`);
+//       return id;
+//     } catch (error) {
+//       return rejectWithValue(error);
+//     }
+//   }
+// );
