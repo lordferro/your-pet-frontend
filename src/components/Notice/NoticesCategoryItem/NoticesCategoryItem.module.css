@@ -79,8 +79,7 @@
   stroke: currentcolor;
 }
 
-.addToFavoriteButton:hover .addToFavoriteButtonIcon,
-.addToFavoriteButton:focus .addToFavoriteButtonIcon {
+.addToFavoriteButton:hover .addToFavoriteButtonIcon {
   fill: var(--blue-color);
 }
 

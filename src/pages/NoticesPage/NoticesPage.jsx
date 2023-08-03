@@ -110,10 +110,8 @@ export default function NoticesPage() {
   useEffect(() => {
     dispatch(fetchPage())
       .then(total => {
-        console.log('total:', total.payload.length);
         const totalPages = Math.ceil(total.payload.length / 4);
         setTotalPages(totalPages);
-        console.log(totalPages);
       })
       .catch(error => {
         console.log('Error fetching current user:', error);
@@ -134,17 +132,15 @@ export default function NoticesPage() {
       <h1 className={css.title}>Find your favorite pet</h1>
       <NoticeSearch handleSearchChange={handleSearchChange} />
       <Buttons handleCategoryChange={handleCategoryChange} />
-      {!notices.length && (
+      {!notices.length && !isLoading && (
         <div className={css.title}>
           <p>There is no information on your request.</p>
         </div>
       )}
 
-      {isLoading && !error ? (
-        <Loader />
-      ) : (
-        <NoticesCategoriesList cards={notices} />
-      )}
+      {isLoading && !error && <Loader />}
+
+      <NoticesCategoriesList cards={notices} />
 
       {category !== 'favorite' &&
         category !== 'own' &&

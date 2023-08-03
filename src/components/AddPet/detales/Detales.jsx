@@ -8,7 +8,7 @@ let dd = today.getDate();
 if (dd < 10) dd = '0' + dd;
 if (mm < 10) mm = '0' + mm;
 const formattedToday = yyyy + '-' + mm + '-' + dd;
-console.log(formattedToday);
+
 const Detales = ({ current, errors, values, touched }) => {
   if (errors) {
     if (values.name.length > 2) {
