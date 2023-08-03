@@ -130,7 +130,7 @@ export const NoticeCategoryItem = ({
             />
           </button>
         )}
-        {user._id === owner.userId && (
+        {user._id === owner._id && (
           <button
             className={css.deleteButton}
             type="button"
