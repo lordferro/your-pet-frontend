@@ -172,6 +172,7 @@ export const NoticeCategoryItem = memo(
             location={location}
             petAvatar={petAvatar}
             owner={owner}
+            isFavorite={isFavorite}
           />
         )}
         {modalAcessWindow && (
