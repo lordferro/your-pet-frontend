@@ -78,27 +78,16 @@ const noticesSlice = createSlice({
       .addCase(fetchFavoriteNotices.rejected, (state, action) => {
         handleRejected(state, action);
       })
-      .addCase(fetchAddToFavorite.pending, state => {
-        handlePending(state);
-      })
+
       .addCase(fetchAddToFavorite.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
         state.favorite.push(payload);
       })
-      .addCase(fetchAddToFavorite.rejected, (state, action) => {
-        handleRejected(state, action);
-      })
-      .addCase(fetchRemoveFromFavorite.pending, state => {
-        handlePending(state);
-      })
+  
       .addCase(fetchRemoveFromFavorite.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
         const index = state.favorite.findIndex(item => item === payload);
         state.favorite.splice(index, 1);
       })
-      .addCase(fetchRemoveFromFavorite.rejected, (state, action) => {
-        handleRejected(state, action);
-      });
+
   },
 });
 
