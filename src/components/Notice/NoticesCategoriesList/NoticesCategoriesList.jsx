@@ -1,3 +1,4 @@
+
 import { useSelector } from 'react-redux';
 import { NoticeCategoryItem } from '../NoticesCategoryItem/NoticesCategoryItem';
 import css from './NoticesCategoriesList.module.css';
@@ -6,7 +7,6 @@ import { useCallback } from 'react';
 
 export const NoticesCategoriesList = ({ cards }) => {
       const favorite = useSelector(selectFavorite);
-
 
       const isFavorite = useCallback(id => favorite.includes(id), [favorite]);
 

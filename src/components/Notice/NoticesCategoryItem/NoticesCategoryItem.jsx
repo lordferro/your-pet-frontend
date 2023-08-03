@@ -1,7 +1,8 @@
+
 import { memo, useState } from 'react';
 
 import moment from 'moment';
-// import Notify from 'notiflix';
+
 import { BsGenderFemale, BsGenderMale } from 'react-icons/bs';
 import { CiLocationOn } from 'react-icons/ci';
 import { GoClock } from 'react-icons/go';
@@ -100,7 +101,6 @@ export const NoticeCategoryItem = memo(
             <img alt={'pet'} src={petAvatar} className={css.petImage} />
           </div>
           <p className={css.noticeCategory}>{action}</p>
-
           <button
             className={
               !isFavorite
@@ -189,3 +189,4 @@ export const NoticeCategoryItem = memo(
     );
   }
 );
+
