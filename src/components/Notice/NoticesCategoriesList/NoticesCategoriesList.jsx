@@ -23,6 +23,7 @@ export const NoticesCategoriesList = ({ cards }) => {
   }, [noticesArray]);
 
   const handleDeleteNotice = noticeId => {
+    if (!notices) return;
     deleteUserNoticeById(noticeId, token)
       .then(() => {
         setNotices(prevNotice =>
