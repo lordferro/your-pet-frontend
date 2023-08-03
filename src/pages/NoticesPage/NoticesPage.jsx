@@ -138,11 +138,9 @@ export default function NoticesPage() {
         </div>
       )}
 
-      {isLoading && !error ? (
-             <Loader />
-         ) : (
-        <NoticesCategoriesList cards={notices} />
-      )}
+      {isLoading && !error && <Loader />}
+
+      <NoticesCategoriesList cards={notices} />
 
       {category !== 'favorite' &&
         category !== 'own' &&

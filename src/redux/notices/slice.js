@@ -47,7 +47,6 @@ const noticesSlice = createSlice({
         state.favorite = [];
       })
       .addCase(fetchNotices.pending, state => {
-        state.items = [];
         handlePending(state);
       })
       .addCase(fetchNotices.fulfilled, (state, action) => {
@@ -57,7 +56,6 @@ const noticesSlice = createSlice({
         handleRejected(state, action);
       })
       .addCase(fetchUserNotices.pending, state => {
-        state.items = [];
         handlePending(state);
       })
       .addCase(fetchUserNotices.fulfilled, (state, action) => {
@@ -68,7 +66,6 @@ const noticesSlice = createSlice({
         handleRejected(state, action);
       })
       .addCase(fetchFavoriteNotices.pending, state => {
-        state.items = [];
         handlePending(state);
       })
       .addCase(fetchFavoriteNotices.fulfilled, (state, action) => {
@@ -82,12 +79,11 @@ const noticesSlice = createSlice({
       .addCase(fetchAddToFavorite.fulfilled, (state, { payload }) => {
         state.favorite.push(payload);
       })
-  
+
       .addCase(fetchRemoveFromFavorite.fulfilled, (state, { payload }) => {
         const index = state.favorite.findIndex(item => item === payload);
         state.favorite.splice(index, 1);
-      })
-
+      });
   },
 });
 
