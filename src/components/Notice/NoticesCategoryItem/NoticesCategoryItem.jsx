@@ -45,7 +45,6 @@ export const NoticeCategoryItem = memo(
       setModalDeleteCloseClick(false);
     };
 
-    console.log(user);
     // Функція для видалення або додавання картинки до улюбленої
     const handleFavoritePet = () => {
       if (!isLoggedIn) {
