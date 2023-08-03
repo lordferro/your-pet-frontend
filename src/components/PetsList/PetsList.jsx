@@ -43,6 +43,8 @@ export const PetsList = () => {
       Notiflix.Notify.success('Pet was deleted');
     } catch (error) {
       Notiflix.Notify.error('Oops. Something went wrong. Try again');
+    } finally {
+      fetchPets();
     }
   };
 
