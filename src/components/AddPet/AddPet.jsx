@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import * as Yup from 'yup';
 import { Form, Formik } from 'formik';
 import ProgressBar from './progressBar/progressBar';
