@@ -151,7 +151,11 @@ const Buttons = ({ handleCategoryChange }) => {
             <PlusSmall />
           </span>
         </button>
-        <button type="button" className={css['btn-mob-add']}>
+        <button
+          type="button"
+          onClick={handleAddPetClick}
+          className={css['btn-mob-add']}
+        >
           {' '}
           <span className={css['icon']}>
             <Plus />
