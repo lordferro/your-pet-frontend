@@ -118,13 +118,41 @@ export const NoticeCategoryItem = memo(
             />
           </button>
 
-        )}
-        {user._id === owner._id && (
-          <button
-            className={css.deleteButton}
-            type="button"
-            onClick={() => setModalDeleteCloseClick(true)}
-
+          {user._id === owner._id && (
+            <button
+              className={css.deleteButton}
+              type="button"
+              onClick={() => setModalDeleteCloseClick(true)}
+            >
+              <RiDeleteBinLine className={css.deleteButtonIcon} />
+            </button>
+          )}
+          <div className={css.shortPetInfoWrapper}>
+            <ul className={css.shortPetInfoWrapperList}>
+              <li className={css.shortPetInfo}>
+                <CiLocationOn className={css.shortPetInfoIcon} />
+                {normalizedLocation(location)}
+              </li>
+              <li className={css.shortPetInfo}>
+                <GoClock className={css.shortPetInfoIcon} />
+                {age}
+              </li>
+              <li className={css.shortPetInfo}>
+                {sex === 'female' ? (
+                  <BsGenderFemale className={css.shortPetInfoIcon} />
+                ) : (
+                  <BsGenderMale className={css.shortPetInfoIcon} />
+                )}
+                {sex}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className={css.petInfoWrapper}>
+          <p className={css.petImageDescription}>{title}</p>
+          <p
+            className={css.allPetInfoModalOpen}
+            onClick={() => setShowInfoModal(true)}
           >
             Learn more
           </p>
