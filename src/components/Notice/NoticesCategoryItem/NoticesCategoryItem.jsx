@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
-
 import moment from 'moment';
-// import Notify from 'notiflix';
+
 import { BsGenderFemale, BsGenderMale } from 'react-icons/bs';
 import { CiLocationOn } from 'react-icons/ci';
 import { GoClock } from 'react-icons/go';
@@ -33,6 +32,7 @@ export const NoticeCategoryItem = ({
   owner,
   handelDeleteFavorite,
   handelAddFavorite,
+  handleDeleteNotice,
 }) => {
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [modalAcessWindow, setmodalAcessWindow] = useState(false);
@@ -51,8 +51,7 @@ export const NoticeCategoryItem = ({
   }, []);
 
   const handleDeletePet = _id => {
-    // dispatch(fetchDeleteNotice(_id));
-    // Notify.Notiflix.Success('This item was succesfully deleted!');
+    handleDeleteNotice(_id);
     setModalDeleteCloseClick(false);
   };
 
@@ -197,6 +196,7 @@ export const NoticeCategoryItem = ({
           onModalDeleteCloseClick={() => setModalDeleteCloseClick(false)}
           handleDeletePet={handleDeletePet}
           name={name}
+          _id={_id}
         />
       )}
     </li>
