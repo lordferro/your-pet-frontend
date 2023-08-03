@@ -10,13 +10,11 @@ import {
   removeFromFavoriteNotices,
   deleteUserNoticeById,
 } from 'services/noticesAPI';
-// import { getCurrentUser } from 'redux/auth/operation';
 
 export const NoticesCategoriesList = ({ cards }) => {
   const [favoritesPets, setFavoritesPets] = useState([]);
   const noticesArray = useSelector(selectNotices);
   const [notices, setNotices] = useState([]);
-  // const dispatch = useDispatch();
 
   const { user } = useAuth();
   const token = user.token;
@@ -51,7 +49,7 @@ export const NoticesCategoriesList = ({ cards }) => {
         setNotices(prevNotice =>
           prevNotice.filter(not => not._id !== noticeId)
         );
-        Notiflix.Notify.success('Pet was deleted');
+        Notiflix.Notify.success('This item was deleted');
       })
       .catch(error => {
         console.log(error);
