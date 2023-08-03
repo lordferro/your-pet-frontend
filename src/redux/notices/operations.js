@@ -17,6 +17,7 @@ export const fetchPage = createAsyncThunk(
       const params = {
         action: category,
         searchQuery: searchQuery,
+        limit: 0,
       };
       const response = await axios.get(`/notices`, {
         params,
@@ -37,7 +38,7 @@ export const fetchNotices = createAsyncThunk(
         action: category,
         searchQuery: searchQuery,
         page,
-        limit: 4,
+        limit: 12,
       };
       const response = await axios.get(`/notices`, {
         params,
@@ -89,7 +90,7 @@ export const fetchRemoveFromFavorite = createAsyncThunk(
   'notices/removeFavorite',
   async (id, { rejectWithValue }) => {
     try {
-     await removeFromFavoriteNotices(id);
+      await removeFromFavoriteNotices(id);
       return id;
     } catch (error) {
       return rejectWithValue(error);
