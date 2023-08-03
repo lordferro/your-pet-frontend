@@ -8,8 +8,8 @@ import { Field } from 'formik';
 const More = ({ values, errors, current, setAvatar }) => {
   const [file, setFile] = useState();
   const [sex] = useState({
-    Female: false,
-    Male: false,
+    female: false,
+    male: false,
   });
 
   const Female = () => {
@@ -24,7 +24,7 @@ const More = ({ values, errors, current, setAvatar }) => {
       >
         <path
           d="M12 13C14.7614 13 17 10.7614 17 8C17 5.23858 14.7614 3 12 3C9.23858 3 7 5.23858 7 8C7 10.7614 9.23858 13 12 13ZM12 13L12 21M9 18L15 18"
-          stroke={sex.Female ? 'white' : sex.Male ? '#888888' : '#F43F5E'}
+          stroke={sex.female ? 'white' : sex.male ? '#888888' : '#F43F5E'}
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -33,10 +33,10 @@ const More = ({ values, errors, current, setAvatar }) => {
     );
   };
   const Male = () => {
-    if (values.sex === 'Male') {
-      sex.Male = true;
-    } else if (values.sex === 'Female') {
-      sex.Female = true;
+    if (values.sex === 'male') {
+      sex.male = true;
+    } else if (values.sex === 'female') {
+      sex.female = true;
     }
 
     return (
@@ -49,7 +49,7 @@ const More = ({ values, errors, current, setAvatar }) => {
       >
         <path
           d="M12 11C9.23858 11 7 13.2386 7 16C7 18.7614 9.23858 21 12 21C14.7614 21 17 18.7614 17 16C17 13.2386 14.7614 11 12 11ZM12 11V3M12 3L16 7M12 3L8 7"
-          stroke={sex.Male ? 'white' : sex.Female ? '#888888' : '#54ADFF'}
+          stroke={sex.male ? 'white' : sex.female ? '#888888' : '#54ADFF'}
           strokeWidth="1.5"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -66,24 +66,29 @@ const More = ({ values, errors, current, setAvatar }) => {
 
   const previewImage = e => {
     setAvatar(e.target.files[0]);
+    console.log(e.target.files[0]);
     setFile(URL.createObjectURL(e.target.files[0]));
   };
 
   const onFemaleClick = () => {
-    document.querySelector('.Female').click();
-    sex.Female = true;
-    sex.Male = false;
+    document.querySelector('.female').click();
+    sex.female = true;
+    sex.male = false;
   };
   const onMaleClick = () => {
-    document.querySelector('.Male').click();
-    sex.Male = true;
-    sex.Female = false;
+    document.querySelector('.male').click();
+    sex.male = true;
+    sex.female = false;
   };
 
   return (
-    <div className={current === 2 || current === 3 ? css.maindiv : null}>
+    <div
+      className={
+        current === 2 || current === 3 || current === 4 ? css.maindiv : null
+      }
+    >
       <div>
-        {current === 2 || current === 3 ? (
+        {current === 2 || current === 3 || current === 4 ? (
           <div>
             <span className={css.SexText}>The sex</span>
             <div className={css.inputRadioWrap}>
@@ -92,9 +97,9 @@ const More = ({ values, errors, current, setAvatar }) => {
                 className={
                   css.Btn +
                   ' ' +
-                  (sex.Male
+                  (sex.male
                     ? css.BtnUchosden
-                    : sex.Female
+                    : sex.female
                     ? css.BtnChusen
                     : null)
                 }
@@ -104,10 +109,10 @@ const More = ({ values, errors, current, setAvatar }) => {
                 <label style={{ marginLeft: 12, cursor: 'pointer ' }}>
                   <Field
                     style={{ display: 'none' }}
-                    className="Female"
+                    className="female"
                     type="radio"
                     name="sex"
-                    value="Female"
+                    value="female"
                   />
                   Female
                 </label>
@@ -117,9 +122,9 @@ const More = ({ values, errors, current, setAvatar }) => {
                 className={
                   css.Btn +
                   ' ' +
-                  (sex.Female
+                  (sex.female
                     ? css.BtnUchosden
-                    : sex.Male
+                    : sex.male
                     ? css.BtnChusen
                     : null)
                 }
@@ -129,10 +134,10 @@ const More = ({ values, errors, current, setAvatar }) => {
                 <label style={{ marginLeft: 12, cursor: 'pointer ' }}>
                   <Field
                     style={{ display: 'none' }}
-                    className="Male"
+                    className="male"
                     type="radio"
                     name="sex"
-                    value="Male"
+                    value="male"
                   />
                   Male
                 </label>
@@ -143,7 +148,7 @@ const More = ({ values, errors, current, setAvatar }) => {
 
         <div
           className={
-            current === 2 || current === 3
+            current === 2 || current === 3 || current === 4
               ? css.inputFileWrap1
               : css.inputFileWrap
           }
@@ -193,7 +198,7 @@ const More = ({ values, errors, current, setAvatar }) => {
           </div>
         ) : null}
 
-        {current === 2 || current === 3 ? (
+        {current === 2 || current === 3 || current === 4 ? (
           <div className={css.inputWrap1}>
             Location
             <Field
@@ -216,7 +221,7 @@ const More = ({ values, errors, current, setAvatar }) => {
             as="textarea"
             placeholder="Type of pet"
             className={
-              current === 3
+              current === 3 || current === 4
                 ? css.input2
                 : css.input + ' ' + (errors.comments ? css.errorInput : '')
             }

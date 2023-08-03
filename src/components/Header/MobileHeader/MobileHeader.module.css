@@ -1,13 +1,17 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px auto;
-    width: 280px;
-    height: 28px;
-  }
-  
-  .user_navigation {
-    display: flex;
-    align-items: center;
-    }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
+  width: 280px;
+  height: 28px;
+}
+
+.user_navigation {
+  display: flex;
+  align-items: center;
+}
+
+.burger {
+  cursor: url('../../../images/pawCursor.svg'), auto;
+}

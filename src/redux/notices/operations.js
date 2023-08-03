@@ -7,19 +7,36 @@ import {
   removeFromFavoriteNotices,
 } from 'services/noticesAPI';
 
+export const fetchPage = createAsyncThunk(
+  'notices/page',
+  async (_, thunkAPI) => {
+    try {
+      const { category, searchQuery } = thunkAPI.getState().filters;
+      const params = {
+        action: category,
+        searchQuery: searchQuery,
+        limit: 0,
+      };
+      const response = await axios.get(`/notices`, {
+        params,
+      });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const fetchNotices = createAsyncThunk(
   'notices/filter',
   async (_, thunkAPI) => {
     try {
-      const { category, searchQuery, page, limit, sex, age } =
-        thunkAPI.getState().filters;
+      const { category, searchQuery, page } = thunkAPI.getState().filters;
       const params = {
         action: category,
         searchQuery: searchQuery,
         page,
-        limit,
-        sex,
-        age,
+        limit: 12,
       };
       const response = await axios.get(`/notices`, {
         params,
@@ -56,11 +73,11 @@ export const fetchUserNotices = createAsyncThunk(
 );
 
 export const fetchAddToFavorite = createAsyncThunk(
-  'notices/favorites',
+  'notices/addFavorite',
   async (id, { rejectWithValue }) => {
     try {
-      const data = await addToFavoriteNotices(id);
-      return data;
+      await addToFavoriteNotices(id);
+      return id;
     } catch (error) {
       return rejectWithValue(error.response.data.message);
     }
@@ -68,13 +85,25 @@ export const fetchAddToFavorite = createAsyncThunk(
 );
 
 export const fetchRemoveFromFavorite = createAsyncThunk(
-  '/notices/favorites',
+  'notices/removeFavorite',
   async (id, { rejectWithValue }) => {
     try {
-      const data = await removeFromFavoriteNotices(id);
-      return data;
+      await removeFromFavoriteNotices(id);
+      return id;
     } catch (error) {
       return rejectWithValue(error);
     }
   }
 );
+
+// export const fetchDeleteNotice = createAsyncThunk(
+//   'notices/delete',
+//   async (id, { rejectWithValue }) => {
+//     try {
+//       const data = await axios.delete(`/notices/{id}`);
+//       return id;
+//     } catch (error) {
+//       return rejectWithValue(error);
+//     }
+//   }
+// );

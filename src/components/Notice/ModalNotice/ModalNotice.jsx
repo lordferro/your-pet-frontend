@@ -5,10 +5,11 @@ import { useAuth } from '../../../hooks';
 import ModalWindow from '../../shared/AttentionModal';
 import cat from '../../../images/cuteCat.jpg';
 import css from './ModalNotice.module.css';
+import { useDispatch } from 'react-redux';
 import {
-  addToFavoriteNotices,
-  removeFromFavoriteNotices,
-} from 'services/noticesAPI';
+  fetchAddToFavorite,
+  fetchRemoveFromFavorite,
+} from 'redux/notices/operations';
 
 export const ModalNotice = ({
   onModalCloseClick,
@@ -24,11 +25,11 @@ export const ModalNotice = ({
   location,
   petAvatar,
   owner,
-  handelDeleteFavorite,
-  handelAddFavorite,
+  isFavorite,
 }) => {
   const [modalAcessWindow, setmodalAcessWindow] = useState(false);
-  const [favorite, setFavorite] = useState(false);
+
+  const dispatch = useDispatch();
 
   const { isLoggedIn } = useAuth();
 
@@ -59,18 +60,10 @@ export const ModalNotice = ({
       return;
     }
 
-    if (!favorite) {
-      addToFavoriteNotices(_id).then(() => {
-        handelAddFavorite(_id);
-      });
-      console.log('+');
-      setFavorite(true);
+    if (!isFavorite) {
+      dispatch(fetchAddToFavorite(_id));
     } else {
-      removeFromFavoriteNotices(_id).then(() => {
-        handelDeleteFavorite(_id);
-      });
-      console.log('-');
-      setFavorite(false);
+      dispatch(fetchRemoveFromFavorite(_id));
     }
   };
 
@@ -133,50 +126,61 @@ export const ModalNotice = ({
                 <tr className={css.petInfoItem}>
                   <th className={css.petInfoItemHeading}>Email:</th>
                   <td className={css.petInfoItemBody}>
-                    <a
-                      href="mailto:{owner.email}"
-                      className={css.petInfoItemLink}
-                    >
-                      {owner.email}
-                    </a>
+                    {owner.email && (
+                      <a
+                        href="mailto:{owner.email}"
+                        className={css.petInfoItemLink}
+                      >
+                        {owner.email}
+                      </a>
+                    )}
                   </td>
                 </tr>
-                <tr className={css.petInfoItem}>
-                  <td className={css.petInfoItemHeading}>Phone:</td>
-                  <td className={css.petInfoItemBody}>
-                    <a href="tel:{owner.phone}" className={css.petInfoItemLink}>
-                      {owner.phone}
-                    </a>
-                  </td>
-                </tr>
+                {owner.phone && (
+                  <tr className={css.petInfoItem}>
+                    <td className={css.petInfoItemHeading}>Phone:</td>
+                    <td className={css.petInfoItemBody}>
+                      <a
+                        href="tel:{owner.phone}"
+                        className={css.petInfoItemLink}
+                      >
+                        {owner.phone}
+                      </a>
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
         </div>
-        <p className={css.modalNoticeComment}>Comments: {comments}</p>
+        {comments && (
+          <p className={css.modalNoticeComment}>Comments: {comments}</p>
+        )}
+
         <div className={css.modalNoticeButtonsWrapper}>
-          {favorite ? (
-            <button
-              className={css.noticeModalAddToFavoriteButton}
-              onClick={handleFavoritePet}
-            >
-              Add to
-              <HeartIcon className={css.noticeModalAddToFavoriteButtonIcon} />
-            </button>
-          ) : (
-            <button
-              className={css.noticeModalRemoveFromFavoriteButton}
-              onClick={handleFavoritePet}
-            >
-              Remove from
-              <HeartIcon
-                className={css.noticeModalRemoveFromFavoriteButtonIcon}
-              />
-            </button>
+          <button
+            className={
+              !isFavorite
+                ? css.noticeModalAddToFavoriteButton
+                : css.noticeModalRemoveFromFavoriteButton
+            }
+            onClick={handleFavoritePet}
+          >
+            <HeartIcon
+              className={
+                !isFavorite
+                  ? css.noticeModalAddToFavoriteButtonIcon
+                  : css.noticeModalRemoveFromFavoriteButtonIcon
+              }
+            />
+            {!isFavorite ? 'Add to' : 'Remove from'}
+          </button>
+
+          {owner.phone && (
+            <a href="tel:{owner.phone}" className={css.contactButtonLink}>
+              Contact
+            </a>
           )}
-          <a href="tel:{owner.phone}" className={css.contactButtonLink}>
-            Contact
-          </a>
         </div>
       </div>
       {modalAcessWindow && (

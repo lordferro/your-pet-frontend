@@ -8,6 +8,7 @@
   width: var(--mobile);
   margin-right: auto;
   margin-left: auto;
+  padding-bottom: 30px;
 }
 
 .title {
@@ -78,4 +79,11 @@
   background-color: #54adff;
   border-color: #54adff;
   color: #fef9f9;
+}
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
 }

@@ -1,14 +1,21 @@
 import css from './detales.module.css';
 import React from 'react';
 import { Field } from 'formik';
+const today = new Date();
+const yyyy = today.getFullYear();
+let mm = today.getMonth() + 1;
+let dd = today.getDate();
+if (dd < 10) dd = '0' + dd;
+if (mm < 10) mm = '0' + mm;
+const formattedToday = yyyy + '-' + mm + '-' + dd;
 
 const Detales = ({ current, errors, values, touched }) => {
   if (errors) {
     if (values.name.length > 2) {
       errors.name = '';
     }
-    if (values.date.length > 0) {
-      errors.date = '';
+    if (values.birthday.length > 0) {
+      errors.birthday = '';
     }
     if (values.type.length > 0) {
       errors.type = '';
@@ -17,13 +24,16 @@ const Detales = ({ current, errors, values, touched }) => {
       errors.title = '';
     }
   }
+
   return (
     <div
       className={
-        current === 2 || current === 3 ? css.detalesDiv2 : css.detalesDiv
+        current === 2 || current === 3 || current === 4
+          ? css.detalesDiv2
+          : css.detalesDiv
       }
     >
-      {current === 2 || current === 3 ? (
+      {current === 2 || current === 3 || current === 4 ? (
         <div className={css.inputWrap}>
           Title of add
           <Field
@@ -51,12 +61,17 @@ const Detales = ({ current, errors, values, touched }) => {
       <div className={css.inputWrap}>
         Date of birth
         <Field
+          as="input"
           placeholder="Type date of birth"
-          className={css.input + ' ' + (errors.date ? css.errorInput : '')}
+          className={css.input + ' ' + (errors.birthday ? css.errorInput : '')}
           type="date"
-          name="date"
+          max={`${formattedToday}`}
+          min="2000-01-01"
+          name="birthday"
         />
-        {errors.date ? <div className={css.errorDiv}>{errors.date}</div> : null}
+        {errors.birthday ? (
+          <div className={css.errorDiv}>{errors.birthday}</div>
+        ) : null}
       </div>
 
       <div className={css.inputWrap}>

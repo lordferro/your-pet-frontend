@@ -42,18 +42,23 @@
 }
 
 .input.errorInput {
-  border-color: var(--red-color); 
+  border-color: var(--red-color);
 }
 
 .successInput {
-  border-color: var( --green-color);
+  border-color: var(--green-color);
 }
 @keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
-
 
 .button {
   width: 456px;
@@ -63,7 +68,7 @@
   color: #fff;
   border: none;
   border-radius: 40px;
-  cursor: pointer;
+  cursor: url('../../images/pawCursor.svg'), auto;
   margin-top: 8px;
   margin-bottom: 16px;
   font-family: Manrope;
@@ -72,7 +77,7 @@
   transition: transform 0.3s ease;
 }
 .button:hover {
-  animation: pulse 1s infinite
+  animation: pulse 1s infinite;
 }
 
 .refTitleToReg {
@@ -89,6 +94,7 @@
   font-weight: 200;
   margin-bottom: 40px;
   color: var(--blue-color);
+  cursor: url('../../images/pawCursor.svg'), auto;
 }
 
 p {
@@ -111,29 +117,28 @@ p {
 }
 
 .imageEye {
-position: absolute;
-top: 31%;
-right: 15px;
-transform: translateY(-50%);
-cursor: pointer;
+  position: absolute;
+  top: 31%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: url('../../images/pawCursor.svg'), auto;
 }
 .imageCheck {
   height: 24px;
   position: absolute;
-top: 32%;
-right: 15px;
-transform: translateY(-50%);
-cursor: pointer;
+  top: 32%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: url('../../images/pawCursor.svg'), auto;
 }
 
 .imageCross {
-    position: absolute;
-top: 32%;
-right: 15px;
-transform: translateY(-50%);
-cursor: pointer;
+  position: absolute;
+  top: 32%;
+  right: 15px;
+  transform: translateY(-50%);
+  cursor: url('../../images/pawCursor.svg'), auto;
 }
-
 
 @media (max-width: 767px) {
   .login_form {
@@ -154,7 +159,7 @@ cursor: pointer;
   .error {
     bottom: 0px;
   }
-  .login_title  {
+  .login_title {
     margin-top: 40px;
     margin-bottom: 20px;
   }
@@ -164,7 +169,7 @@ cursor: pointer;
   .imageEye {
     top: 39%;
   }
-  .imageCross{
+  .imageCross {
     top: 39%;
   }
   .imageCheck {

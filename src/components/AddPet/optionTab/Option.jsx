@@ -2,7 +2,7 @@ import css from './optionTab.module.css';
 import React from 'react';
 
 let values = [
-  { id: 1, value: 'your pet' },
+  { id: 1, value: 'my pet' },
   { id: 2, value: 'sell' },
   { id: 3, value: 'lost/found' },
   { id: 4, value: 'in good hands' },

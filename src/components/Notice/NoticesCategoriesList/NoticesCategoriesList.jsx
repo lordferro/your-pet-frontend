@@ -1,37 +1,39 @@
-import { useEffect, useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import Notiflix from 'notiflix';
 import { NoticeCategoryItem } from '../NoticesCategoryItem/NoticesCategoryItem';
 import css from './NoticesCategoriesList.module.css';
+import { selectFavorite } from 'redux/notices/selectors';
+import { useCallback } from 'react';
+import { selectNotices } from '../../../redux/notices/selectors';
 import { useAuth } from 'hooks';
-import {
-  addToFavoriteNotices,
-  removeFromFavoriteNotices,
-} from 'services/noticesAPI';
+import { deleteUserNoticeById } from 'services/noticesAPI';
 
 export const NoticesCategoriesList = ({ cards }) => {
-  const [favoritesPets, setFavoritesPets] = useState([]);
+  const [notices, setNotices] = useState([]);
+  const favorite = useSelector(selectFavorite);
+  const noticesArray = useSelector(selectNotices);
 
   const { user } = useAuth();
-  useEffect(() => {
-    setFavoritesPets(user.favoritePets);
-    // console.log(favoritesPets)
-  }, [favoritesPets, user.favoritePets]);
+  const token = user.token;
+  const isFavorite = useCallback(id => favorite.includes(id), [favorite]);
 
-  const handelDeleteFavorite = id => {
-    removeFromFavoriteNotices(id)
-      .then(pet => {
-        setFavoritesPets(prevPets => prevPets.filter(pet => pet._id !== id));
+  useEffect(() => {
+    setNotices(noticesArray);
+  }, [noticesArray]);
+
+  const handleDeleteNotice = noticeId => {
+    if (!notices) return;
+    deleteUserNoticeById(noticeId, token)
+      .then(() => {
+        setNotices(prevNotice =>
+          prevNotice.filter(not => not._id !== noticeId)
+        );
+        Notiflix.Notify.success('This item was deleted successfully');
       })
       .catch(error => {
         console.log(error);
-      });
-  };
-  const handelAddFavorite = id => {
-    addToFavoriteNotices(id)
-      .then(pet => {
-        setFavoritesPets(prevPets => ({ ...prevPets, id }));
-      })
-      .catch(error => {
-        console.log(error);
+        Notiflix.Notify.error('Something went wrong, try again  later');
       });
   };
 
@@ -40,9 +42,9 @@ export const NoticesCategoriesList = ({ cards }) => {
       {cards.map(card => (
         <NoticeCategoryItem
           {...card}
-          handelDeleteFavorite={handelDeleteFavorite}
-          handelAddFavorite={handelAddFavorite}
+          isFavorite={isFavorite(card._id)}
           key={card._id}
+          handleDeleteNotice={handleDeleteNotice}
         />
       ))}
     </ul>

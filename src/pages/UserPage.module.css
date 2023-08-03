@@ -85,6 +85,9 @@
   .userPetsContainer {
     max-width: 703px;
   }
+  .userPetsInfo {
+    align-items: normal;
+  }
 }
 
 /* Quality screen 1280px */
@@ -105,5 +108,8 @@
 
   .userPetsContainer {
     max-width: 821px;
+  }
+  .userPetsInfo {
+    align-items: normal;
   }
 }

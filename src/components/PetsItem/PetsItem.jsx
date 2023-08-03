@@ -10,7 +10,7 @@ export const PetsItem = ({ pet, handleDeleteItem }) => {
         <img className={styles.cardImage} src={pet.petAvatar} alt={pet.name} />
         <div className={styles.cardContent}>
           <p className={styles.cardText}>
-            <div className={styles.iconWrapper}>
+            <span className={styles.iconWrapper}>
               <span>
                 <b>Name:</b>
                 {pet.name}
@@ -22,7 +22,7 @@ export const PetsItem = ({ pet, handleDeleteItem }) => {
               >
                 <TrashIcon className={styles.trashIcon} />
               </button>
-            </div>
+            </span>
           </p>
 
           <p className={styles.cardText}>

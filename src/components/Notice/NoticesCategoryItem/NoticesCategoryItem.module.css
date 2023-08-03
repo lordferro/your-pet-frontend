@@ -24,12 +24,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 0%;
 }
 
 .petImage {
   width: 100%;
   height: auto;
   object-fit: cover;
+  border-radius: 0%;
 }
 
 .noticeCategory {
@@ -77,8 +79,7 @@
   stroke: currentcolor;
 }
 
-.addToFavoriteButton:hover .addToFavoriteButtonIcon,
-.addToFavoriteButton:focus .addToFavoriteButtonIcon {
+.addToFavoriteButton:hover .addToFavoriteButtonIcon {
   fill: var(--blue-color);
 }
 
