@@ -3,17 +3,15 @@
   margin-left: auto;
   margin-right: auto;
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
-  @media screen and (min-width: 480px) {
+  @media screen and (min-width: 768px) {
     display: grid;
     justify-items: center;
     align-items: stretch;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    margin-top: 30px;
-  }
-
-  @media screen and (min-width: 768px) {
-    grid-template-columns: repeat(auto-fillt, minmax(336px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(336px, 1fr));
 
     column-gap: 32px;
     row-gap: 46px;
@@ -120,6 +118,7 @@
   font-size: 16px;
   line-height: 22px;
   color: #888888;
+ margin: 0;
 }
 
 .link {
@@ -129,7 +128,6 @@
   font-size: 16px;
   line-height: 22px;
   color: #54adff;
-  cursor: url('../../../src/images/pawCursor.svg'), auto;
 }
 
 .form {
@@ -138,6 +136,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 24px;
 }
 
 .formContainer {
@@ -148,7 +147,8 @@
 }
 
 .input {
-  width: 100%;
+  width: 280px;
+
   height: 44px;
   padding-left: 20px;
   font-family: 'Manrope';
@@ -163,10 +163,6 @@
   border-radius: 20px;
   border: transparent;
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
-  
-  @media screen and (min-width: 480px) {
-    width: 380px;
-  }
 
   @media screen and (min-width: 768px) {
     width: 608px;
@@ -186,15 +182,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: url('../../../src/images/pawCursor.svg'), auto;
+  cursor: pointer;
   border: none;
-
   background-color: transparent;
   transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     right 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   @media screen and (min-width: 480px) {
     right: 10px;
+
     position: absolute;
   }
 
@@ -202,7 +198,6 @@
     right: 12px;
     position: absolute;
   }
-
   @media screen and (min-width: 1280px) {
     right: 20px;
   }
@@ -211,7 +206,7 @@
 .btnSearch {
   color: #54adff;
   z-index: 2;
-  cursor: url('../../../src/images/pawCursor.svg'), auto;
+
 }
 
 .btnSearch:hover,
@@ -223,7 +218,6 @@
   color: #ffc107;
   opacity: 0;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: url('../../../src/images/pawCursor.svg'), auto;
 }
 
 .btnClear:hover,
