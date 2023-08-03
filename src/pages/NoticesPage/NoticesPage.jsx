@@ -110,10 +110,8 @@ export default function NoticesPage() {
   useEffect(() => {
     dispatch(fetchPage())
       .then(total => {
-        console.log('total:', total.payload.length);
-        const totalPages = Math.ceil(total.payload.length / 4);
+        const totalPages = Math.ceil(total.payload.length / 12);
         setTotalPages(totalPages);
-        console.log(totalPages);
       })
       .catch(error => {
         console.log('Error fetching current user:', error);
