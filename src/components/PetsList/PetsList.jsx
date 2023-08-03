@@ -1,51 +1,20 @@
-import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
-import Notiflix from 'notiflix';
-
-import { selectUser } from 'redux/auth/selectors';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './PetsList.module.css';
 
 import NoPetsAddedYet from '../../images/notHavePets.png';
 import Loader from '../Loader/Loader';
 import { PetsItem } from 'components/PetsItem/PetsItem';
 
-import { deleteUserNoticeById } from '../../services/noticesAPI';
-import { getCurrentUser } from 'services/auth';
+import { selectIsLoading, selectMyPets } from 'redux/notices/selectors';
+import { deletePetThunk } from 'redux/notices/operations';
 
 export const PetsList = () => {
-  const [pets, setPets] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isNewPetAdded, setIsNewPetAdded] = useState(false);
-
-  const token = useSelector(selectUser)?.token;
-
-  const fetchPets = async () => {
-    try {
-      const user = await getCurrentUser();
-      setPets(user.myPets);
-      setIsNewPetAdded(true);
-      setIsLoading(false);
-    } catch (error) {
-      Notiflix.Notify.error('Oops. Something went wrong. Try again');
-      setIsLoading(false);
-      setIsNewPetAdded(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchPets();
-  }, [isNewPetAdded]);
+  const pets = useSelector(selectMyPets);
+  const isLoading = useSelector(selectIsLoading);
+  const dispatch = useDispatch()
 
   const handleDeleteItem = async petId => {
-    try {
-      await deleteUserNoticeById(petId, token);
-      setPets(prevPets => prevPets.filter(pet => pet._id !== petId));
-      Notiflix.Notify.success('Pet was deleted');
-    } catch (error) {
-      Notiflix.Notify.error('Oops. Something went wrong. Try again');
-    } finally {
-      fetchPets();
-    }
+    dispatch(deletePetThunk(petId))
   };
 
   return isLoading ? (

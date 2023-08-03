@@ -1,16 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  addPetThunk,
+  deletePetThunk,
   fetchAddToFavorite,
   fetchFavoriteNotices,
   fetchNotices,
   fetchRemoveFromFavorite,
   fetchUserNotices,
 } from './operations';
-import { logIn, logOut, refreshUser, register } from 'redux/auth/operation';
+import { logIn, logOut, refreshUser } from 'redux/auth/operation';
+import {Notify} from 'notiflix';
 
 const initialState = {
   items: [],
   favorite: [],
+  myPets: [],
   isLoading: false,
   error: null,
 };
@@ -36,12 +40,11 @@ const noticesSlice = createSlice({
     builder
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.favorite = action.payload.favoritePets;
-      })
-      .addCase(register.fulfilled, (state, action) => {
-        state.favorite = action.payload.favoritePets;
+        state.myPets = action.payload.myPets;
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.favorite = action.payload.favoritePets;
+        state.myPets = action.payload.myPets;
       })
       .addCase(logOut.fulfilled, (state, action) => {
         state.favorite = [];
@@ -54,6 +57,24 @@ const noticesSlice = createSlice({
       })
       .addCase(fetchNotices.rejected, (state, action) => {
         handleRejected(state, action);
+      })
+      .addCase(addPetThunk.fulfilled, (state, action) => {
+        state.myPets.push(action.payload);
+        state.isLoading = false;
+      })
+      .addCase(addPetThunk.pending, (state, action) => {
+        handlePending(state);
+      })
+      .addCase(addPetThunk.rejected, (state, action) => {
+        handleRejected(state, action);
+      })
+      .addCase(deletePetThunk.rejected, (state, action) => {
+        handleRejected(state, action);
+      })
+      .addCase(deletePetThunk.fulfilled, (state, { payload }) => {
+        const index = state.myPets.findIndex(item => item === payload);
+        state.myPets.splice(index, 1);
+        Notify.warning("Your pet was deleted")
       })
       .addCase(fetchUserNotices.pending, state => {
         handlePending(state);
@@ -78,11 +99,12 @@ const noticesSlice = createSlice({
 
       .addCase(fetchAddToFavorite.fulfilled, (state, { payload }) => {
         state.favorite.push(payload);
+        Notify.success("Notice was added to favorites")
       })
-
       .addCase(fetchRemoveFromFavorite.fulfilled, (state, { payload }) => {
         const index = state.favorite.findIndex(item => item === payload);
         state.favorite.splice(index, 1);
+        Notify.warning('Notice was removed from favorites');
       });
   },
 });

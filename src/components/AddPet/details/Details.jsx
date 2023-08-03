@@ -1,4 +1,4 @@
-import css from './detales.module.css';
+import css from './details.module.css';
 import React from 'react';
 import { Field } from 'formik';
 const today = new Date();
@@ -9,7 +9,7 @@ if (dd < 10) dd = '0' + dd;
 if (mm < 10) mm = '0' + mm;
 const formattedToday = yyyy + '-' + mm + '-' + dd;
 
-const Detales = ({ current, errors, values, touched }) => {
+const Details = ({ current, errors, values, touched }) => {
   if (errors) {
     if (values.name.length > 2) {
       errors.name = '';
@@ -29,8 +29,8 @@ const Detales = ({ current, errors, values, touched }) => {
     <div
       className={
         current === 2 || current === 3 || current === 4
-          ? css.detalesDiv2
-          : css.detalesDiv
+          ? css.detailsDiv2
+          : css.detailsDiv
       }
     >
       {current === 2 || current === 3 || current === 4 ? (
@@ -90,4 +90,4 @@ const Detales = ({ current, errors, values, touched }) => {
   );
 };
 
-export default Detales;
+export default Details;

@@ -3,12 +3,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;700&display=swap');
 /* @import-normalize; */
 @media screen and (min-width: 280px) {
-  .detalesDiv {
+  .detailsDiv {
     margin-top: 16px;
     height: 256px;
     margin-bottom: 35px;
   }
-  .detalesDiv2 {
+  .detailsDiv2 {
     margin-top: 16px;
     height: 256px;
     margin-bottom: 75px;
@@ -67,12 +67,12 @@
   }
 }
 @media screen and (min-width: 768px) {
-  .detalesDiv {
+  .detailsDiv {
     margin-top: 16px;
     height: 256px;
     margin-bottom: 35px;
   }
-  .detalesDiv2 {
+  .detailsDiv2 {
     margin-top: 16px;
     height: 256px;
     margin-bottom: 75px;

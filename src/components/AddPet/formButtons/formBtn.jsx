@@ -11,7 +11,7 @@ const FormBtn = ({
   error,
   hendeError,
   values,
-  setDetaes,
+  setDetails,
   current,
 }) => {
   const onSub = () => {
@@ -20,7 +20,7 @@ const FormBtn = ({
       hendeError(err);
     } else {
       // console.log(values);
-      setDetaes(values);
+      setDetails(values);
       increese();
     }
   };

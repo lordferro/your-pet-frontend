@@ -5,6 +5,8 @@ import {
   getUserNotices,
   addToFavoriteNotices,
   removeFromFavoriteNotices,
+  addPet,
+  deletePet,
 } from 'services/noticesAPI';
 
 export const fetchPage = createAsyncThunk(
@@ -96,14 +98,26 @@ export const fetchRemoveFromFavorite = createAsyncThunk(
   }
 );
 
-// export const fetchDeleteNotice = createAsyncThunk(
-//   'notices/delete',
-//   async (id, { rejectWithValue }) => {
-//     try {
-//       const data = await axios.delete(`/notices/{id}`);
-//       return id;
-//     } catch (error) {
-//       return rejectWithValue(error);
-//     }
-//   }
-// );
+export const addPetThunk = createAsyncThunk(
+  'notices/addPet',
+  async (pet, { rejectWithValue }) => {
+    try {
+    const res = await addPet(pet);
+      return res;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const deletePetThunk = createAsyncThunk(
+  'notices/deletePet',
+  async (id, { rejectWithValue }) => {
+    try {
+    await deletePet(id);
+      return id;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
