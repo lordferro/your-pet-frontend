@@ -11,9 +11,10 @@ export const fetchPage = createAsyncThunk(
   'notices/page',
   async (_, thunkAPI) => {
     try {
-      const { category } = thunkAPI.getState().filters;
+      const { category, searchQuery } = thunkAPI.getState().filters;
       const params = {
         action: category,
+        searchQuery: searchQuery,
       };
       const response = await axios.get(`/notices`, {
         params,
