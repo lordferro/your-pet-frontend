@@ -5,10 +5,12 @@ import { Form, Formik } from 'formik';
 import ProgressBar from './progressBar/progressBar';
 import Option from './optionTab/Option';
 import FormBtn from './formButtons/formBtn';
-import Detales from './detales/Detales';
+import Details from './details/Details';
 import More from './More/More';
 import css from './AddPet.module.css';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addPetThunk } from 'redux/notices/operations';
 
 const validationSchema = {
   current1: Yup.object().shape({
@@ -34,23 +36,13 @@ const validationSchema = {
     type: Yup.string().required(),
   }),
 };
-
-const addPet = async detales => {
-  try {
-    const res = await axios.post('/pets', detales);
-    console.log('addpet' + res);
-    return res.data;
-  } catch (error) {
-    console.log(error.response.data.message);
-  }
-};
 const AddPet = () => {
   const [step, setStep] = useState(1);
   const [current, setCurrent] = useState(1);
   const [error, setError] = useState({});
   const [avatar, setAvatar] = useState(null);
   const [action, setAction] = useState('my pet');
-  const [detales, setDetaes] = useState({
+  const [details, setDetails] = useState({
     action: '',
     name: '',
     birthday: '',
@@ -62,44 +54,42 @@ const AddPet = () => {
     price: '0',
     sex: '',
   });
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
   function submit() {
     if (step === 4) {
       const dateForSubmit =
-        detales.birthday.substr(8, 2) +
+        details.birthday.substr(8, 2) +
         '-' +
-        detales.birthday.substr(5, 2) +
+        details.birthday.substr(5, 2) +
         '-' +
-        detales.birthday.substr(0, 4);
+        details.birthday.substr(0, 4);
 
       const formData = new FormData();
       formData.append('action', action);
-      formData.append('name', detales.name);
+      formData.append('name', details.name);
       formData.append('petAvatar', avatar);
-      formData.append('type', detales.type);
-      formData.append('comments', detales.comments);
+      formData.append('type', details.type);
+      formData.append('comments', details.comments);
       formData.append('birthday', dateForSubmit);
 
       if (current === 3 || current === 4) {
-        formData.append('title', detales.title);
-        formData.append('sex', detales.sex);
-        formData.append('location', detales.location);
+        formData.append('title', details.title);
+        formData.append('sex', details.sex);
+        formData.append('location', details.location);
       }
 
       if (current === 2) {
-        console.log(detales.sex);
-        formData.append('title', detales.title);
-        formData.append('sex', detales.sex);
-        formData.append('location', detales.location);
-        formData.append('price', detales.price);
+        formData.append('title', details.title);
+        formData.append('sex', details.sex);
+        formData.append('location', details.location);
+        formData.append('price', details.price);
       }
-      addPet(formData);
+      dispatch(addPetThunk(formData));
       if (current === 1) {
         navigate('/user');
       } else navigate('/notices/own');
-
-      console.log('sucsess');
     }
   }
   const SetOption = val => {
@@ -114,7 +104,7 @@ const AddPet = () => {
 
   return (
     <Formik
-      initialValues={detales}
+      initialValues={details}
       validationSchema={validationSchema[`current${current}`]}
       onSubmit={submit}
     >
@@ -163,7 +153,7 @@ const AddPet = () => {
           ) : null}
 
           {step === 2 ? (
-            <Detales
+            <Details
               current={current}
               errors={error}
               values={values}
@@ -187,7 +177,7 @@ const AddPet = () => {
             onClickDecrement={HendleDecrementStep}
             step={step}
             values={values}
-            setDetaes={setDetaes}
+            setDetails={setDetails}
             current={current}
           />
         </Form>

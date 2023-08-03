@@ -5,6 +5,8 @@ import {
   getUserNotices,
   addToFavoriteNotices,
   removeFromFavoriteNotices,
+  addPet,
+  deletePet,
 } from 'services/noticesAPI';
 
 export const fetchPage = createAsyncThunk(
@@ -88,6 +90,30 @@ export const fetchRemoveFromFavorite = createAsyncThunk(
   async (id, { rejectWithValue }) => {
     try {
      await removeFromFavoriteNotices(id);
+      return id;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const addPetThunk = createAsyncThunk(
+  'notices/addPet',
+  async (pet, { rejectWithValue }) => {
+    try {
+    const res = await addPet(pet);
+      return res;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const deletePetThunk = createAsyncThunk(
+  'notices/deletePet',
+  async (id, { rejectWithValue }) => {
+    try {
+    await deletePet(id);
       return id;
     } catch (error) {
       return rejectWithValue(error);

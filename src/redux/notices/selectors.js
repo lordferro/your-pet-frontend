@@ -5,3 +5,5 @@ export const selectError = state => state.notices.error;
 export const selectNotices = state => state.notices.items;
 
 export const selectFavorite = state => state.notices.favorite;
+
+export const selectMyPets = state => state.notices.myPets;

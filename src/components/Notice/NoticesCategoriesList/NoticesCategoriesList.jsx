@@ -10,9 +10,7 @@ export const NoticesCategoriesList = ({ cards }) => {
 
       const isFavorite = useCallback(id => favorite.includes(id), [favorite]);
 
-
    return (
-
     <ul className={css.cardList}>
       {cards.map(card => (
         <NoticeCategoryItem

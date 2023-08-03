@@ -1,6 +1,6 @@
 import { lazy } from 'react';
 import Loader from './Loader/Loader';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PriveteRoute';
 import { useDispatch } from 'react-redux';
@@ -43,6 +43,8 @@ export const App = () => {
           <Route path="own" element={<NoticesPage />} />
         </Route>
 
+        <Route path="/not-found" element={<PageNotFound />} />
+
         {/* <Route
           path="/notices/favorite"
           element={<PrivateRoute component={NoticesPage} redirectTo="/login" />}
@@ -71,7 +73,7 @@ export const App = () => {
           path="/add-pet"
           element={<PrivateRoute component={Addpet} redirectTo="/login" />}
         />
-        <Route path="*" element={<PageNotFound />} />
+        <Route path="*" element={<Navigate to="/not-found" replace={true} />} />
       </Route>
     </Routes>
   );
