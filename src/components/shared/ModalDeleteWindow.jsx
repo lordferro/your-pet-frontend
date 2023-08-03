@@ -7,6 +7,7 @@ export const ModalDeleteWindow = ({
   onModalDeleteCloseClick,
   handleDeletePet,
   name,
+  _id,
 }) => {
   const handleBackdropClick = event => {
     if (event.target === event.currentTarget) {
@@ -57,7 +58,7 @@ export const ModalDeleteWindow = ({
             className={css.deleteButton}
             onClick={() => {
               onModalDeleteCloseClick();
-              handleDeletePet();
+              handleDeletePet(_id);
             }}
           >
             Yes
