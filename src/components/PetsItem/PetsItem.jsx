@@ -1,9 +1,19 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 import { ReactComponent as TrashIcon } from '../../images/trash-2.svg';
 import styles from './PetsItem.module.css';
 
+import { ModalDeleteWindow } from 'components/shared/ModalDeleteWindow';
+
 export const PetsItem = ({ pet, handleDeleteItem }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const onDelete = () => {
+    handleDeleteItem(pet._id);
+    setShowModal(false);
+  };
+
   return (
     <>
       <li className={styles.cardContainer}>
@@ -18,7 +28,7 @@ export const PetsItem = ({ pet, handleDeleteItem }) => {
               <button
                 type="submit"
                 className={styles.trashBtn}
-                onClick={() => handleDeleteItem(pet._id)}
+                onClick={() => setShowModal(true)}
               >
                 <TrashIcon className={styles.trashIcon} />
               </button>
@@ -39,6 +49,14 @@ export const PetsItem = ({ pet, handleDeleteItem }) => {
           </p>
         </div>
       </li>
+      {showModal && (
+        <ModalDeleteWindow
+          name={pet.name}
+          _id={pet._id}
+          handleDeletePet={onDelete}
+          onModalDeleteCloseClick={() => setShowModal(false)}
+        />
+      )}
     </>
   );
 };

@@ -9,7 +9,7 @@ import {
   fetchUserNotices,
 } from './operations';
 import { logIn, logOut, refreshUser } from 'redux/auth/operation';
-import {Notify} from 'notiflix';
+import { Notify } from 'notiflix';
 
 const initialState = {
   items: [],
@@ -61,6 +61,7 @@ const noticesSlice = createSlice({
       .addCase(addPetThunk.fulfilled, (state, action) => {
         state.myPets.push(action.payload);
         state.isLoading = false;
+        Notify.success('Your pet was added');
       })
       .addCase(addPetThunk.pending, (state, action) => {
         handlePending(state);
@@ -74,7 +75,7 @@ const noticesSlice = createSlice({
       .addCase(deletePetThunk.fulfilled, (state, { payload }) => {
         const index = state.myPets.findIndex(item => item === payload);
         state.myPets.splice(index, 1);
-        Notify.warning("Your pet was deleted")
+        Notify.success('Your pet was deleted');
       })
       .addCase(fetchUserNotices.pending, state => {
         handlePending(state);
@@ -99,7 +100,7 @@ const noticesSlice = createSlice({
 
       .addCase(fetchAddToFavorite.fulfilled, (state, { payload }) => {
         state.favorite.push(payload);
-        Notify.success("Notice was added to favorites")
+        Notify.success('Notice was added to favorites');
       })
       .addCase(fetchRemoveFromFavorite.fulfilled, (state, { payload }) => {
         const index = state.favorite.findIndex(item => item === payload);
