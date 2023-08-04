@@ -13,6 +13,7 @@ import { ModalDeleteWindow } from '../../shared/ModalDeleteWindow';
 import css from './NoticesCategoryItem.module.css';
 
 import {
+  deleteNoticeThunk,
   fetchAddToFavorite,
   fetchRemoveFromFavorite,
 } from 'redux/notices/operations';
@@ -32,7 +33,6 @@ export const NoticeCategoryItem = memo(
     petAvatar,
     owner,
     isFavorite,
-    handleDeleteNotice,
   }) => {
     const [showInfoModal, setShowInfoModal] = useState(false);
     const [modalAcessWindow, setmodalAcessWindow] = useState(false);
@@ -41,7 +41,7 @@ export const NoticeCategoryItem = memo(
     const dispatch = useDispatch();
 
     const handleDeletePet = _id => {
-      handleDeleteNotice(_id);
+     dispatch(deleteNoticeThunk(_id))
       setModalDeleteCloseClick(false);
     };
 

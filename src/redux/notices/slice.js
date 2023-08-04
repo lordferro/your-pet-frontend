@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   addPetThunk,
+  deleteNoticeThunk,
   deletePetThunk,
   fetchAddToFavorite,
   fetchFavoriteNotices,
@@ -76,6 +77,14 @@ const noticesSlice = createSlice({
         const index = state.myPets.findIndex(item => item === payload);
         state.myPets.splice(index, 1);
         Notify.success('Your pet was deleted');
+      })
+      .addCase(deleteNoticeThunk.rejected, (state, action) => {
+        handleRejected(state, action);
+      })
+      .addCase(deleteNoticeThunk.fulfilled, (state, { payload }) => {
+        const index = state.items.findIndex(item => item === payload);
+        state.items.splice(index, 1);
+        Notify.warning("Your notice was deleted")
       })
       .addCase(fetchUserNotices.pending, state => {
         handlePending(state);
