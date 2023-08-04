@@ -19,9 +19,9 @@ const Navigation = ({ onItemClick }) => {
         </li>
         <li className={css.navigation_link}>
           <NavLink
-            to="/notices/sell"
+            to="/notices"
             className={
-              location.pathname === '/notices/sell' ? css.activeLink : ''
+              location.pathname === '/notices' ? css.activeLink : ''
             }
             onClick={onItemClick}
           >
