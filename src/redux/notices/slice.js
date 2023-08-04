@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
+  addNoticeThunk,
   addPetThunk,
   deleteNoticeThunk,
   deletePetThunk,
@@ -10,7 +11,7 @@ import {
   fetchUserNotices,
 } from './operations';
 import { logIn, logOut, refreshUser } from 'redux/auth/operation';
-import {Notify} from 'notiflix';
+import { Notify } from 'notiflix';
 
 const initialState = {
   items: [],
@@ -75,15 +76,25 @@ const noticesSlice = createSlice({
       .addCase(deletePetThunk.fulfilled, (state, { payload }) => {
         const index = state.myPets.findIndex(item => item === payload);
         state.myPets.splice(index, 1);
-        Notify.warning("Your pet was deleted")
+        Notify.warning('Your pet was deleted');
+      })
+      .addCase(addNoticeThunk.fulfilled, (state, action) => {
+        state.items.unshift(action.payload);
+        state.isLoading = false;
+      })
+      .addCase(addNoticeThunk.pending, (state, action) => {
+        handlePending(state);
+      })
+      .addCase(addNoticeThunk.rejected, (state, action) => {
+        handleRejected(state, action);
       })
       .addCase(deleteNoticeThunk.rejected, (state, action) => {
         handleRejected(state, action);
       })
       .addCase(deleteNoticeThunk.fulfilled, (state, { payload }) => {
         const index = state.items.findIndex(item => item === payload);
-        state.items.splice(index, 1);
-        Notify.warning("Your notice was deleted")
+        state.items.reverse().splice(index, 1);
+        Notify.warning('Your notice was deleted');
       })
       .addCase(fetchUserNotices.pending, state => {
         handlePending(state);
@@ -108,7 +119,7 @@ const noticesSlice = createSlice({
 
       .addCase(fetchAddToFavorite.fulfilled, (state, { payload }) => {
         state.favorite.push(payload);
-        Notify.success("Notice was added to favorites")
+        Notify.success('Notice was added to favorites');
       })
       .addCase(fetchRemoveFromFavorite.fulfilled, (state, { payload }) => {
         const index = state.favorite.findIndex(item => item === payload);

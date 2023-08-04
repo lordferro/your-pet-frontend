@@ -99,10 +99,10 @@ export const fetchRemoveFromFavorite = createAsyncThunk(
 );
 
 export const addPetThunk = createAsyncThunk(
-  'notices/addPet',
+  'pets/addPet',
   async (pet, { rejectWithValue }) => {
     try {
-    const res = await addPet(pet);
+      const res = await addPet(pet);
       return res;
     } catch (error) {
       return rejectWithValue(error);
@@ -111,11 +111,23 @@ export const addPetThunk = createAsyncThunk(
 );
 
 export const deletePetThunk = createAsyncThunk(
-  'notices/deletePet',
+  'pets/deletePet',
   async (id, { rejectWithValue }) => {
     try {
-    await deletePet(id);
+      await deletePet(id);
       return id;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const addNoticeThunk = createAsyncThunk(
+  'notices/addNotice',
+  async (notice, { rejectWithValue }) => {
+    try {
+      const res = await addPet(notice);
+      return res;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -126,7 +138,7 @@ export const deleteNoticeThunk = createAsyncThunk(
   'notices/deleteNotice',
   async (id, { rejectWithValue }) => {
     try {
-    await deletePet(id);
+      await deletePet(id);
       return id;
     } catch (error) {
       return rejectWithValue(error);
