@@ -35,7 +35,7 @@ export const App = () => {
         <Route index element={<MainPage />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/news" element={<NewsPage />} />
-        <Route path="/notices/:categoryName" element={<NoticesPage />}>
+        <Route path="/notices/:categoryName" element={<NoticesPage />} scroll={true}>
           <Route path="sell" element={<NoticesPage />} />
           <Route path="lost-found" element={<NoticesPage />} />
           <Route path="for-free" element={<NoticesPage />} />
