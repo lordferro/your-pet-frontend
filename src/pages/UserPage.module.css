@@ -87,6 +87,7 @@
   }
   .userPetsInfo {
     align-items: normal;
+    margin-bottom: 0;
   }
 }
 
