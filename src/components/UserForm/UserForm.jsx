@@ -121,7 +121,6 @@ export const UserForm = ({ readonly, user, onSubmit, saveNewAvatar }) => {
 
   const onFileSelect = event => {
     const file = event.target.files[0];
-    console.log('file', file);
     if (file.size > 1024 * 1024 * 3) {
       Notiflix.Notify.warning('You should select files up to 3 Mb');
       return;

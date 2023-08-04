@@ -93,7 +93,6 @@ const noticesSlice = createSlice({
         handleRejected(state, action);
       })
       .addCase(deleteNoticeThunk.fulfilled, (state, { payload }) => {
-        console.log(payload);
         const index = state.items.findIndex(item => item._id === payload);
         state.items.splice(index, 1);
         Notify.warning('Your notice was deleted');

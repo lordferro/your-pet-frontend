@@ -10,7 +10,6 @@ export const NoticeSearch = ({ handleSearchChange }) => {
   const [keyWord, setKeyWord] = useState(searchValue || '');
 
   const handelInputChange = event => {
-    console.log(keyWord);
     setKeyWord(event.currentTarget.value.toLowerCase().trim());
   };
 

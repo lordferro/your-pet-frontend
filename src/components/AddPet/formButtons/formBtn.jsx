@@ -19,7 +19,6 @@ const FormBtn = ({
       const err = { comments: 'comments is a required field' };
       hendeError(err);
     } else {
-      // console.log(values);
       setDetails(values);
       increese();
     }

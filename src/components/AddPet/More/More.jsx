@@ -66,7 +66,6 @@ const More = ({ values, errors, current, setAvatar }) => {
 
   const previewImage = e => {
     setAvatar(e.target.files[0]);
-    console.log(e.target.files[0]);
     setFile(URL.createObjectURL(e.target.files[0]));
   };
 
