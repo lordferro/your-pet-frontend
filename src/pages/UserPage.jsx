@@ -54,8 +54,6 @@ const UserPage = () => {
       formData.append('city', newUserData.city);
     }
 
-    console.log('updated formData', formData);
-
     if (Object.keys(Object.fromEntries(formData.entries())).length) {
       dispatch(updateUser(formData));
     }
