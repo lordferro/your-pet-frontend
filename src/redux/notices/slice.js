@@ -63,6 +63,7 @@ const noticesSlice = createSlice({
       .addCase(addPetThunk.fulfilled, (state, action) => {
         state.myPets.push(action.payload);
         state.isLoading = false;
+        Notify.success('Your pet was added');
       })
       .addCase(addPetThunk.pending, (state, action) => {
         handlePending(state);
