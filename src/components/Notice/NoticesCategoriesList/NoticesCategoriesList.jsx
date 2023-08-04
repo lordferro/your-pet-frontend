@@ -17,7 +17,6 @@ export const NoticesCategoriesList = ({ cards }) => {
           {...card}
           isFavorite={isFavorite(card._id)}
           key={card._id}
-          // handleDeleteNotice={}
         />
       ))}
     </ul>

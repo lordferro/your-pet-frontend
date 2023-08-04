@@ -121,3 +121,15 @@ export const deletePetThunk = createAsyncThunk(
     }
   }
 );
+
+export const deleteNoticeThunk = createAsyncThunk(
+  'notices/deleteNotice',
+  async (id, { rejectWithValue }) => {
+    try {
+    await deletePet(id);
+      return id;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
