@@ -9,7 +9,7 @@ import More from './More/More';
 import css from './AddPet.module.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { addPetThunk } from 'redux/notices/operations';
+import { addNoticeThunk, addPetThunk } from 'redux/notices/operations';
 
 const validationSchema = {
   current1: Yup.object().shape({
@@ -85,10 +85,25 @@ const AddPet = () => {
         formData.append('location', details.location);
         formData.append('price', details.price);
       }
-      dispatch(addPetThunk(formData));
-      if (current === 1) {
-        navigate('/user');
-      } else navigate('/notices/own');
+      switch (current) {
+        case 1:
+          dispatch(addPetThunk(formData));
+          navigate('/user');
+          break;
+        case 2:
+          dispatch(addNoticeThunk(formData));
+          navigate('/notices/sell');
+          break;
+        case 3:
+          dispatch(addNoticeThunk(formData));
+          navigate('/notices/lost-found');
+          break;
+
+        default:
+          dispatch(addNoticeThunk(formData));
+          navigate('/notices/for-free');
+          break;
+      }
     }
   }
   const SetOption = val => {
