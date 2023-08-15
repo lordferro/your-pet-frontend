@@ -57,14 +57,6 @@ export const NoticeCategoryItem = ({
     }
   };
 
-  // Функція для нормалізації локації
-  const normalizedLocation = loc => {
-    if (loc.length > 4) return loc.slice(0, 4) + `...`;
-    else {
-      return loc;
-    }
-  };
-
   // Функція для обрахунку віку
   const ageCount = birthData => {
     const birthDate = moment(birthData, 'DD-MM-YYYY');
@@ -75,7 +67,7 @@ export const NoticeCategoryItem = ({
     const totalMonths = yearsDiff * 12 + monthsDiff;
 
     if (totalMonths < 12) {
-      return `${totalMonths} mon...`;
+      return `${totalMonths} months`;
     }
 
     if (totalMonths >= 12 && totalMonths < 24) {
@@ -122,11 +114,11 @@ export const NoticeCategoryItem = ({
           <ul className={css.shortPetInfoWrapperList}>
             <li className={css.shortPetInfo}>
               <CiLocationOn className={css.shortPetInfoIcon} />
-              {normalizedLocation(location)}
+              <span>{location}</span>
             </li>
             <li className={css.shortPetInfo}>
               <GoClock className={css.shortPetInfoIcon} />
-              {age}
+              <span>{age}</span>
             </li>
             <li className={css.shortPetInfo}>
               {sex === 'female' ? (
